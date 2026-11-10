@@ -1,0 +1,36 @@
+---
+import { img } from '../../lib/image';
+import { href, type RoomRef } from '../../lib/links';
+import type { Settings } from '../../lib/types';
+import { ui } from '../../lib/ui';
+
+interface Props {
+  active?: 'studio' | 'about' | 'clients' | 'sessions' | 'contact';
+  settings: Settings;
+  rooms: RoomRef[];
+}
+
+const { active, settings, rooms } = Astro.props;
+const navClass = (key: NonNullable<Props['active']>) => (active === key ? 't-8b9489' : 't-baae53');
+const studioHref = href({ page: 'studio' }, rooms);
+const logoSrc = img(settings.logoWhite);
+---
+<header class="t-bfd39f" data-block="01-header">
+<div class="t-d7d73d">
+<div class="t-ff0db8">
+<span class="t-3088da"><span class="t-e80f6d"></span>{settings.street}, {settings.area}, {settings.city}</span>
+<span>{settings.phoneDisplay} · {settings.emailDisplay}</span>
+</div>
+</div>
+<div class="t-53e52d">
+<a href={href({ page: 'home' })} aria-label="TEMS home" class="t-b157be"><img src={logoSrc} alt={settings.studioName} class="t-d08c10"></a>
+<nav aria-label="Main" class="t-c3fc15">
+<a href={studioHref} class={navClass('studio')}>{ui.nav.studio}</a>
+<a href={href({ page: 'about' })} class={navClass('about')}>{ui.nav.about}</a>
+<a href={href({ page: 'clients' })} class={navClass('clients')}>{ui.nav.clients}</a>
+<a href={href({ page: 'sessions' })} class={navClass('sessions')}>{ui.nav.sessions}</a>
+<a href={href({ page: 'contact' })} class={navClass('contact')}>{ui.nav.contact}</a>
+</nav>
+<a href={href({ page: 'enquire' })} class="t-4d79dd">{settings.headerCta}</a>
+</div>
+</header>

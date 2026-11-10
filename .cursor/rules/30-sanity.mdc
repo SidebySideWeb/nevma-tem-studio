@@ -1,0 +1,14 @@
+---
+description: Sanity Studio and data rules
+globs: apps/studio/**, apps/web/src/lib/**
+alwaysApply: false
+---
+# Sanity
+
+- The Studio in `apps/studio` is finished and validated. Change the schema only when a prompt says so; then run `pnpm --filter studio validate`, `pnpm --filter studio check:seed` and `pnpm --filter studio build`.
+- Pages are singletons with fixed IDs = type names (`homePage`, `aboutPage`, …). Rooms, clients, quotes, team, questions and legal pages are collections. Forms: `form` (settings) + `formSubmission` (one per enquiry).
+- Seed IDs use hyphens, never dots (a "." makes a document private).
+- Dataset `production` is **private**. The site reads at build time with a Viewer token (`SANITY_VIEWER_TOKEN`); `/api/enquiry` writes with an Editor token (`SANITY_WRITE_TOKEN`). Neither token reaches the browser.
+- GROQ: one query per page, explicit projections, resolve references (`->`), dereference images to `asset->{url, metadata{dimensions, lqip}}` only when needed. API version `2025-10-01`, `useCdn: false` at build.
+- Webhook: on publish/unpublish/delete of anything **except** `formSubmission`, call the Vercel deploy hook.
+- Clients A–Z: group by the first letter of `coalesce(sortName, name)`, upper-cased, A–Z only (others under "#", after Z); partners first within a letter, then alphabetical.

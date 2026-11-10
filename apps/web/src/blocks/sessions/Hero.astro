@@ -1,0 +1,20 @@
+---
+import { img } from '../../lib/image';
+import { href, type RoomRef } from '../../lib/links';
+import type { SessionsPage } from '../../lib/types';
+
+interface Props {
+  page: SessionsPage;
+  rooms: RoomRef[];
+}
+
+const { page, rooms } = Astro.props;
+---
+<section class="t-0d645b" data-block="02-hero">
+<img src={img(page.heroImage, 2400)} alt={page.heroImage?.alt ?? ''} class="t-e31f0d" fetchpriority="high">
+<div class="t-22dae1"></div>
+<div class="wrap t-b55c72">
+<h1 class="d hx t-73df06">{page.title}</h1>
+<a href={href(page.heroCta, rooms)} class="m t-982321">{page.heroCta?.label}</a>
+</div>
+</section>

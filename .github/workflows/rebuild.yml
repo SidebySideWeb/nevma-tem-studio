@@ -1,0 +1,23 @@
+# Daily Vercel rebuild (footer year / time-based copy). Same hook as Sanity publish.
+name: Daily rebuild
+
+on:
+  schedule:
+    - cron: '10 3 * * *' # 03:10 UTC
+  workflow_dispatch:
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel deploy hook
+        env:
+          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$VERCEL_DEPLOY_HOOK" ]; then
+            echo "Missing secret VERCEL_DEPLOY_HOOK" >&2
+            exit 1
+          fi
+          curl -fsS -X POST "$VERCEL_DEPLOY_HOOK"
+          echo
+          echo "Deploy hook accepted."

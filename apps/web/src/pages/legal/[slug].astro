@@ -1,0 +1,45 @@
+---
+import Base from '../../layouts/Base.astro';
+import { legalQuery, legalSlugsQuery } from '../../lib/queries';
+import { formatLegalDate, legalBodyHtml } from '../../lib/portable-text';
+import { client, getSettings } from '../../lib/sanity';
+import { buildPageSeo } from '../../lib/seo';
+import type { LegalPage } from '../../lib/types';
+import { ui } from '../../lib/ui';
+
+export async function getStaticPaths() {
+  const pages = await client.fetch<{ slug: string }[]>(legalSlugsQuery);
+  return pages.map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+if (!slug) throw new Error('Missing legal slug');
+
+const [page, settings] = await Promise.all([
+  client.fetch<LegalPage | null>(legalQuery, { slug }),
+  getSettings(),
+]);
+
+if (!page) throw new Error(`Legal page not found: ${slug}`);
+
+const seo = buildPageSeo({
+  path: `/legal/${slug}`,
+  pageTitle: page.title || 'Legal',
+  seo: page.seo,
+  settings,
+});
+const bodyHtml = legalBodyHtml(page.body);
+const updated = formatLegalDate(page.updated);
+---
+<Base page="home" seo={seo}>
+<section class="legal" aria-labelledby="legal-title">
+<div class="wrap legal__wrap">
+<span class="m legal__eyebrow">{ui.legal.label}</span>
+<h1 id="legal-title" class="d hx legal__title">{page.title}</h1>
+{updated ? (
+<p class="m legal__updated">{ui.legal.updated} {updated}</p>
+) : null}
+<div class="legal__body" set:html={bodyHtml}></div>
+</div>
+</section>
+</Base>

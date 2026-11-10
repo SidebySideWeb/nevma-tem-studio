@@ -1,0 +1,250 @@
+/* Main landmark without changing layout: design has no <main> wrapper. */
+.page-main {
+  display: contents;
+}
+
+/* Screen-reader-only text: design has no visually-hidden utility. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Visible keyboard focus: design shows no resting focus ring. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #ff4f00;
+  outline-offset: 2px;
+}
+
+/* Honour reduced motion: design has no motion preference rules. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Hide JS-only controls until Base adds .js — gallery buttons; visibility keeps layout. */
+html:not(.js) [data-js-only] {
+  visibility: hidden;
+}
+
+/* Gallery photo swap: design shows resting state only; 150 ms opacity, no size change. */
+[data-gallery] img {
+  transition: opacity 150ms linear;
+}
+
+/* Floor plan photo fills the designed 4:5 bordered box; design only shows the empty placeholder. */
+[data-block="04-room"] .t-d80aa8 > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/*
+ * FAQ buttons: UA stylesheet sets Arial on <button>. About / Sessions design
+ * rows are spans (Archivo) — inherit body font. Enquire's design already uses
+ * buttons, so leave UA font when data-native-buttons is set.
+ */
+[data-faq]:not([data-native-buttons]) .t-f48ee9 {
+  font: inherit;
+  line-height: inherit;
+}
+
+/* Honeypot: clip-only .sr-only still shows in innerText/paint; hide fully. */
+input[name='company'] {
+  display: none;
+}
+
+/* Project-type hidden inputs: wrapper must not be a flex item (form gap is 28px). */
+[data-project-types] {
+  display: contents;
+}
+
+/* FAQ open answer on ink bands (Sessions): Enquire answer class is ink-on-paper. */
+[data-faq][data-tone="ink"] .t-97c56a {
+  color: #d9d6ce;
+}
+
+/* FAQ button + row border on ink: Enquire button/border are ink-on-paper. */
+[data-faq][data-tone="ink"] .t-f48ee9 {
+  color: #f2f0eb;
+}
+[data-faq][data-tone="ink"] .t-4fb45a {
+  border-bottom-color: rgba(242, 240, 235, 0.2);
+}
+
+/*
+ * Enquiry error line: design has no error state. Empty = no box (resting
+ * fidelity unchanged); filled shows above the submit row.
+ */
+.enquire-status:empty {
+  display: none;
+}
+.enquire-status:not(:empty) {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #0a0a0a;
+}
+
+/* Invisible Turnstile host: takes no layout space until the widget mounts. */
+.cf-turnstile {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/*
+ * Contact map cell: design only shows the striped placeholder. When
+ * mapImage is set, fill the same flex cell (t-0feb6e) edge-to-edge.
+ */
+[data-block="04-map-cta"] > a.t-0feb6e,
+[data-block="04-map-cta"] > div.t-0feb6e:not(.ph) {
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  min-height: 440px;
+}
+[data-block="04-map-cta"] > a.t-0feb6e img,
+[data-block="04-map-cta"] > div.t-0feb6e:not(.ph) img {
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  object-fit: cover;
+  display: block;
+}
+
+/*
+ * Home hero: design uses the logo mark instead of a text h1. `display: contents`
+ * keeps the img in the designed flex flow while check-seo / a11y see an <h1>.
+ */
+.home-hero-h1 {
+  display: contents;
+}
+
+/* legal + 404 — undesigned pages; tokens from DESIGN-SYSTEM.md only */
+.legal {
+  background: #f2f0eb;
+  color: #0a0a0a;
+  padding: 120px 0;
+}
+.legal__wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.legal__eyebrow {
+  color: #5e5e5e;
+}
+.legal__title {
+  margin: 0;
+  font-size: 88px;
+}
+.legal__updated {
+  margin: 0;
+  color: #5e5e5e;
+}
+.legal__body {
+  max-width: 720px;
+  font-size: 17px;
+  line-height: 1.65;
+}
+.legal__body > *:first-child {
+  margin-top: 0;
+}
+.legal__body p {
+  margin: 0 0 1em;
+}
+.legal__body h2 {
+  font-family: Archivo, sans-serif;
+  font-weight: 900;
+  font-stretch: 72%;
+  text-transform: uppercase;
+  line-height: 0.86;
+  font-size: 40px;
+  margin: 48px 0 16px;
+}
+.legal__body h3 {
+  font-family: Archivo, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 32px 0 12px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.legal__body a {
+  color: inherit;
+  text-decoration: underline;
+}
+.legal__body a:hover {
+  color: #ff4f00;
+}
+.legal__body ul,
+.legal__body ol {
+  margin: 0 0 1em;
+  padding-left: 1.25em;
+}
+.legal__body li {
+  margin: 0.35em 0;
+}
+
+.not-found {
+  background: #0a0a0a;
+  color: #f2f0eb;
+  padding: 120px 0 160px;
+  min-height: 70vh;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+}
+.not-found__wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+.not-found__label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #f2f0eb;
+}
+.not-found__title {
+  margin: 0;
+  font-size: 150px;
+}
+.not-found__text {
+  margin: 0;
+  max-width: 520px;
+  font-size: 20px;
+  line-height: 1.45;
+  color: #d9d6ce;
+}
+
+@media (max-width: 760px) {
+  .legal {
+    padding: 96px 0;
+  }
+  .legal__title {
+    font-size: 64px;
+  }
+  .not-found {
+    padding: 96px 0 120px;
+    min-height: 60vh;
+  }
+  /* .pg-home .hx already forces 64px on phones */
+}

@@ -1,0 +1,14 @@
+---
+description: CSS — exactness rules
+globs: apps/web/src/styles/**, apps/web/**/*.astro
+alwaysApply: false
+---
+# CSS: exact, not "clean"
+
+- `tems.css` = `design/build/tems.css`, unchanged. It has three parts: shared base rules; per-page rules scoped by `.pg-<page>`; 254 generated rules written as tripled selectors (`.t-x.t-x.t-x`) so they win like the designer's inline styles did (including over `a:hover`).
+- Keep every class an element has in the design, in the same order. Do not merge, rename or replace classes with your own.
+- Never use `style=""` attributes, Tailwind, CSS modules, scoped `<style>` in components, or `!important` (except where `additions.css` must beat a generated rule — say why in a comment).
+- `additions.css` is for: focus-visible outlines, FAQ open answer + sign, gallery transitions (opacity only), form error states and messages, the legal and 404 pages, the `.sr-only` utility. Nothing that changes a designed state's pixels.
+- Hover: the design only defines `a:hover{color:#FF4F00}` on plain links. Buttons keep their colours on hover (the generated rules win). Do not add hover effects.
+- Phone layout is the same markup with the design's media rules (`max-width:760px`, Clients also `1000px`). Never add separate mobile markup.
+- Fonts: `assets/fonts.css` from the design build (Archivo variable incl. width axis, JetBrains Mono 400/500), self-hosted in `public/assets/fonts/`. No Google Fonts link.

@@ -1,0 +1,38 @@
+---
+import Base from '../../layouts/Base.astro';
+import Form from '../../blocks/enquire/Form.astro';
+import Faq from '../../blocks/enquire/Faq.astro';
+import { enquireQuery } from '../../lib/queries';
+import { client, getRooms, getSettings } from '../../lib/sanity';
+import { buildPageSeo } from '../../lib/seo';
+import type { EnquirePage } from '../../lib/types';
+
+const [page, settings, rooms] = await Promise.all([
+  client.fetch<EnquirePage>(enquireQuery),
+  getSettings(),
+  getRooms(),
+]);
+
+const roomSlug = Astro.url.searchParams.get('room');
+const showError = Astro.url.searchParams.get('error') === '1';
+
+const pageTitle = (page.title || 'Register interest').replaceAll('\n', ' ').trim();
+const seo = buildPageSeo({
+  path: '/enquire',
+  pageTitle,
+  seo: page.seo,
+  settings,
+  heroImage: page.image,
+});
+---
+<Base page="enquire" seo={seo} footerBlock="04-footer">
+<Form
+  page={page}
+  settings={settings}
+  rooms={rooms}
+  state="form"
+  roomSlug={roomSlug}
+  showError={showError}
+/>
+<Faq page={page} />
+</Base>

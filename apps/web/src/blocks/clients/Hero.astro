@@ -1,0 +1,31 @@
+---
+import { img } from '../../lib/image';
+import type { ClientsPage, SanityImage } from '../../lib/types';
+
+interface Props {
+  page: ClientsPage;
+}
+
+const { page } = Astro.props;
+const covers = page.heroCovers ?? [];
+const tiles: SanityImage[] = [];
+if (covers.length) {
+  for (let i = 0; i < 30; i++) tiles.push(covers[i % covers.length]!);
+}
+---
+<section class="t-c7e1ba" data-block="02-hero">
+<div class="mos t-b02d11">
+{tiles.map((cover, i) =>
+  i === 0 ? (
+<img src={img(cover, 400)} alt={cover.alt ?? ''} class="t-2e7902" fetchpriority="high">
+  ) : (
+<img src={img(cover, 400)} alt={cover.alt ?? ''} class="t-2e7902" loading="lazy" decoding="async">
+  )
+)}
+</div>
+<div class="t-e3755c"></div>
+<div class="wrap t-5a3000">
+<h1 class="d hx t-b9142d">{page.title}</h1>
+<span class="m t-5ebfe7">{page.heroCaption}</span>
+</div>
+</section>

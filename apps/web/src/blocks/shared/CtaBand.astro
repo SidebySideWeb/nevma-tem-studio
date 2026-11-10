@@ -1,0 +1,42 @@
+---
+import { href, type Cta, type RoomRef } from '../../lib/links';
+import { lines } from '../../lib/text';
+
+interface Props {
+  title: string;
+  text?: string;
+  primary?: Cta | null;
+  secondary?: Cta | null;
+  rooms?: RoomRef[];
+  /** Design block id — number differs per page. */
+  block?: string;
+  /**
+   * Home uses a taller band (150px title). Studio / Clients / Sessions share
+   * the shorter band (120px title) — see design/build blocks.
+   */
+  tone?: 'home' | 'shared';
+}
+
+const { title, text, primary, secondary, rooms = [], block = '07-cta', tone = 'home' } = Astro.props;
+const titleLines = lines(title);
+const sectionClass = tone === 'home' ? 't-e9b15f' : 't-3e9954';
+const copyClass = tone === 'home' ? 't-efd85b' : 't-6a014f';
+const titleClass = tone === 'home' ? 't-ed9038' : 't-cb45d5';
+const textClass = tone === 'home' ? 't-164e9d' : 't-633d86';
+---
+<section class={sectionClass} data-block={block}>
+<div class="wrap stack t-ba94f9">
+{text ? (
+<div class={copyClass}>
+<h2 class={`d hx ${titleClass}`}>{titleLines.map((line, i) => <>{i > 0 && <br />}{line}</>)}</h2>
+<p class={textClass}>{text}</p>
+</div>
+) : (
+<h2 class={`d hx ${titleClass}`}>{titleLines.map((line, i) => <>{i > 0 && <br />}{line}</>)}</h2>
+)}
+<div class="t-18d4ed">
+{primary?.label ? <a href={href(primary, rooms)} class="m t-5caef7">{primary.label}</a> : null}
+{secondary?.label ? <a href={href(secondary, rooms)} class="m t-225c4e">{secondary.label}</a> : null}
+</div>
+</div>
+</section>

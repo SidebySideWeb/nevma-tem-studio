@@ -1,0 +1,1619 @@
+{
+ "home": {
+  "01-header": {
+   "text": [
+    "[Street address], Ellinikon, Athens",
+    "[Phone] · [Email]",
+    "The Studio",
+    "About",
+    "Clients",
+    "Sessions",
+    "Contact",
+    "Register interest"
+   ],
+   "images": [
+    {
+     "src": "img/tems-logo-white.png",
+     "alt": "TEMS — the Ellinikon music studio"
+    }
+   ],
+   "fields": []
+  },
+  "02-hero": {
+   "text": [
+    "Rec — Ellinikon, Athens",
+    "A recording studio built for records that matter. [One-line positioning from the client: rooms, gear, people.]",
+    "Register interest",
+    "Explore the studio"
+   ],
+   "images": [
+    {
+     "src": "img/live-room.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/tems-logo-white.png",
+     "alt": "TEMS — the Ellinikon music studio"
+    }
+   ],
+   "fields": []
+  },
+  "03-rooms": {
+   "text": [
+    "CH 01",
+    "The Rooms",
+    "[Short intro: how many rooms, what each is built for, the acoustics.]",
+    "Studio A",
+    "Tracking · Mix →",
+    "Live Room",
+    "[Size] m² →",
+    "Lounge",
+    "Break · Listen →"
+   ],
+   "images": [
+    {
+     "src": "img/control-room.jpg",
+     "alt": "Studio A control room"
+    },
+    {
+     "src": "img/instrument-room.jpg",
+     "alt": "Live room with guitars, organ and synths"
+    },
+    {
+     "src": "img/lounge-team.jpg",
+     "alt": "Studio lounge"
+    }
+   ],
+   "fields": []
+  },
+  "04-records": {
+   "text": [
+    "CH 02",
+    "The",
+    "Records",
+    "Artists, producers and labels who have worked here. [Client intro line.]",
+    "See the clients",
+    "Studio partner",
+    "TEMS is a partner studio of NEVMA Music. These NEVMA releases were recorded here.",
+    "Visit NEVMA Music ↗",
+    "Low Tide Hearts",
+    "NEVMA ↗",
+    "Paper Moons",
+    "NEVMA ↗",
+    "Illusions 1",
+    "NEVMA ↗"
+   ],
+   "images": [
+    {
+     "src": "img/standin-cover-low-tide-hearts.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-cassettes.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-paper-moons.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-collage.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-lasers.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-illusions-1.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-neon-room.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-stage-lights.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-festival.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-concert.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-dj-stage.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-singer.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/nevma-logo-white.png",
+     "alt": "NEVMA"
+    },
+    {
+     "src": "img/standin-cover-low-tide-hearts.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-paper-moons.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-illusions-1.jpg",
+     "alt": ""
+    }
+   ],
+   "fields": []
+  },
+  "05-gear": {
+   "text": [
+    "CH 03",
+    "The Gear",
+    "[Gear intro: the console, the microphone collection, instruments and outboard.]",
+    "[00]",
+    "Microphones",
+    "[00]",
+    "Console channels",
+    "[00]",
+    "Amps & instruments",
+    "[00]",
+    "Outboard units",
+    "Full equipment list"
+   ],
+   "images": [
+    {
+     "src": "img/mic-locker.jpg",
+     "alt": "Microphone locker"
+    }
+   ],
+   "fields": []
+  },
+  "06-quotes": {
+   "text": [
+    "CH 04",
+    "In their words",
+    "“[Quote from an artist or engineer who recorded at TEMS.]”",
+    "[Name] — [Role]",
+    "“[Quote.]”",
+    "[Name] — [Role]",
+    "“[Quote.]”",
+    "[Name] — [Role]"
+   ],
+   "images": [],
+   "fields": []
+  },
+  "07-cta": {
+   "text": [
+    "Make yours",
+    "here.",
+    "Tell us about your project and we will come back with availability and the right room.",
+    "Register interest",
+    "Contact us"
+   ],
+   "images": [],
+   "fields": []
+  },
+  "08-footer": {
+   "text": [
+    "[One-sentence studio description: what TEMS is and where.]",
+    "Studio partner of",
+    "↗",
+    "Explore",
+    "The Studio",
+    "About",
+    "Clients",
+    "Sessions",
+    "Work with us",
+    "Register interest",
+    "Contact",
+    "Instagram ↗",
+    "YouTube ↗",
+    "NEVMA Music ↗",
+    "Studio",
+    "[Street address]",
+    "Ellinikon, Athens, Greece",
+    "[Email]",
+    "[Phone]",
+    "© 2026 TEMS — the Ellinikon music studio",
+    "Privacy",
+    "Cookies"
+   ],
+   "images": [
+    {
+     "src": "img/tems-logo-white.png",
+     "alt": "TEMS — the Ellinikon music studio"
+    },
+    {
+     "src": "img/nevma-logo-white.png",
+     "alt": "NEVMA Music"
+    }
+   ],
+   "fields": []
+  }
+ },
+ "studio": {
+  "01-header": {
+   "text": [
+    "[Street address], Ellinikon, Athens",
+    "[Phone] · [Email]",
+    "The Studio",
+    "About",
+    "Clients",
+    "Sessions",
+    "Contact",
+    "Register interest"
+   ],
+   "images": [
+    {
+     "src": "img/tems-logo-white.png",
+     "alt": "TEMS — the Ellinikon music studio"
+    }
+   ],
+   "fields": []
+  },
+  "02-hero": {
+   "text": [
+    "Room 01 / 03",
+    "Studio A",
+    "[One line on the room: the console, the character, what it is built for.]",
+    "Ask about this room",
+    "Contact"
+   ],
+   "images": [
+    {
+     "src": "img/control-room.jpg",
+     "alt": ""
+    }
+   ],
+   "fields": []
+  },
+  "03-facts": {
+   "text": [
+    "Console",
+    "[Model]",
+    "Live room",
+    "[00] m²",
+    "Booths",
+    "[00]",
+    "Best for",
+    "Tracking · Mix"
+   ],
+   "images": [],
+   "fields": []
+  },
+  "04-room": {
+   "text": [
+    "CH 01 — The room",
+    "[Headline about the room.]",
+    "[Story of the room: when it was built, who designed the acoustics, the console's history, what makes it sound the way it does. Two short paragraphs from the client.]",
+    "[Second paragraph: spaces, isolation booths, sightlines, natural light, the lounge.]",
+    "Notable",
+    "[Console, signature gear]",
+    "Tasks",
+    "Tracking, overdubs, mixing",
+    "Clients",
+    "NEVMA Music, [three more names]",
+    "[Floor plan drawing]",
+    "Fig. 1 — Studio A floor plan"
+   ],
+   "images": [],
+   "fields": []
+  },
+  "05-gallery": {
+   "text": [
+    "CH 02",
+    "Gallery",
+    "01 / 12",
+    "←",
+    "→"
+   ],
+   "images": [
+    {
+     "src": "img/live-room.jpg",
+     "alt": "Live room set up for a session"
+    },
+    {
+     "src": "img/instrument-room.jpg",
+     "alt": "Guitars, organ and synths"
+    },
+    {
+     "src": "img/mic-locker.jpg",
+     "alt": "Microphone locker"
+    }
+   ],
+   "fields": [
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": "Previous image"
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": "Next image"
+    }
+   ]
+  },
+  "06-equipment": {
+   "text": [
+    "CH 03",
+    "Equipment",
+    "What is in the room today. Need something else? Ask — we source it.",
+    "Console",
+    "01",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "Microphones",
+    "02",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "Mic preamps",
+    "03",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "Dynamics",
+    "04",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "Equalisers",
+    "05",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "Effects",
+    "06",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "Monitors",
+    "07",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "Instruments & amps",
+    "08",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "Recording system",
+    "09",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]",
+    "[Qty]× [Make / model]"
+   ],
+   "images": [],
+   "fields": []
+  },
+  "07-cta": {
+   "text": [
+    "Record in",
+    "Studio A.",
+    "Send us your dates and project details. We reply with availability.",
+    "Register interest",
+    "Contact us"
+   ],
+   "images": [],
+   "fields": []
+  },
+  "08-other-rooms": {
+   "text": [
+    "Other rooms",
+    "Live Room",
+    "Room 02 →",
+    "Lounge",
+    "Room 03 →"
+   ],
+   "images": [
+    {
+     "src": "img/live-room.jpg",
+     "alt": "Live room"
+    },
+    {
+     "src": "img/lounge-team.jpg",
+     "alt": "Studio lounge"
+    }
+   ],
+   "fields": []
+  },
+  "09-footer": {
+   "text": [
+    "[One-sentence studio description: what TEMS is and where.]",
+    "Studio partner of",
+    "↗",
+    "Explore",
+    "The Studio",
+    "About",
+    "Clients",
+    "Sessions",
+    "Work with us",
+    "Register interest",
+    "Contact",
+    "Instagram ↗",
+    "YouTube ↗",
+    "NEVMA Music ↗",
+    "Studio",
+    "[Street address]",
+    "Ellinikon, Athens, Greece",
+    "[Email]",
+    "[Phone]",
+    "© 2026 TEMS — the Ellinikon music studio",
+    "Privacy",
+    "Cookies"
+   ],
+   "images": [
+    {
+     "src": "img/tems-logo-white.png",
+     "alt": "TEMS — the Ellinikon music studio"
+    },
+    {
+     "src": "img/nevma-logo-white.png",
+     "alt": "NEVMA Music"
+    }
+   ],
+   "fields": []
+  }
+ },
+ "about": {
+  "01-header": {
+   "text": [
+    "[Street address], Ellinikon, Athens",
+    "[Phone] · [Email]",
+    "The Studio",
+    "About",
+    "Clients",
+    "Sessions",
+    "Contact",
+    "Register interest"
+   ],
+   "images": [
+    {
+     "src": "img/tems-logo-white.png",
+     "alt": "TEMS — the Ellinikon music studio"
+    }
+   ],
+   "fields": []
+  },
+  "02-hero": {
+   "text": [
+    "About",
+    "The TEMS team",
+    "[Names, left to right]"
+   ],
+   "images": [
+    {
+     "src": "img/lounge-team.jpg",
+     "alt": ""
+    }
+   ],
+   "fields": []
+  },
+  "03-story": {
+   "text": [
+    "Est.",
+    "[Year]",
+    "Location",
+    "Ellinikon, Athens",
+    "[Lead paragraph: who founded TEMS, when, and why — one or two strong sentences.]",
+    "[The studio's story: the building, the rooms, the collection of gear, the people behind it.]",
+    "[Who records here: genres, notable artists, the kind of projects the studio is known for.]"
+   ],
+   "images": [],
+   "fields": []
+  },
+  "04-team": {
+   "text": [
+    "The Team",
+    "[00] people · engineers, producers, operations",
+    "Studio",
+    "[Name]",
+    "[Role]",
+    "[Name]",
+    "[Role]",
+    "[Name]",
+    "[Role]",
+    "[Name]",
+    "[Role]",
+    "Engineers",
+    "[Name]",
+    "Engineer",
+    "[Name]",
+    "Engineer",
+    "[Name]",
+    "Engineer",
+    "[Name]",
+    "Engineer",
+    "Assistant engineers",
+    "[Name]",
+    "Assistant engineer",
+    "[Name]",
+    "Assistant engineer",
+    "[Name]",
+    "Assistant engineer"
+   ],
+   "images": [],
+   "fields": []
+  },
+  "05-faq": {
+   "text": [
+    "Questions",
+    "About the studio, the team and what to expect when you work here.",
+    "How many rooms does TEMS have?",
+    "+",
+    "What kind of projects do you take on?",
+    "+",
+    "Can we bring our own engineer or producer?",
+    "+",
+    "Do you offer production and mixing?",
+    "+",
+    "Is there accommodation nearby?",
+    "+",
+    "How do we get started?",
+    "+"
+   ],
+   "images": [],
+   "fields": []
+  },
+  "06-partner": {
+   "text": [
+    "Partners",
+    "TEMS is a partner studio of NEVMA Music, the London label. [Confirm wording with both clients.]",
+    "Visit NEVMA Music ↗"
+   ],
+   "images": [
+    {
+     "src": "img/nevma-logo-white.png",
+     "alt": "NEVMA"
+    }
+   ],
+   "fields": []
+  },
+  "07-panorama": {
+   "text": [],
+   "images": [],
+   "fields": []
+  },
+  "08-footer": {
+   "text": [
+    "[One-sentence studio description: what TEMS is and where.]",
+    "Studio partner of",
+    "↗",
+    "Explore",
+    "The Studio",
+    "About",
+    "Clients",
+    "Sessions",
+    "Work with us",
+    "Register interest",
+    "Contact",
+    "Instagram ↗",
+    "YouTube ↗",
+    "NEVMA Music ↗",
+    "Studio",
+    "[Street address]",
+    "Ellinikon, Athens, Greece",
+    "[Email]",
+    "[Phone]",
+    "© 2026 TEMS — the Ellinikon music studio",
+    "Privacy",
+    "Cookies"
+   ],
+   "images": [
+    {
+     "src": "img/tems-logo-white.png",
+     "alt": "TEMS — the Ellinikon music studio"
+    },
+    {
+     "src": "img/nevma-logo-white.png",
+     "alt": "NEVMA Music"
+    }
+   ],
+   "fields": []
+  }
+ },
+ "clients": {
+  "01-header": {
+   "text": [
+    "[Street address], Ellinikon, Athens",
+    "[Phone] · [Email]",
+    "The Studio",
+    "About",
+    "Clients",
+    "Sessions",
+    "Contact",
+    "Register interest"
+   ],
+   "images": [
+    {
+     "src": "img/tems-logo-white.png",
+     "alt": "TEMS — the Ellinikon music studio"
+    }
+   ],
+   "fields": []
+  },
+  "02-hero": {
+   "text": [
+    "Clients",
+    "[Client release covers]"
+   ],
+   "images": [
+    {
+     "src": "img/standin-cover-low-tide-hearts.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-stage-lights.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-lasers.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-cassettes.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-festival.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-illusions-1.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-paper-moons.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-dj.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-neon-room.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-collage.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-low-tide-hearts.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-stage-lights.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-lasers.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-cassettes.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-festival.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-illusions-1.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-paper-moons.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-dj.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-neon-room.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-collage.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-low-tide-hearts.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-stage-lights.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-lasers.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-cassettes.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-festival.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-illusions-1.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-paper-moons.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-dj.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-neon-room.jpg",
+     "alt": ""
+    },
+    {
+     "src": "img/standin-cover-collage.jpg",
+     "alt": ""
+    }
+   ],
+   "fields": []
+  },
+  "03-a-z": {
+   "text": [
+    "A–Z",
+    "Every artist, producer, engineer and label who has made a record at TEMS. [Adjust the line to the client's voice.]",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+    "A",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "B",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "C",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "D",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "E",
+    "[Artist / client]",
+    "[Artist / client]",
+    "F",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "G",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "H",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "I",
+    "[Artist / client]",
+    "J",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "K",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "L",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "M",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "N",
+    "NEVMA Music",
+    "Partner",
+    "[Artist / client]",
+    "[Artist / client]",
+    "O",
+    "[Artist / client]",
+    "P",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "Q",
+    "[Artist / client]",
+    "R",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "S",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "T",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "U",
+    "[Artist / client]",
+    "V",
+    "[Artist / client]",
+    "[Artist / client]",
+    "W",
+    "[Artist / client]",
+    "[Artist / client]",
+    "[Artist / client]",
+    "X",
+    "[Artist / client]",
+    "Y",
+    "[Artist / client]",
+    "Z",
+    "[Artist / client]"
+   ],
+   "images": [],
+   "fields": []
+  },
+  "04-cta": {
+   "text": [
+    "Your name",
+    "goes here next.",
+    "Tell us about your record. We reply with availability and the right room.",
+    "Register interest",
+    "Contact us"
+   ],
+   "images": [],
+   "fields": []
+  },
+  "05-footer": {
+   "text": [
+    "[One-sentence studio description: what TEMS is and where.]",
+    "Studio partner of",
+    "↗",
+    "Explore",
+    "The Studio",
+    "About",
+    "Clients",
+    "Sessions",
+    "Work with us",
+    "Register interest",
+    "Contact",
+    "Instagram ↗",
+    "YouTube ↗",
+    "NEVMA Music ↗",
+    "Studio",
+    "[Street address]",
+    "Ellinikon, Athens, Greece",
+    "[Email]",
+    "[Phone]",
+    "© 2026 TEMS — the Ellinikon music studio",
+    "Privacy",
+    "Cookies"
+   ],
+   "images": [
+    {
+     "src": "img/tems-logo-white.png",
+     "alt": "TEMS — the Ellinikon music studio"
+    },
+    {
+     "src": "img/nevma-logo-white.png",
+     "alt": "NEVMA Music"
+    }
+   ],
+   "fields": []
+  }
+ },
+ "sessions": {
+  "01-header": {
+   "text": [
+    "[Street address], Ellinikon, Athens",
+    "[Phone] · [Email]",
+    "The Studio",
+    "About",
+    "Clients",
+    "Sessions",
+    "Contact",
+    "Register interest"
+   ],
+   "images": [
+    {
+     "src": "img/tems-logo-white.png",
+     "alt": "TEMS — the Ellinikon music studio"
+    }
+   ],
+   "fields": []
+  },
+  "02-hero": {
+   "text": [
+    "Sessions",
+    "Plan a session"
+   ],
+   "images": [
+    {
+     "src": "img/live-room.jpg",
+     "alt": ""
+    }
+   ],
+   "fields": []
+  },
+  "03-intro": {
+   "text": [
+    "01",
+    "Bring your project to life.",
+    "[What a full session at TEMS covers, from the first call to a finished record: producer, engineer, rooms, players, overdubs, mixing, mastering.]",
+    "02",
+    "Recording at TEMS.",
+    "[The rooms and the gear collection in one paragraph, linking to the studio page.]",
+    "03",
+    "Producers & engineers.",
+    "[Who you work with: the in-house team and their credits.]"
+   ],
+   "images": [
+    {
+     "src": "img/mic-locker.jpg",
+     "alt": "Microphone locker"
+    },
+    {
+     "src": "img/instrument-room.jpg",
+     "alt": "Guitars, organ and synths"
+    },
+    {
+     "src": "img/control-room.jpg",
+     "alt": "Control room"
+    },
+    {
+     "src": "img/lounge-team.jpg",
+     "alt": "Team in the lounge"
+    }
+   ],
+   "fields": []
+  },
+  "04-how-it-works": {
+   "text": [
+    "How it works",
+    "01",
+    "Register interest",
+    "Send the form with your project, dates and what you need.",
+    "02",
+    "We plan it with you",
+    "We call you back with availability, the right room and a quote.",
+    "03",
+    "Record",
+    "Tracking and overdubs with our engineers, or bring your own.",
+    "04",
+    "Mix & deliver",
+    "[Mixing and mastering options — confirm with the client.]"
+   ],
+   "images": [],
+   "fields": []
+  },
+  "05-faq": {
+   "text": [
+    "Questions",
+    "The common ones about full-service sessions.",
+    "How are rates set?",
+    "+",
+    "Is there a minimum booking?",
+    "+",
+    "What other costs might come up?",
+    "+",
+    "Do we get all the gear in the room?",
+    "+",
+    "Can we bring our own engineer or producer?",
+    "+"
+   ],
+   "images": [],
+   "fields": []
+  },
+  "06-cta": {
+   "text": [
+    "Plan a",
+    "session.",
+    "Register interest",
+    "Contact us"
+   ],
+   "images": [],
+   "fields": []
+  },
+  "07-footer": {
+   "text": [
+    "[One-sentence studio description: what TEMS is and where.]",
+    "Studio partner of",
+    "↗",
+    "Explore",
+    "The Studio",
+    "About",
+    "Clients",
+    "Sessions",
+    "Work with us",
+    "Register interest",
+    "Contact",
+    "Instagram ↗",
+    "YouTube ↗",
+    "NEVMA Music ↗",
+    "Studio",
+    "[Street address]",
+    "Ellinikon, Athens, Greece",
+    "[Email]",
+    "[Phone]",
+    "© 2026 TEMS — the Ellinikon music studio",
+    "Privacy",
+    "Cookies"
+   ],
+   "images": [
+    {
+     "src": "img/tems-logo-white.png",
+     "alt": "TEMS — the Ellinikon music studio"
+    },
+    {
+     "src": "img/nevma-logo-white.png",
+     "alt": "NEVMA Music"
+    }
+   ],
+   "fields": []
+  }
+ },
+ "enquire": {
+  "01-header": {
+   "text": [
+    "[Street address], Ellinikon, Athens",
+    "[Phone] · [Email]",
+    "The Studio",
+    "About",
+    "Clients",
+    "Sessions",
+    "Contact",
+    "Register interest"
+   ],
+   "images": [
+    {
+     "src": "img/tems-logo-white.png",
+     "alt": "TEMS — the Ellinikon music studio"
+    }
+   ],
+   "fields": []
+  },
+  "02-form": {
+   "text": [
+    "Interest form",
+    "Register",
+    "interest",
+    "TEMS does not take online bookings. Tell us about your project and preferred dates — we reply with availability, the right room and a quote.",
+    "Email",
+    "[Email]",
+    "Phone",
+    "[Phone]",
+    "Reply within",
+    "[24 hours]",
+    "Name *",
+    "Artist / project",
+    "Email *",
+    "Phone",
+    "Type of project *",
+    "Recording",
+    "Mixing",
+    "Production",
+    "Overdubs",
+    "Live session / video",
+    "Other",
+    "Preferred start",
+    "Days needed (approx.)",
+    "Tell us about the project",
+    "I agree that TEMS stores my details to reply to this enquiry.",
+    "Privacy policy",
+    "Send enquiry →",
+    "Protected by Turnstile"
+   ],
+   "images": [
+    {
+     "src": "img/control-room.jpg",
+     "alt": ""
+    }
+   ],
+   "fields": [
+    {
+     "tag": "input",
+     "type": "text",
+     "placeholder": "Full name",
+     "label": ""
+    },
+    {
+     "tag": "input",
+     "type": "text",
+     "placeholder": "Name you release under",
+     "label": ""
+    },
+    {
+     "tag": "input",
+     "type": "email",
+     "placeholder": "you@email.com",
+     "label": ""
+    },
+    {
+     "tag": "input",
+     "type": "tel",
+     "placeholder": "+30 …",
+     "label": ""
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "input",
+     "type": "date",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "input",
+     "type": "number",
+     "placeholder": "3",
+     "label": ""
+    },
+    {
+     "tag": "textarea",
+     "type": "",
+     "placeholder": "Songs, line-up, references, links to demos, whether you need an engineer or producer…",
+     "label": ""
+    },
+    {
+     "tag": "input",
+     "type": "checkbox",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    }
+   ]
+  },
+  "03-faq": {
+   "text": [
+    "Before you ask",
+    "Rates, minimums, availability and what to expect.",
+    "Can anyone enquire?",
+    "−",
+    "[Answer from the client — who the studio works with.]",
+    "How far ahead should we get in touch?",
+    "+",
+    "How are rates set?",
+    "+",
+    "Is there a minimum?",
+    "+",
+    "Can we bring our own engineer?",
+    "+",
+    "What happens if we need to reschedule?",
+    "+"
+   ],
+   "images": [],
+   "fields": [
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    }
+   ]
+  },
+  "04-footer": {
+   "text": [
+    "[One-sentence studio description: what TEMS is and where.]",
+    "Studio partner of",
+    "↗",
+    "Explore",
+    "The Studio",
+    "About",
+    "Clients",
+    "Sessions",
+    "Work with us",
+    "Register interest",
+    "Contact",
+    "Instagram ↗",
+    "YouTube ↗",
+    "NEVMA Music ↗",
+    "Studio",
+    "[Street address]",
+    "Ellinikon, Athens, Greece",
+    "[Email]",
+    "[Phone]",
+    "© 2026 TEMS — the Ellinikon music studio",
+    "Privacy",
+    "Cookies"
+   ],
+   "images": [
+    {
+     "src": "img/tems-logo-white.png",
+     "alt": "TEMS — the Ellinikon music studio"
+    },
+    {
+     "src": "img/nevma-logo-white.png",
+     "alt": "NEVMA Music"
+    }
+   ],
+   "fields": []
+  }
+ },
+ "enquire-sent": {
+  "01-header": {
+   "text": [
+    "[Street address], Ellinikon, Athens",
+    "[Phone] · [Email]",
+    "The Studio",
+    "About",
+    "Clients",
+    "Sessions",
+    "Contact",
+    "Register interest"
+   ],
+   "images": [
+    {
+     "src": "img/tems-logo-white.png",
+     "alt": "TEMS — the Ellinikon music studio"
+    }
+   ],
+   "fields": []
+  },
+  "02-form": {
+   "text": [
+    "Interest form",
+    "Register",
+    "interest",
+    "TEMS does not take online bookings. Tell us about your project and preferred dates — we reply with availability, the right room and a quote.",
+    "Email",
+    "[Email]",
+    "Phone",
+    "[Phone]",
+    "Reply within",
+    "[24 hours]",
+    "Got it.",
+    "Thanks — your enquiry is in. A confirmation is on its way to your inbox and we will be in touch shortly.",
+    "Send another"
+   ],
+   "images": [
+    {
+     "src": "img/control-room.jpg",
+     "alt": ""
+    }
+   ],
+   "fields": [
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    }
+   ]
+  },
+  "03-faq": {
+   "text": [
+    "Before you ask",
+    "Rates, minimums, availability and what to expect.",
+    "Can anyone enquire?",
+    "−",
+    "[Answer from the client — who the studio works with.]",
+    "How far ahead should we get in touch?",
+    "+",
+    "How are rates set?",
+    "+",
+    "Is there a minimum?",
+    "+",
+    "Can we bring our own engineer?",
+    "+",
+    "What happens if we need to reschedule?",
+    "+"
+   ],
+   "images": [],
+   "fields": [
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    },
+    {
+     "tag": "button",
+     "type": "button",
+     "placeholder": "",
+     "label": ""
+    }
+   ]
+  },
+  "04-footer": {
+   "text": [
+    "[One-sentence studio description: what TEMS is and where.]",
+    "Studio partner of",
+    "↗",
+    "Explore",
+    "The Studio",
+    "About",
+    "Clients",
+    "Sessions",
+    "Work with us",
+    "Register interest",
+    "Contact",
+    "Instagram ↗",
+    "YouTube ↗",
+    "NEVMA Music ↗",
+    "Studio",
+    "[Street address]",
+    "Ellinikon, Athens, Greece",
+    "[Email]",
+    "[Phone]",
+    "© 2026 TEMS — the Ellinikon music studio",
+    "Privacy",
+    "Cookies"
+   ],
+   "images": [
+    {
+     "src": "img/tems-logo-white.png",
+     "alt": "TEMS — the Ellinikon music studio"
+    },
+    {
+     "src": "img/nevma-logo-white.png",
+     "alt": "NEVMA Music"
+    }
+   ],
+   "fields": []
+  }
+ },
+ "contact": {
+  "01-header": {
+   "text": [
+    "[Street address], Ellinikon, Athens",
+    "[Phone] · [Email]",
+    "The Studio",
+    "About",
+    "Clients",
+    "Sessions",
+    "Contact",
+    "Register interest"
+   ],
+   "images": [
+    {
+     "src": "img/tems-logo-white.png",
+     "alt": "TEMS — the Ellinikon music studio"
+    }
+   ],
+   "fields": []
+  },
+  "02-hero": {
+   "text": [
+    "Contact",
+    "Questions, a visit, or ready to plan a record? Here is how to reach us."
+   ],
+   "images": [
+    {
+     "src": "img/building-exterior.jpg",
+     "alt": "The studio building at dusk"
+    }
+   ],
+   "fields": []
+  },
+  "03-channels": {
+   "text": [
+    "01 — Email",
+    "[hello@domain]",
+    "Write any time. We reply within [24 hours].",
+    "02 — Phone",
+    "[+30 210 000 0000]",
+    "Call [Name] about availability and sessions.",
+    "03 — Address",
+    "[Street], Ellinikon",
+    "[Getting here: parking, nearest metro or tram stop.]"
+   ],
+   "images": [],
+   "fields": []
+  },
+  "04-map-cta": {
+   "text": [
+    "[Map — static image, links to Google Maps]",
+    "Ready to",
+    "record?",
+    "Use the interest form so we have your dates and project details from the start.",
+    "Register interest"
+   ],
+   "images": [],
+   "fields": []
+  },
+  "05-footer": {
+   "text": [
+    "[One-sentence studio description: what TEMS is and where.]",
+    "Studio partner of",
+    "↗",
+    "Explore",
+    "The Studio",
+    "About",
+    "Clients",
+    "Sessions",
+    "Work with us",
+    "Register interest",
+    "Contact",
+    "Instagram ↗",
+    "YouTube ↗",
+    "NEVMA Music ↗",
+    "Studio",
+    "[Street address]",
+    "Ellinikon, Athens, Greece",
+    "[Email]",
+    "[Phone]",
+    "© 2026 TEMS — the Ellinikon music studio",
+    "Privacy",
+    "Cookies"
+   ],
+   "images": [
+    {
+     "src": "img/tems-logo-white.png",
+     "alt": "TEMS — the Ellinikon music studio"
+    },
+    {
+     "src": "img/nevma-logo-white.png",
+     "alt": "NEVMA Music"
+    }
+   ],
+   "fields": []
+  }
+ }
+}

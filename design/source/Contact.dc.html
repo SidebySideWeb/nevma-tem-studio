@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TEMS — Contact</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0A0A0A}
+a{color:inherit}a:hover{color:#FF4F00}
+.d{font-family:'Archivo',sans-serif;font-stretch:72%;font-weight:900;text-transform:uppercase;line-height:.86}
+.m{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.ph{background:repeating-linear-gradient(135deg,#1b1b1b 0 10px,#141414 10px 20px)}
+.phl{background:repeating-linear-gradient(135deg,#e2dfd8 0 10px,#d9d6ce 10px 20px)}
+@media (max-width:760px){.wrap{padding-left:16px !important;padding-right:16px !important}.stack{flex-direction:column !important;align-items:stretch !important}.g2,.g3,.g4{grid-template-columns:minmax(0,1fr) !important}.hx{font-size:64px !important}.big{font-size:28px !important}}
+</style>
+</helmet>
+<div style="font-family: 'Archivo', sans-serif; color: #F2F0EB; background: #0A0A0A; width: 100%;">
+<dc-import name="Header" active="contact" hint-size="100%,88px"></dc-import>
+
+<section style="position: relative; min-height: 440px; display: flex; align-items: flex-end; overflow: hidden;">
+<img src="img/building-exterior.jpg" alt="The studio building at dusk" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%;">
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,0) 20%, rgba(10,10,10,.9) 100%);"></div>
+<div class="wrap" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 0 40px 56px; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px;">
+<h1 class="d hx" style="margin: 0; font-size: 180px;">Contact</h1>
+<p style="margin: 0; font-size: 20px; line-height: 1.45; color: #D9D6CE; max-width: 460px;">Questions, a visit, or ready to plan a record? Here is how to reach us.</p>
+</div>
+</section>
+
+<section style="background: #F2F0EB; color: #0A0A0A; padding: 112px 0;">
+<div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; flex-direction: column; gap: 0;">
+<a href="mailto:hello@example.com" class="stack" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 36px 0; border-top: 2px solid #0A0A0A;">
+<span class="m" style="flex: 0 0 200px; color: #5E5E5E;">01 — Email</span>
+<span class="d big" style="flex: 1 1 auto; font-size: 64px;">[hello@domain]</span>
+<span style="font-size: 15px; max-width: 260px; line-height: 1.5;">Write any time. We reply within [24 hours].</span>
+</a>
+<a href="tel:+30" class="stack" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 36px 0; border-top: 1px solid #0A0A0A;">
+<span class="m" style="flex: 0 0 200px; color: #5E5E5E;">02 — Phone</span>
+<span class="d big" style="flex: 1 1 auto; font-size: 64px;">[+30 210 000 0000]</span>
+<span style="font-size: 15px; max-width: 260px; line-height: 1.5;">Call [Name] about availability and sessions.</span>
+</a>
+<div class="stack" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 36px 0; border-top: 1px solid #0A0A0A; border-bottom: 2px solid #0A0A0A;">
+<span class="m" style="flex: 0 0 200px; color: #5E5E5E;">03 — Address</span>
+<span class="d big" style="flex: 1 1 auto; font-size: 64px;">[Street], Ellinikon</span>
+<span style="font-size: 15px; max-width: 260px; line-height: 1.5;">[Getting here: parking, nearest metro or tram stop.]</span>
+</div>
+</div>
+</section>
+
+<section class="stack" style="display: flex; align-items: stretch; background: #0A0A0A;">
+<div class="ph" style="flex: 1.4 1 0; min-height: 440px; display: flex; align-items: center; justify-content: center;"><span class="m" style="color: #8C8C8C;">[Map — static image, links to Google Maps]</span></div>
+<div style="flex: 1 1 0; background: #FF4F00; color: #0A0A0A; padding: 64px 48px; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; box-sizing: border-box;">
+<h2 class="d" style="margin: 0; font-size: 80px;">Ready to<br>record?</h2>
+<div style="display: flex; flex-direction: column; gap: 18px; align-items: flex-start;">
+<p style="margin: 0; font-size: 17px; line-height: 1.5;">Use the interest form so we have your dates and project details from the start.</p>
+<a href="Enquire.dc.html" class="m" style="background: #0A0A0A; color: #F2F0EB; text-decoration: none; padding: 18px 26px; font-weight: 500;">Register interest</a>
+</div>
+</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,620px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2000}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

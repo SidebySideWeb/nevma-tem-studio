@@ -1,0 +1,32 @@
+---
+import type { ContactPage } from '../../lib/types';
+
+interface Props {
+  page: ContactPage;
+}
+
+/** Design row classes (border weights differ per row). */
+const ROW = ['t-3be0b6', 't-997748', 't-b05d05'] as const;
+
+const { page } = Astro.props;
+const channels = page.channels ?? [];
+---
+<section class="t-65f17e" data-block="03-channels">
+<div class="wrap t-e8fef1">
+{channels.map((ch, i) => {
+  const cls = `stack ${ROW[i] ?? ROW[2]}`;
+  const inner = (
+    <>
+<span class="m t-5c79e9">{ch.label}</span>
+<span class="d big t-8f8986">{ch.value}</span>
+<span class="t-4c87d3">{ch.note}</span>
+    </>
+  );
+  return ch.href ? (
+<a href={ch.href} class={cls}>{inner}</a>
+  ) : (
+<div class={cls}>{inner}</div>
+  );
+})}
+</div>
+</section>

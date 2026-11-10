@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../blocks/clients/Hero.astro';
+import Az from '../blocks/clients/AZ.astro';
+import CtaBand from '../blocks/shared/CtaBand.astro';
+import { clientsQuery } from '../lib/queries';
+import { client, getRooms, getSettings } from '../lib/sanity';
+import { buildPageSeo } from '../lib/seo';
+import type { Client, ClientsPage } from '../lib/types';
+
+const [result, settings, rooms] = await Promise.all([
+  client.fetch<{ page: ClientsPage; clients: Client[] }>(clientsQuery),
+  getSettings(),
+  getRooms(),
+]);
+
+const page = result.page;
+const clients = result.clients ?? [];
+
+const seo = buildPageSeo({
+  path: '/clients',
+  pageTitle: page.title || 'Clients',
+  seo: page.seo,
+  settings,
+  heroImage: page.heroCovers?.[0],
+});
+---
+<Base page="clients" seo={seo} active="clients" footerBlock="05-footer">
+<Hero page={page} />
+<Az page={page} clients={clients} partnerUrl={settings.partnerUrl} />
+<CtaBand
+  tone="shared"
+  block="04-cta"
+  title={page.cta?.title ?? ''}
+  text={page.cta?.text ?? undefined}
+  primary={page.cta?.primary}
+  secondary={page.cta?.secondary}
+  rooms={rooms}
+/>
+</Base>

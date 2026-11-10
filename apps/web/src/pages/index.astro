@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../blocks/home/Hero.astro';
+import Rooms from '../blocks/home/Rooms.astro';
+import Records from '../blocks/home/Records.astro';
+import Gear from '../blocks/home/Gear.astro';
+import Quotes from '../blocks/home/Quotes.astro';
+import CtaBand from '../blocks/shared/CtaBand.astro';
+import { homeQuery } from '../lib/queries';
+import { client, getRooms, getSettings } from '../lib/sanity';
+import { buildPageSeo, localBusinessJsonLd } from '../lib/seo';
+import type { HomePage } from '../lib/types';
+
+const [home, settings, rooms] = await Promise.all([
+  client.fetch<HomePage>(homeQuery),
+  getSettings(),
+  getRooms(),
+]);
+
+const seo = buildPageSeo({
+  path: '/',
+  pageTitle: 'Home',
+  seo: home.seo,
+  settings,
+  heroImage: home.heroImage,
+});
+const jsonLd = localBusinessJsonLd(settings, seo.image);
+---
+<Base page="home" seo={seo} jsonLd={jsonLd}>
+<Hero home={home} settings={settings} rooms={rooms} />
+<Rooms home={home} rooms={rooms} />
+<Records home={home} settings={settings} rooms={rooms} />
+<Gear home={home} rooms={rooms} />
+<Quotes home={home} />
+<CtaBand
+  title={home.cta?.title ?? ''}
+  text={home.cta?.text ?? undefined}
+  primary={home.cta?.primary}
+  secondary={home.cta?.secondary}
+  rooms={rooms}
+/>
+</Base>

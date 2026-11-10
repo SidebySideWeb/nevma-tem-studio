@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../blocks/sessions/Hero.astro';
+import Intro from '../blocks/sessions/Intro.astro';
+import HowItWorks from '../blocks/sessions/HowItWorks.astro';
+import Faq from '../blocks/sessions/Faq.astro';
+import CtaBand from '../blocks/shared/CtaBand.astro';
+import { sessionsQuery } from '../lib/queries';
+import { client, getRooms, getSettings } from '../lib/sanity';
+import { buildPageSeo } from '../lib/seo';
+import type { SessionsPage } from '../lib/types';
+
+const [page, settings, rooms] = await Promise.all([
+  client.fetch<SessionsPage>(sessionsQuery),
+  getSettings(),
+  getRooms(),
+]);
+
+const seo = buildPageSeo({
+  path: '/sessions',
+  pageTitle: page.title || 'Sessions',
+  seo: page.seo,
+  settings,
+  heroImage: page.heroImage,
+});
+---
+<Base
+  page="sessions"
+  seo={seo}
+  active="sessions"
+  footerBlock="07-footer"
+>
+<Hero page={page} rooms={rooms} />
+<Intro page={page} />
+<HowItWorks page={page} />
+<Faq page={page} />
+<CtaBand
+  tone="shared"
+  block="06-cta"
+  title={page.cta?.title ?? ''}
+  primary={page.cta?.primary}
+  secondary={page.cta?.secondary}
+  rooms={rooms}
+/>
+</Base>

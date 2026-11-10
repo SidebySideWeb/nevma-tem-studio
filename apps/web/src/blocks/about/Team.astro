@@ -1,0 +1,36 @@
+---
+import { img } from '../../lib/image';
+import type { AboutPage } from '../../lib/types';
+
+interface Props {
+  about: AboutPage;
+}
+
+const { about } = Astro.props;
+---
+<section class="t-5decf6" data-block="04-team">
+<div class="wrap t-f9da40">
+<div class="t-019e31">
+<h2 class="d hx t-1bc7a0">{about.teamTitle}</h2>
+<span class="m t-717e45">{about.teamSummary}</span>
+</div>
+{(about.teamGroups ?? []).map((group) => (
+<div class="stack t-bce2ba">
+<span class="m t-41f226">{group.title}</span>
+<div class="g4 t-89a673">
+{(group.members ?? []).map((member) => (
+<div class="t-464b28">
+{member.photo?.asset ? (
+<img src={img(member.photo, 600)} alt={member.photo.alt ?? ''} class="t-68734a" loading="lazy" decoding="async">
+) : (
+<div class="ph t-68734a"></div>
+)}
+<span class="t-b0a3fb">{member.name}</span>
+<span class="m t-717e45">{member.role}</span>
+</div>
+))}
+</div>
+</div>
+))}
+</div>
+</section>

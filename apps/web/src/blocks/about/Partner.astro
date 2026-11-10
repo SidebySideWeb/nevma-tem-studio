@@ -1,0 +1,22 @@
+---
+import { img } from '../../lib/image';
+import type { AboutPage, Settings } from '../../lib/types';
+
+interface Props {
+  about: AboutPage;
+  settings: Settings;
+}
+
+const { about, settings } = Astro.props;
+const partnerHref = settings.partnerUrl || '#nevma-music-site';
+---
+<section class="t-55b0ec" data-block="06-partner">
+<div class="wrap stack t-de290b">
+<img src={img(settings.partnerLogo)} alt="NEVMA" class="t-e5c2f6" loading="lazy" decoding="async">
+<div class="t-cebf6c">
+<span class="m t-717e45">{about.partnerLabel}</span>
+<p class="t-643676">{about.partnerText}</p>
+</div>
+<a href={partnerHref} class="m t-998f8e">{settings.partnerLinkLabel}</a>
+</div>
+</section>

@@ -1,0 +1,32 @@
+---
+import { img } from '../../lib/image';
+import { href, type RoomRef } from '../../lib/links';
+import { lines } from '../../lib/text';
+import type { HomePage } from '../../lib/types';
+
+interface Props {
+  home: HomePage;
+  rooms: RoomRef[];
+}
+
+const { home, rooms } = Astro.props;
+const titleLines = lines(home.gear?.title);
+---
+<section class="t-4134c4" data-block="05-gear">
+<div class="wrap t-c3b995">
+<div class="stack t-3bf22f">
+<img src={img(home.gearImage, 1400)} alt={home.gearImage?.alt ?? ''} class="t-5f0b21" loading="lazy" decoding="async">
+<div class="t-870cd5">
+<span class="m t-de6536">{home.gear?.chapter}</span>
+<h2 class="d hx t-1bc7a0">{titleLines.map((line, i) => <>{i > 0 && <br />}{line}</>)}</h2>
+<p class="t-633d86">{home.gear?.intro}</p>
+<div class="g2 t-72e0fe">
+{(home.gearStats ?? []).map((stat) => (
+<div class="t-736b8b"><span class="d t-67c575">{stat.value}</span><span class="m t-de6536">{stat.label}</span></div>
+))}
+</div>
+<a href={href(home.gearCta, rooms)} class="m t-570572">{home.gearCta?.label}</a>
+</div>
+</div>
+</div>
+</section>

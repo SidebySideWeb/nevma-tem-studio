@@ -1,0 +1,61 @@
+# Weekly Sanity dataset export → GitHub artifact (90d) + Google Drive via rclone.
+name: Sanity backup
+
+on:
+  schedule:
+    - cron: '0 2 * * 1' # Monday 02:00 UTC
+  workflow_dispatch:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/studio
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Export production dataset
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_BACKUP_TOKEN }}
+        run: |
+          if [ -z "$SANITY_AUTH_TOKEN" ]; then
+            echo "Missing secret SANITY_BACKUP_TOKEN (Viewer token for export)" >&2
+            exit 1
+          fi
+          DATE=$(date -u +%Y-%m-%d)
+          echo "DATE=$DATE" >> "$GITHUB_ENV"
+          FILE="tems-production-${DATE}.tar.gz"
+          echo "FILE=$FILE" >> "$GITHUB_ENV"
+          npx --yes sanity@6.22.0 dataset export production "../../${FILE}"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tems-production-${{ env.DATE }}
+          path: tems-production-${{ env.DATE }}.tar.gz
+          retention-days: 90
+
+      - name: Install rclone
+        run: |
+          curl -fsSL https://rclone.org/install.sh | sudo bash
+        working-directory: .
+
+      - name: Copy to Google Drive (rclone)
+        working-directory: .
+        env:
+          RCLONE_CONFIG_CONTENTS: ${{ secrets.RCLONE_CONFIG }}
+        run: |
+          if [ -z "$RCLONE_CONFIG_CONTENTS" ]; then
+            echo "Missing secret RCLONE_CONFIG" >&2
+            exit 1
+          fi
+          mkdir -p "$HOME/.config/rclone"
+          printf '%s\n' "$RCLONE_CONFIG_CONTENTS" > "$HOME/.config/rclone/rclone.conf"
+          # Remote must be named `drive` (see docs/DECISIONS.md).
+          rclone copy "${FILE}" "drive:TEMS/backups" --checksum
+          echo "Uploaded ${FILE} to drive:TEMS/backups"

@@ -1,0 +1,18 @@
+---
+import { img } from '../../lib/image';
+import type { AboutPage } from '../../lib/types';
+
+interface Props {
+  about: AboutPage;
+}
+
+const { about } = Astro.props;
+---
+<section class="t-461e78" data-block="02-hero">
+<img src={img(about.heroImage, 2400)} alt={about.heroImage?.alt ?? ''} class="t-67019f" fetchpriority="high">
+<div class="t-a65425"></div>
+<div class="wrap t-f07df0">
+<h1 class="d hx t-b9142d">{about.title}</h1>
+<div class="t-5ad606"><span class="t-ecd995">{about.captionTitle}</span><span class="m t-f8fd07">{about.captionText}</span></div>
+</div>
+</section>

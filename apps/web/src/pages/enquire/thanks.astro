@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import Form from '../../blocks/enquire/Form.astro';
+import Faq from '../../blocks/enquire/Faq.astro';
+import { enquireQuery } from '../../lib/queries';
+import { client, getSettings } from '../../lib/sanity';
+import { buildPageSeo } from '../../lib/seo';
+import type { EnquirePage } from '../../lib/types';
+
+const [page, settings] = await Promise.all([
+  client.fetch<EnquirePage>(enquireQuery),
+  getSettings(),
+]);
+
+// Same enquirePage.seo as /enquire — drop title/description so thanks stays unique.
+const seo = buildPageSeo({
+  path: '/enquire/thanks',
+  pageTitle: page.thanksTitle || 'Enquiry sent',
+  seo: page.seo ? { ...page.seo, title: null, description: null } : null,
+  settings,
+  heroImage: page.image,
+  forceNoindex: true,
+});
+---
+<Base page="enquire" seo={seo} footerBlock="04-footer">
+<Form page={page} settings={settings} state="sent" />
+<Faq page={page} />
+</Base>

@@ -1,0 +1,39 @@
+---
+import type { Faq } from '../../lib/types';
+
+interface Props {
+  items: Faq[];
+  /** Enquire design opens the first row; About / Sessions start closed. */
+  firstOpen?: boolean;
+  /** Paper = Enquire / About classes; ink = Sessions list + soft answer colour. */
+  tone?: 'paper' | 'ink';
+  /**
+   * Enquire's design already uses `<button>` rows (UA Arial on the +/−).
+   * About / Sessions design rows are spans (Archivo) — those lists set this false
+   * so additions.css can `font: inherit` on the button.
+   */
+  nativeButtons?: boolean;
+}
+
+const { items, firstOpen = false, tone = 'paper', nativeButtons = false } = Astro.props;
+const listClass = tone === 'ink' ? 't-c94a3a' : 't-3a6e71';
+const signClass = tone === 'ink' ? 't-706124' : 't-c1e6c7';
+---
+<div class={listClass} data-faq data-tone={tone} data-native-buttons={nativeButtons ? '' : undefined}>
+{items.map((item, i) => {
+  const open = firstOpen && i === 0;
+  const id = `faq-a-${i}`;
+  return (
+<div class="t-4fb45a">
+<button type="button" aria-expanded={open ? 'true' : 'false'} aria-controls={id} class="t-f48ee9">
+<span class="d t-2b9a46">{item.question}</span><span aria-hidden="true" class={signClass}>{open ? '−' : '+'}</span>
+</button>
+<p id={id} class="t-97c56a" hidden={!open}>{item.answer}</p>
+</div>
+  );
+})}
+</div>
+<script>
+  import { initFaqs } from '../../scripts/faq';
+  initFaqs();
+</script>

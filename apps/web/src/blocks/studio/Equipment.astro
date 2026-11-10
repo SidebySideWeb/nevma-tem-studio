@@ -1,0 +1,30 @@
+---
+import type { Room, RoomsPage } from '../../lib/types';
+
+interface Props {
+  room: Room;
+  shared: RoomsPage;
+}
+
+const { room, shared } = Astro.props;
+---
+<section class="t-4134c4" data-block="06-equipment">
+<div class="wrap t-c3b995">
+<div class="stack t-6a226e">
+<div class="t-8ef476"><span class="m t-de6536">{room.equipmentChapter}</span><h2 class="d hx t-cb45d5">{shared.equipmentTitle}</h2></div>
+<p class="t-e5b537">{room.equipmentIntro}</p>
+</div>
+<div class="g3 t-058d6b">
+{(room.equipment ?? []).map((group, i) => (
+<div class="t-b0831f">
+<div class="t-9cd23f"><h3 class="d t-0ba57e">{group.title}</h3><span class="m t-de6536">{String(i + 1).padStart(2, '0')}</span></div>
+<ul class="t-6fa3ef">
+{(group.items ?? []).map((item) => (
+<li>{item}</li>
+))}
+</ul>
+</div>
+))}
+</div>
+</div>
+</section>

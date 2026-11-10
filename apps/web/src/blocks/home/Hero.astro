@@ -1,0 +1,36 @@
+---
+import { img } from '../../lib/image';
+import { href, type RoomRef } from '../../lib/links';
+import type { HomePage, Settings } from '../../lib/types';
+
+interface Props {
+  home: HomePage;
+  settings: Settings;
+  rooms: RoomRef[];
+}
+
+const { home, settings, rooms } = Astro.props;
+const heroSrc = img(home.heroImage, 1600);
+const heroSrcSet = [800, 1600, 2400]
+  .map((w) => `${img(home.heroImage, w)} ${w}w`)
+  .join(', ');
+---
+<link rel="preload" as="image" href={heroSrc} imagesrcset={heroSrcSet} imagesizes="100vw" fetchpriority="high" />
+<section class="t-75a632" data-block="02-hero">
+<img src={heroSrc} srcset={heroSrcSet} sizes="100vw" alt={home.heroImage?.alt ?? ''} class="t-67019f" fetchpriority="high" decoding="async">
+<div class="t-def566"></div>
+<div class="wrap t-223f1b">
+<div class="m t-3864cf"><span class="t-25f105"></span>{home.heroLabel}</div>
+{/* Design has no text h1 — wrap the logo mark so AC-12 / check-seo see one heading without layout change. */}
+<h1 class="home-hero-h1">
+<img src={img(settings.logoWhite)} alt={settings.studioName} class="t-25e72e" loading="lazy" decoding="async">
+</h1>
+<div class="stack t-8ce946">
+<p class="t-7ebbf6">{home.heroIntro}</p>
+<div class="t-18d4ed">
+<a href={href(home.heroPrimary, rooms)} class="m t-982321">{home.heroPrimary?.label}</a>
+<a href={href(home.heroSecondary, rooms)} class="m t-0a1dcd">{home.heroSecondary?.label}</a>
+</div>
+</div>
+</div>
+</section>

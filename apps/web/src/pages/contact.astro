@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../blocks/contact/Hero.astro';
+import Channels from '../blocks/contact/Channels.astro';
+import MapCta from '../blocks/contact/MapCta.astro';
+import { contactQuery } from '../lib/queries';
+import { client, getRooms, getSettings } from '../lib/sanity';
+import { buildPageSeo, localBusinessJsonLd } from '../lib/seo';
+import type { ContactPage } from '../lib/types';
+
+const [page, settings, rooms] = await Promise.all([
+  client.fetch<ContactPage>(contactQuery),
+  getSettings(),
+  getRooms(),
+]);
+
+const seo = buildPageSeo({
+  path: '/contact',
+  pageTitle: page.title || 'Contact',
+  seo: page.seo,
+  settings,
+  heroImage: page.heroImage,
+});
+const jsonLd = localBusinessJsonLd(settings, seo.image);
+---
+<Base
+  page="contact"
+  seo={seo}
+  jsonLd={jsonLd}
+  active="contact"
+  footerBlock="05-footer"
+>
+<Hero page={page} />
+<Channels page={page} />
+<MapCta page={page} settings={settings} rooms={rooms} />
+</Base>

@@ -1,0 +1,14 @@
+---
+description: Enquiry API, emails and security
+globs: apps/web/src/pages/api/**, apps/web/src/lib/server/**
+alwaysApply: false
+---
+# /api/enquiry
+
+Follow `docs/FORMS.md` exactly. In short:
+- Accept `application/json` (JS) and `application/x-www-form-urlencoded` (no JS). Same validation for both.
+- Order: honeypot (`company` filled → pretend success, store nothing) → Turnstile verify (server, with remote IP) → validate (name 2–80, email, phone ≤ 30, artist ≤ 80, projectTypes ⊆ form options and ≥ 1, preferredStart ISO date not in the past, days 1–60, message ≤ 4000, consent true, room slug optional) → create `formSubmission` (`submission-<uuid>`) → Resend: notification to `form.notify`, auto-reply to the sender (reply-to the studio) → respond.
+- JSON reply `{ ok: true }` or `{ ok: false, error: 'validation' | 'captcha' | 'server', fields?: {...} }`; form posts get `303` to `/enquire/thanks` or back to `/enquire?error=1`.
+- If saving to Sanity fails, still send the notification email with the full enquiry (never lose a lead); if both fail, return `server`.
+- Rate limit: 5 requests / 10 min per IP (in-memory per instance is acceptable; note it in DECISIONS).
+- Never log full personal data; log submission IDs.

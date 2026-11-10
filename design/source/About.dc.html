@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TEMS — About</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0A0A0A}
+.bw{filter:grayscale(1) contrast(1.08)}
+a{color:inherit}a:hover{color:#FF4F00}
+.d{font-family:'Archivo',sans-serif;font-stretch:72%;font-weight:900;text-transform:uppercase;line-height:.86}
+.m{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.ph{background:repeating-linear-gradient(135deg,#1b1b1b 0 10px,#141414 10px 20px)}
+.phl{background:repeating-linear-gradient(135deg,#e2dfd8 0 10px,#d9d6ce 10px 20px)}
+@media (max-width:760px){.wrap{padding-left:16px !important;padding-right:16px !important}.stack{flex-direction:column !important;align-items:stretch !important}.g2,.g3,.g4{grid-template-columns:minmax(0,1fr) !important}.hx{font-size:64px !important}.hy{font-size:44px !important}}
+</style>
+</helmet>
+<div style="font-family: 'Archivo', sans-serif; color: #F2F0EB; background: #0A0A0A; width: 100%;">
+<dc-import name="Header" active="about" hint-size="100%,88px"></dc-import>
+
+<section style="position: relative; min-height: 600px; display: flex; align-items: flex-end; overflow: hidden;">
+<img src="img/lounge-team.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,0) 40%, rgba(10,10,10,.85) 100%);"></div>
+<div class="wrap" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 0 40px 56px; width: 100%; box-sizing: border-box; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap;">
+<h1 class="d hx" style="margin: 0; font-size: 200px;">About</h1>
+<div style="display: flex; flex-direction: column; gap: 4px; text-align: right;"><span style="font-weight: 700; font-size: 18px;">The TEMS team</span><span class="m" style="color: #BDBAB2;">[Names, left to right]</span></div>
+</div>
+</section>
+
+<section style="background: #F2F0EB; color: #0A0A0A; padding: 120px 0;">
+<div class="wrap stack" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; gap: 72px; align-items: flex-start;">
+<div style="flex: 0 0 280px; display: flex; flex-direction: column; gap: 14px; border-top: 2px solid #0A0A0A; padding-top: 18px;">
+<span class="m" style="color: #5E5E5E;">Est.</span><span class="d" style="font-size: 72px;">[Year]</span>
+<span class="m" style="color: #5E5E5E; margin-top: 18px;">Location</span><span style="font-size: 18px; font-weight: 600;">Ellinikon, Athens</span>
+</div>
+<div style="flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 24px;">
+<p style="margin: 0; font-size: 34px; line-height: 1.2; font-weight: 700; letter-spacing: -.01em;">[Lead paragraph: who founded TEMS, when, and why — one or two strong sentences.]</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; max-width: 720px;">[The studio's story: the building, the rooms, the collection of gear, the people behind it.]</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.65; max-width: 720px;">[Who records here: genres, notable artists, the kind of projects the studio is known for.]</p>
+</div>
+</div>
+</section>
+
+<section style="background: #0A0A0A; padding: 120px 0;">
+<div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; flex-direction: column; gap: 64px;">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; border-bottom: 1px solid rgba(242,240,235,.25); padding-bottom: 28px;">
+<h2 class="d hx" style="margin: 0; font-size: 140px;">The Team</h2>
+<span class="m" style="color: #9A9A9A;">[00] people · engineers, producers, operations</span>
+</div>
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="3">
+<div class="stack" style="display: flex; gap: 48px; align-items: flex-start;">
+<span class="m" style="flex: 0 0 220px; color: #FF4F00; padding-top: 6px;">{{g.title}}</span>
+<div class="g4" style="flex: 1 1 0; min-width: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px;">
+<sc-for list="{{g.people}}" as="p" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<div class="ph" style="aspect-ratio: 1;"></div>
+<span style="font-weight: 700; font-size: 17px;">{{p.name}}</span>
+<span class="m" style="color: #9A9A9A;">{{p.role}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="background: #F2F0EB; color: #0A0A0A; padding: 120px 0;">
+<div class="wrap stack" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; gap: 72px; align-items: flex-start;">
+<div style="flex: 0 0 340px; display: flex; flex-direction: column; gap: 18px;">
+<h2 class="d hy" style="margin: 0; font-size: 72px;">Questions</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.55;">About the studio, the team and what to expect when you work here.</p>
+</div>
+<div style="flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; border-top: 2px solid #0A0A0A;">
+<sc-for list="{{faq}}" as="q" hint-placeholder-count="6">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 0; border-bottom: 1px solid #BDB9B0;">
+<span class="d" style="font-size: 26px; line-height: 1;">{{q}}</span><span aria-hidden="true" style="font-size: 26px; font-weight: 300;">+</span>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section style="background: #0A0A0A; padding: 96px 0;">
+<div class="wrap stack" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; gap: 56px; align-items: center;">
+<img src="img/nevma-logo-white.png" alt="NEVMA" style="width: 260px; height: auto; display: block; flex: 0 0 auto;">
+<div style="flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+<span class="m" style="color: #9A9A9A;">Partners</span>
+<p style="margin: 0; font-size: 26px; line-height: 1.3; font-weight: 700;">TEMS is a partner studio of NEVMA Music, the London label. [Confirm wording with both clients.]</p>
+</div>
+<a href="#nevma-music-site" class="m" style="flex: 0 0 auto; border: 1px solid #F2F0EB; color: #F2F0EB; text-decoration: none; padding: 15px 22px;">Visit NEVMA Music ↗</a>
+</div>
+</section>
+<img src="img/live-room.jpg" alt="" style="width: 100%; height: 480px; object-fit: cover; display: block;">
+
+<dc-import name="Footer" hint-size="100%,620px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3600}}'>
+class Component extends DCLogic {
+renderVals() {
+const ppl = (n, role) => Array.from({ length: n }, () => ({ name: '[Name]', role }));
+return {
+groups: [
+{ title: 'Studio', people: ppl(4, '[Role]') },
+{ title: 'Engineers', people: ppl(4, 'Engineer') },
+{ title: 'Assistant engineers', people: ppl(3, 'Assistant engineer') }
+],
+faq: [
+'How many rooms does TEMS have?',
+'What kind of projects do you take on?',
+'Can we bring our own engineer or producer?',
+'Do you offer production and mixing?',
+'Is there accommodation nearby?',
+'How do we get started?'
+]
+};
+}
+}
+</script>
+</body>
+</html>

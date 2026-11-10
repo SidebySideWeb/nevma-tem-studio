@@ -1,0 +1,68 @@
+{
+ "home": [
+  "01-header",
+  "02-hero",
+  "03-rooms",
+  "04-records",
+  "05-gear",
+  "06-quotes",
+  "07-cta",
+  "08-footer"
+ ],
+ "studio": [
+  "01-header",
+  "02-hero",
+  "03-facts",
+  "04-room",
+  "05-gallery",
+  "06-equipment",
+  "07-cta",
+  "08-other-rooms",
+  "09-footer"
+ ],
+ "about": [
+  "01-header",
+  "02-hero",
+  "03-story",
+  "04-team",
+  "05-faq",
+  "06-partner",
+  "07-panorama",
+  "08-footer"
+ ],
+ "clients": [
+  "01-header",
+  "02-hero",
+  "03-a-z",
+  "04-cta",
+  "05-footer"
+ ],
+ "sessions": [
+  "01-header",
+  "02-hero",
+  "03-intro",
+  "04-how-it-works",
+  "05-faq",
+  "06-cta",
+  "07-footer"
+ ],
+ "enquire": [
+  "01-header",
+  "02-form",
+  "03-faq",
+  "04-footer"
+ ],
+ "enquire-sent": [
+  "01-header",
+  "02-form",
+  "03-faq",
+  "04-footer"
+ ],
+ "contact": [
+  "01-header",
+  "02-hero",
+  "03-channels",
+  "04-map-cta",
+  "05-footer"
+ ]
+}

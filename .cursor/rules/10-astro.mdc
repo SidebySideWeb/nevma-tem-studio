@@ -1,0 +1,17 @@
+---
+description: Astro app structure and conventions
+globs: apps/web/**/*.astro, apps/web/**/*.ts, apps/web/astro.config.*
+alwaysApply: false
+---
+# Astro (apps/web)
+
+- Output: static pages. Only `src/pages/api/enquiry.ts` runs on the server (`export const prerender = false`). Adapter `@astrojs/vercel`.
+- Layout: `src/layouts/Base.astro` renders `<head>` (fonts.css, tems.css, additions.css, SEO), `<body class={`pg-${page}`}>`, then one wrapper `<div class="…">` copied from the design root, Header, `<slot/>`, Footer.
+- One component per design block: `src/blocks/<page>/<Name>.astro` (e.g. `home/Rooms.astro`). The root element of each block carries `data-block`. Shared blocks: `src/blocks/shared/Header.astro`, `Footer.astro`, `CtaBand.astro`.
+- Header: `active` prop. Inactive link class `t-baae53`, active link class `t-8b9489` (the only difference is the orange underline). Home has no active link.
+- Links: design `home.html` → `/`, `studio.html` → `/studio/<room 01 slug>`, `about.html` → `/about`, `clients.html` → `/clients`, `sessions.html` → `/sessions`, `enquire.html` → `/enquire`, `contact.html` → `/contact`. Use `src/lib/links.ts` (`href(cta)`), never hard-code routes in blocks.
+- Data: `src/lib/sanity.ts` (client), `src/lib/queries.ts` (one GROQ query per page, all projections explicit), `src/lib/image.ts` (`img(src, width)` → Sanity CDN URL with `auto=format&fit=max`), `src/lib/types.ts`.
+- Display headings: `lines(text)` in `src/lib/text.ts` splits on `\n`; render lines joined with `<br>` exactly where the design has `<br>`.
+- Repeated items (`<sc-for>` in the source) appear in the build as repeated markup with identical classes: copy one item, loop over data.
+- Scripts: small, vanilla, per block, `<script>` in the block component (Astro bundles and dedupes). No global state, no frameworks.
+- Empty optional content: if the design shows a placeholder for it (team photo stripes, floor-plan box, map box), render that placeholder; otherwise omit the element only when `docs/PAGES.md` says so.

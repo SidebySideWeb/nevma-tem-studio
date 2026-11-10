@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TEMS — Register interest</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0A0A0A}
+a{color:inherit}a:hover{color:#FF4F00}
+.d{font-family:'Archivo',sans-serif;font-stretch:72%;font-weight:900;text-transform:uppercase;line-height:.86}
+.m{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.ph{background:repeating-linear-gradient(135deg,#1b1b1b 0 10px,#141414 10px 20px)}
+input,textarea{font:inherit;color:#0A0A0A}
+input:focus,textarea:focus,button:focus-visible{outline:2px solid #FF4F00;outline-offset:2px}
+@media (max-width:760px){.wrap{padding-left:16px !important;padding-right:16px !important}.stack{flex-direction:column !important;align-items:stretch !important}.g2,.g3,.g4{grid-template-columns:minmax(0,1fr) !important}.hx{font-size:64px !important}.hy{font-size:44px !important}.pad{padding:56px 16px !important}}
+</style>
+</helmet>
+<div style="font-family: 'Archivo', sans-serif; color: #F2F0EB; background: #0A0A0A; width: 100%;">
+<dc-import name="Header" active="enquire" hint-size="100%,88px"></dc-import>
+
+<section class="stack" style="display: flex; align-items: stretch;">
+<div class="pad" style="flex: 1 1 0; min-width: 0; position: relative; padding: 96px 64px 96px max(40px, calc((100vw - 1280px) / 2 + 40px)); display: flex; flex-direction: column; justify-content: space-between; gap: 56px; box-sizing: border-box; overflow: hidden;">
+<img src="img/control-room.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.3);">
+<div style="position: relative; display: flex; flex-direction: column; gap: 28px;">
+<div class="m" style="display: flex; align-items: center; gap: 10px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #FF4F00;"></span>Interest form</div>
+<h1 class="d hx" style="margin: 0; font-size: 150px;">Register<br>interest</h1>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #D9D6CE; max-width: 460px;">TEMS does not take online bookings. Tell us about your project and preferred dates — we reply with availability, the right room and a quote.</p>
+</div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 0; border-top: 1px solid rgba(242,240,235,.3); max-width: 460px;">
+<div style="display: flex; justify-content: space-between; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(242,240,235,.2);"><span class="m" style="color: #9A9A9A;">Email</span><a href="mailto:hello@example.com" style="color: #F2F0EB;">[Email]</a></div>
+<div style="display: flex; justify-content: space-between; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(242,240,235,.2);"><span class="m" style="color: #9A9A9A;">Phone</span><span>[Phone]</span></div>
+<div style="display: flex; justify-content: space-between; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(242,240,235,.2);"><span class="m" style="color: #9A9A9A;">Reply within</span><span>[24 hours]</span></div>
+</div>
+</div>
+
+<div class="pad" style="flex: 1 1 0; min-width: 0; background: #F2F0EB; color: #0A0A0A; padding: 96px max(40px, calc((100vw - 1280px) / 2 + 40px)) 96px 64px; box-sizing: border-box;">
+<sc-if value="{{sent}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 24px; max-width: 520px; padding-top: 40px;">
+<span class="d" style="font-size: 96px;">Got it.</span>
+<p style="margin: 0; font-size: 18px; line-height: 1.55;">Thanks — your enquiry is in. A confirmation is on its way to your inbox and we will be in touch shortly.</p>
+<button type="button" onClick="{{reset}}" class="m" style="align-self: flex-start; background: transparent; border: 1px solid #0A0A0A; padding: 16px 22px; cursor: pointer; color: #0A0A0A;">Send another</button>
+</div>
+</sc-if>
+<sc-if value="{{notSent}}" hint-placeholder-val="{{true}}">
+<form style="display: flex; flex-direction: column; gap: 28px; max-width: 560px;">
+<div class="g2" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
+<label style="display: flex; flex-direction: column; gap: 8px;"><span class="m">Name *</span><input type="text" placeholder="Full name" style="border: 0; border-bottom: 2px solid #0A0A0A; background: transparent; padding: 12px 0; font-size: 17px;"></label>
+<label style="display: flex; flex-direction: column; gap: 8px;"><span class="m">Artist / project</span><input type="text" placeholder="Name you release under" style="border: 0; border-bottom: 2px solid #0A0A0A; background: transparent; padding: 12px 0; font-size: 17px;"></label>
+<label style="display: flex; flex-direction: column; gap: 8px;"><span class="m">Email *</span><input type="email" placeholder="you@email.com" style="border: 0; border-bottom: 2px solid #0A0A0A; background: transparent; padding: 12px 0; font-size: 17px;"></label>
+<label style="display: flex; flex-direction: column; gap: 8px;"><span class="m">Phone</span><input type="tel" placeholder="+30 …" style="border: 0; border-bottom: 2px solid #0A0A0A; background: transparent; padding: 12px 0; font-size: 17px;"></label>
+</div>
+<fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+<legend class="m" style="padding: 0; margin-bottom: 12px;">Type of project *</legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px;">
+<sc-for list="{{types}}" as="t" hint-placeholder-count="6">
+<button type="button" onClick="{{t.pick}}" aria-pressed="{{t.on}}" style="min-height: 44px; padding: 0 18px; border: 1px solid #0A0A0A; background: {{t.bg}}; color: {{t.fg}}; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; cursor: pointer;">{{t.label}}</button>
+</sc-for>
+</div>
+</fieldset>
+<div class="g2" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
+<label style="display: flex; flex-direction: column; gap: 8px;"><span class="m">Preferred start</span><input type="date" style="border: 0; border-bottom: 2px solid #0A0A0A; background: transparent; padding: 12px 0; font-size: 17px;"></label>
+<label style="display: flex; flex-direction: column; gap: 8px;"><span class="m">Days needed (approx.)</span><input type="number" min="1" placeholder="3" style="border: 0; border-bottom: 2px solid #0A0A0A; background: transparent; padding: 12px 0; font-size: 17px;"></label>
+</div>
+<label style="display: flex; flex-direction: column; gap: 8px;"><span class="m">Tell us about the project</span><textarea rows="5" placeholder="Songs, line-up, references, links to demos, whether you need an engineer or producer…" style="border: 2px solid #0A0A0A; background: transparent; padding: 14px; font-size: 16px; resize: vertical;"></textarea></label>
+<label style="display: flex; gap: 12px; align-items: flex-start; font-size: 14px; line-height: 1.5;"><input type="checkbox" style="width: 20px; height: 20px; margin: 0; accent-color: #0A0A0A; flex: 0 0 auto;"><span>I agree that TEMS stores my details to reply to this enquiry. <a href="#" style="color: #0A0A0A;">Privacy policy</a></span></label>
+<div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+<button type="button" onClick="{{send}}" class="m" style="background: #0A0A0A; color: #F2F0EB; border: 0; padding: 20px 32px; font-weight: 500; cursor: pointer; min-height: 44px;">Send enquiry →</button>
+<span class="m" style="color: #5E5E5E;">Protected by Turnstile</span>
+</div>
+</form>
+</sc-if>
+</div>
+</section>
+
+<section style="background: #F2F0EB; color: #0A0A0A; padding: 120px 0; border-top: 2px solid #0A0A0A;">
+<div class="wrap stack" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; gap: 72px; align-items: flex-start;">
+<div style="flex: 0 0 340px; display: flex; flex-direction: column; gap: 18px;">
+<h2 class="d hy" style="margin: 0; font-size: 72px;">Before you ask</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.55;">Rates, minimums, availability and what to expect.</p>
+</div>
+<div style="flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; border-top: 2px solid #0A0A0A;">
+<sc-for list="{{faq}}" as="q" hint-placeholder-count="6">
+<div style="border-bottom: 1px solid #BDB9B0;">
+<button type="button" onClick="{{q.toggle}}" aria-expanded="{{q.open}}" style="width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 0; background: transparent; border: 0; cursor: pointer; text-align: left; color: #0A0A0A;">
+<span class="d" style="font-size: 26px; line-height: 1;">{{q.q}}</span><span aria-hidden="true" style="font-size: 26px; font-weight: 300;">{{q.sign}}</span>
+</button>
+<sc-if value="{{q.open}}" hint-placeholder-val="{{false}}"><p style="margin: 0 0 24px; font-size: 16px; line-height: 1.6; max-width: 640px;">{{q.a}}</p></sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,620px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2900}}'>
+class Component extends DCLogic {
+constructor(props) { super(props); this.state = { picked: ['Recording'], open: 0, sent: false }; }
+renderVals() {
+const { picked, open, sent } = this.state;
+const labels = ['Recording', 'Mixing', 'Production', 'Overdubs', 'Live session / video', 'Other'];
+const types = labels.map(label => {
+const on = picked.includes(label);
+return { label, on, bg: on ? '#0A0A0A' : 'transparent', fg: on ? '#F2F0EB' : '#0A0A0A',
+pick: () => this.setState({ picked: on ? picked.filter(x => x !== label) : [...picked, label] }) };
+});
+const qs = [
+['Can anyone enquire?', '[Answer from the client — who the studio works with.]'],
+['How far ahead should we get in touch?', '[Answer — typical lead time.]'],
+['How are rates set?', '[Answer — day rate, room, engineer.]'],
+['Is there a minimum?', '[Answer.]'],
+['Can we bring our own engineer?', '[Answer.]'],
+['What happens if we need to reschedule?', '[Answer — cancellation policy.]']
+];
+const faq = qs.map(([q, a], i) => ({ q, a, open: open === i, sign: open === i ? '−' : '+',
+toggle: () => this.setState({ open: open === i ? -1 : i }) }));
+return { types, faq, sent, notSent: !sent,
+send: () => this.setState({ sent: true }), reset: () => this.setState({ sent: false }) };
+}
+}
+</script>
+</body>
+</html>

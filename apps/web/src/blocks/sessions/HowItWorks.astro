@@ -1,0 +1,19 @@
+---
+import type { SessionsPage } from '../../lib/types';
+
+interface Props {
+  page: SessionsPage;
+}
+
+const { page } = Astro.props;
+---
+<section class="t-4134c4" data-block="04-how-it-works">
+<div class="wrap t-c3b995">
+<h2 class="d hx t-cb45d5">{page.stepsTitle}</h2>
+<ol class="g4 t-a7bf96">
+{(page.steps ?? []).map((step, i) => (
+<li class="t-f9a8ec"><span class="d t-1286cd">{String(i + 1).padStart(2, '0')}</span><span class="t-5f404f">{step.title}</span><span class="t-a6e816">{step.text}</span></li>
+))}
+</ol>
+</div>
+</section>

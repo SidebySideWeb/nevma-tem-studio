@@ -1,0 +1,16 @@
+---
+description: TEMS project rules — always on
+alwaysApply: true
+---
+# TEMS — always
+
+- Read `AGENTS.md` first. The site must be **identical** to `design/build/` (the approved design, pixel-exact).
+- Port design markup verbatim; replace only text, links and images with Sanity data. Never restyle, re-layout, rename classes, or "tidy" markup.
+- `apps/web/src/styles/tems.css` is a byte-for-byte copy of `design/build/tems.css`. If it ever differs, the copy is wrong.
+- Extra CSS only in `apps/web/src/styles/additions.css`, only for states the design doesn't show, each rule commented.
+- Every top-level block: `data-block="NN-name"` from `design/build/blocks.json`. Every page body: `class="pg-<page>"`.
+- A page is finished only when `pnpm test:fidelity` passes for it at 1440 and 390. Run it; paste the summary in your reply.
+- Ask before adding a dependency. Allowed without asking: astro, @astrojs/vercel, @astrojs/sitemap, @astrojs/check, @sanity/client, @sanity/image-url, @portabletext/to-html, resend, @vercel/analytics, @playwright/test, pixelmatch, pngjs, tsx.
+- English only. TEMS is not a NEVMA brand; NEVMA Music appears only as a partner (logo, link, releases).
+- When the design and these docs disagree, the design wins; note it in `docs/OPEN-QUESTIONS.md`.
+- Never put tokens or secrets in client code or in the repo. `.env` is git-ignored; `.env.example` lists every variable.

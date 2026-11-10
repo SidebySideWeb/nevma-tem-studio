@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import { href } from '../lib/links';
+import { notFoundQuery } from '../lib/queries';
+import { client, getRooms, getSettings } from '../lib/sanity';
+import { buildPageSeo } from '../lib/seo';
+import { lines } from '../lib/text';
+import type { NotFoundPage } from '../lib/types';
+import { ui } from '../lib/ui';
+
+const [page, settings, rooms] = await Promise.all([
+  client.fetch<NotFoundPage>(notFoundQuery),
+  getSettings(),
+  getRooms(),
+]);
+
+const titleLines = lines(page?.title);
+const pageTitle = (page?.title || 'Not found').replaceAll('\n', ' ').trim();
+const seo = buildPageSeo({
+  path: '/404',
+  pageTitle,
+  settings,
+  forceNoindex: true,
+});
+---
+<Base page="home" seo={seo}>
+<section class="not-found" aria-labelledby="not-found-title">
+<div class="wrap not-found__wrap">
+<div class="m not-found__label"><span class="t-25f105" aria-hidden="true"></span>{ui.notFound.code}</div>
+<h1 id="not-found-title" class="d hx not-found__title">{titleLines.map((line, i) => <>{i > 0 && <br />}{line}</>)}</h1>
+{page?.text ? <p class="not-found__text">{page.text}</p> : null}
+{page?.cta?.label ? (
+<div class="t-18d4ed">
+<a href={href(page.cta, rooms)} class="m t-982321">{page.cta.label}</a>
+</div>
+) : null}
+</div>
+</section>
+</Base>

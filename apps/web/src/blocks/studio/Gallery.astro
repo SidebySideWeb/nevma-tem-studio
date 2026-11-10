@@ -1,0 +1,43 @@
+---
+import { img } from '../../lib/image';
+import type { Room, RoomsPage } from '../../lib/types';
+
+interface Props {
+  room: Room;
+  shared: RoomsPage;
+}
+
+const { room, shared } = Astro.props;
+const photos = (room.gallery ?? []).map((photo) => ({
+  src: img(photo, 1600),
+  alt: photo.alt ?? '',
+}));
+const count = photos.length;
+const counter = `01 / ${String(count).padStart(2, '0')}`;
+const a = photos[0];
+const b = photos[1];
+const c = photos[2];
+---
+<section class="t-5decf6" data-block="05-gallery" data-gallery data-gallery-items={JSON.stringify(photos)}>
+<div class="wrap t-ddf735">
+<div class="t-f7849a">
+<div class="t-8ef476"><span class="m t-717e45">{room.galleryChapter}</span><h2 class="d hx t-cb45d5">{shared.galleryTitle}</h2></div>
+<div class="t-eba923">
+<span class="m t-147bc7" data-gallery-counter aria-live="polite">{counter}</span>
+<button type="button" aria-label="Previous image" class="t-3514cb" data-gallery-prev data-js-only>←</button>
+<button type="button" aria-label="Next image" class="t-554aaf" data-gallery-next data-js-only>→</button>
+</div>
+</div>
+<div class="stack t-1e4cc5">
+<img src={a?.src ?? ''} alt={a?.alt ?? ''} class="t-30b91d" data-gallery-slot="0" loading="lazy" decoding="async">
+<div class="t-92d909">
+<img src={b?.src ?? ''} alt={b?.alt ?? ''} class="t-4d7d2e" data-gallery-slot="1" loading="lazy" decoding="async">
+<img src={c?.src ?? ''} alt={c?.alt ?? ''} class="t-4d7d2e" data-gallery-slot="2" loading="lazy" decoding="async">
+</div>
+</div>
+</div>
+</section>
+<script>
+  import { initGalleries } from '../../scripts/gallery';
+  initGalleries();
+</script>

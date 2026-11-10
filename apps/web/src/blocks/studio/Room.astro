@@ -1,0 +1,36 @@
+---
+import { img } from '../../lib/image';
+import type { Room as RoomDoc } from '../../lib/types';
+import { ui } from '../../lib/ui';
+
+interface Props {
+  room: RoomDoc;
+}
+
+const { room } = Astro.props;
+const floorSrc = room.floorPlan?.asset ? img(room.floorPlan, 900) : '';
+---
+<section class="t-4134c4" data-block="04-room">
+<div class="wrap stack t-f1f86d">
+<div class="t-c63ac3">
+<span class="m t-de6536">{room.storyChapter}</span>
+<h2 class="d hy t-d14ab8">{room.headline}</h2>
+{(room.story ?? []).map((para) => (
+<p class="t-770e5e">{para}</p>
+))}
+<dl class="g3 t-18bdc3">
+<div class="t-27492b"><dt class="m t-de6536">{ui.roomMeta.notable}</dt><dd class="t-dad737">{room.notable}</dd></div>
+<div class="t-27492b"><dt class="m t-de6536">{ui.roomMeta.tasks}</dt><dd class="t-dad737">{room.tasks}</dd></div>
+<div class="t-27492b"><dt class="m t-de6536">{ui.roomMeta.clients}</dt><dd class="t-dad737">{room.clientsLine}</dd></div>
+</dl>
+</div>
+<figure class="t-56476f">
+<div class="t-d80aa8">{floorSrc ? (
+<img src={floorSrc} alt={room.floorPlan?.alt ?? ''} loading="lazy" decoding="async">
+) : (
+<span class="m t-de6536">[Floor plan drawing]</span>
+)}</div>
+<figcaption class="m t-de6536">{room.floorPlanCaption}</figcaption>
+</figure>
+</div>
+</section>

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TEMS — Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0A0A0A}
+.bw{filter:grayscale(1) contrast(1.08)}
+a{color:inherit}a:hover{color:#FF4F00}
+.d{font-family:'Archivo',sans-serif;font-stretch:72%;font-weight:900;text-transform:uppercase;line-height:.86}
+.m{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.ph{background:repeating-linear-gradient(135deg,#1b1b1b 0 10px,#141414 10px 20px)}
+.phl{background:repeating-linear-gradient(135deg,#e2dfd8 0 10px,#d9d6ce 10px 20px)}
+@media (max-width:760px){.wrap{padding-left:16px !important;padding-right:16px !important}.stack{flex-direction:column !important;align-items:stretch !important}.g2,.g3,.g4{grid-template-columns:minmax(0,1fr) !important}.hx{font-size:64px !important}.hy{font-size:44px !important}.cov{grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:8px !important}}
+</style>
+</helmet>
+<div style="font-family: 'Archivo', sans-serif; color: #F2F0EB; background: #0A0A0A; width: 100%;">
+<dc-import name="Header" active="home" hint-size="100%,88px"></dc-import>
+
+<section style="position: relative; min-height: 820px; display: flex; align-items: flex-end; overflow: hidden;">
+<img src="img/live-room.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,0) 30%, rgba(10,10,10,.92) 100%);"></div>
+<div class="wrap" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 0 40px 72px; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
+<div class="m" style="display: flex; align-items: center; gap: 10px; color: #F2F0EB;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #FF4F00;"></span>Rec — Ellinikon, Athens</div>
+<img src="img/tems-logo-white.png" alt="TEMS — the Ellinikon music studio" style="width: min(760px, 100%); height: auto; display: block;">
+<div class="stack" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; border-top: 1px solid rgba(242,240,235,.25); padding-top: 24px;">
+<p style="margin: 0; max-width: 520px; font-size: 20px; line-height: 1.45; color: #D9D6CE;">A recording studio built for records that matter. [One-line positioning from the client: rooms, gear, people.]</p>
+<div style="display: flex; gap: 12px; flex-wrap: wrap;">
+<a href="Enquire.dc.html" class="m" style="background: #FF4F00; color: #0A0A0A; text-decoration: none; padding: 18px 26px; font-weight: 500;">Register interest</a>
+<a href="Studio.dc.html" class="m" style="border: 1px solid #F2F0EB; color: #F2F0EB; text-decoration: none; padding: 17px 26px;">Explore the studio</a>
+</div>
+</div>
+</div>
+</section>
+
+<section style="background: #F2F0EB; color: #0A0A0A; padding: 120px 0;">
+<div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; flex-direction: column; gap: 56px;">
+<div class="stack" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; border-bottom: 2px solid #0A0A0A; padding-bottom: 28px;">
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<span class="m" style="color: #5E5E5E;">CH 01</span>
+<h2 class="d hx" style="margin: 0; font-size: 140px;">The Rooms</h2>
+</div>
+<p style="margin: 0; max-width: 440px; font-size: 18px; line-height: 1.5;">[Short intro: how many rooms, what each is built for, the acoustics.]</p>
+</div>
+<div class="g3" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+<a href="Studio.dc.html" style="text-decoration: none; display: flex; flex-direction: column; gap: 16px;">
+<img src="img/control-room.jpg" alt="Studio A control room" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block;">
+<div style="display: flex; justify-content: space-between; align-items: baseline;"><span class="d" style="font-size: 44px;">Studio A</span><span class="m" style="color: #5E5E5E;">Tracking · Mix →</span></div>
+</a>
+<a href="Studio.dc.html" style="text-decoration: none; display: flex; flex-direction: column; gap: 16px;">
+<img src="img/instrument-room.jpg" alt="Live room with guitars, organ and synths" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block;">
+<div style="display: flex; justify-content: space-between; align-items: baseline;"><span class="d" style="font-size: 44px;">Live Room</span><span class="m" style="color: #5E5E5E;">[Size] m² →</span></div>
+</a>
+<a href="Studio.dc.html" style="text-decoration: none; display: flex; flex-direction: column; gap: 16px;">
+<img src="img/lounge-team.jpg" alt="Studio lounge" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block;">
+<div style="display: flex; justify-content: space-between; align-items: baseline;"><span class="d" style="font-size: 44px;">Lounge</span><span class="m" style="color: #5E5E5E;">Break · Listen →</span></div>
+</a>
+</div>
+</div>
+</section>
+
+<section style="background: #0A0A0A; padding: 120px 0;">
+<div class="wrap stack" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; gap: 64px; align-items: center;">
+<div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 24px; min-width: 0;">
+<span class="m" style="color: #9A9A9A;">CH 02</span>
+<h2 class="d hx" style="margin: 0; font-size: 140px;">The<br>Records</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.5; color: #D9D6CE; max-width: 460px;">Artists, producers and labels who have worked here. [Client intro line.]</p>
+<a href="Clients.dc.html" class="m" style="align-self: flex-start; background: #F2F0EB; color: #0A0A0A; text-decoration: none; padding: 18px 26px; font-weight: 500;">See the clients</a>
+</div>
+<div class="cov" style="flex: 1.2 1 0; min-width: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+<sc-for list="{{covers}}" as="c" hint-placeholder-count="12"><img src="{{c}}" alt="" style="width: 100%; aspect-ratio: 1; object-fit: cover; display: block;"></sc-for>
+</div>
+</div>
+<div class="wrap" style="max-width: 1280px; margin: 96px auto 0; padding: 0 40px;">
+<div class="stack" style="display: flex; gap: 48px; align-items: center; border: 1px solid rgba(242,240,235,.25); padding: 40px;">
+<div style="flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
+<span class="m" style="color: #9A9A9A;">Studio partner</span>
+<img src="img/nevma-logo-white.png" alt="NEVMA" style="width: 220px; height: auto; display: block;">
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #D9D6CE; max-width: 420px;">TEMS is a partner studio of NEVMA Music. These NEVMA releases were recorded here.</p>
+<a href="#nevma-music-site" class="m" style="align-self: flex-start; border: 1px solid #F2F0EB; color: #F2F0EB; text-decoration: none; padding: 15px 22px;">Visit NEVMA Music ↗</a>
+</div>
+<ul class="cov" style="flex: 1.4 1 0; min-width: 0; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;">
+<li><a href="#nevma-music-site" style="text-decoration: none; display: flex; flex-direction: column; gap: 10px;"><img src="img/standin-cover-low-tide-hearts.jpg" alt="" style="width: 100%; aspect-ratio: 1; object-fit: cover; display: block;"><span style="font-weight: 700; font-size: 16px;">Low Tide Hearts</span><span class="m" style="color: #9A9A9A;">NEVMA ↗</span></a></li>
+<li><a href="#nevma-music-site" style="text-decoration: none; display: flex; flex-direction: column; gap: 10px;"><img src="img/standin-cover-paper-moons.jpg" alt="" style="width: 100%; aspect-ratio: 1; object-fit: cover; display: block;"><span style="font-weight: 700; font-size: 16px;">Paper Moons</span><span class="m" style="color: #9A9A9A;">NEVMA ↗</span></a></li>
+<li><a href="#nevma-music-site" style="text-decoration: none; display: flex; flex-direction: column; gap: 10px;"><img src="img/standin-cover-illusions-1.jpg" alt="" style="width: 100%; aspect-ratio: 1; object-fit: cover; display: block;"><span style="font-weight: 700; font-size: 16px;">Illusions 1</span><span class="m" style="color: #9A9A9A;">NEVMA ↗</span></a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section style="background: #F2F0EB; color: #0A0A0A; padding: 120px 0;">
+<div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; flex-direction: column; gap: 56px;">
+<div class="stack" style="display: flex; gap: 64px; align-items: stretch;">
+<img src="img/mic-locker.jpg" alt="Microphone locker" style="flex: 1 1 0; min-width: 0; min-height: 520px; width: 100%; object-fit: cover; display: block;">
+<div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 24px; justify-content: center;">
+<span class="m" style="color: #5E5E5E;">CH 03</span>
+<h2 class="d hx" style="margin: 0; font-size: 140px;">The Gear</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.5; max-width: 480px;">[Gear intro: the console, the microphone collection, instruments and outboard.]</p>
+<div class="g2" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 2px solid #0A0A0A;">
+<div style="padding: 20px 0; border-bottom: 1px solid #BDB9B0; display: flex; flex-direction: column; gap: 4px;"><span class="d" style="font-size: 56px;">[00]</span><span class="m" style="color: #5E5E5E;">Microphones</span></div>
+<div style="padding: 20px 0; border-bottom: 1px solid #BDB9B0; display: flex; flex-direction: column; gap: 4px;"><span class="d" style="font-size: 56px;">[00]</span><span class="m" style="color: #5E5E5E;">Console channels</span></div>
+<div style="padding: 20px 0; border-bottom: 1px solid #BDB9B0; display: flex; flex-direction: column; gap: 4px;"><span class="d" style="font-size: 56px;">[00]</span><span class="m" style="color: #5E5E5E;">Amps &amp; instruments</span></div>
+<div style="padding: 20px 0; border-bottom: 1px solid #BDB9B0; display: flex; flex-direction: column; gap: 4px;"><span class="d" style="font-size: 56px;">[00]</span><span class="m" style="color: #5E5E5E;">Outboard units</span></div>
+</div>
+<a href="Studio.dc.html" class="m" style="align-self: flex-start; background: #0A0A0A; color: #F2F0EB; text-decoration: none; padding: 18px 26px; font-weight: 500;">Full equipment list</a>
+</div>
+</div>
+</div>
+</section>
+
+<section style="background: #0A0A0A; padding: 120px 0;">
+<div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; flex-direction: column; gap: 48px;">
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<span class="m" style="color: #9A9A9A;">CH 04</span>
+<h2 class="d hx" style="margin: 0; font-size: 140px;">In their words</h2>
+</div>
+<div class="g3" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: rgba(242,240,235,.2); border: 1px solid rgba(242,240,235,.2);">
+<figure style="margin: 0; background: #0A0A0A; padding: 36px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: 300px;">
+<blockquote style="margin: 0; font-size: 22px; line-height: 1.4;">“[Quote from an artist or engineer who recorded at TEMS.]”</blockquote>
+<figcaption class="m" style="color: #9A9A9A;">[Name] — [Role]</figcaption>
+</figure>
+<figure style="margin: 0; background: #0A0A0A; padding: 36px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: 300px;">
+<blockquote style="margin: 0; font-size: 22px; line-height: 1.4;">“[Quote.]”</blockquote>
+<figcaption class="m" style="color: #9A9A9A;">[Name] — [Role]</figcaption>
+</figure>
+<figure style="margin: 0; background: #0A0A0A; padding: 36px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: 300px;">
+<blockquote style="margin: 0; font-size: 22px; line-height: 1.4;">“[Quote.]”</blockquote>
+<figcaption class="m" style="color: #9A9A9A;">[Name] — [Role]</figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<section style="background: #FF4F00; color: #0A0A0A; padding: 100px 0;">
+<div class="wrap stack" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px;">
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<h2 class="d hx" style="margin: 0; font-size: 150px;">Make yours<br>here.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.5; max-width: 520px;">Tell us about your project and we will come back with availability and the right room.</p>
+</div>
+<div style="display: flex; gap: 12px; flex-wrap: wrap;">
+<a href="Enquire.dc.html" class="m" style="background: #0A0A0A; color: #F2F0EB; text-decoration: none; padding: 18px 26px; font-weight: 500;">Register interest</a>
+<a href="Contact.dc.html" class="m" style="border: 1px solid #0A0A0A; color: #0A0A0A; text-decoration: none; padding: 17px 26px;">Contact us</a>
+</div>
+</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,620px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4700}}'>
+class Component extends DCLogic {
+renderVals() {
+const b = 'img/';
+return { covers: ['standin-cover-low-tide-hearts.jpg','standin-cover-cassettes.jpg','standin-cover-paper-moons.jpg','standin-cover-collage.jpg','standin-cover-lasers.jpg','standin-cover-illusions-1.jpg','standin-cover-neon-room.jpg','standin-cover-stage-lights.jpg','standin-cover-festival.jpg','standin-cover-concert.jpg','standin-cover-dj-stage.jpg','standin-cover-singer.jpg'].map(id => b + id) };
+}
+}
+</script>
+</body>
+</html>

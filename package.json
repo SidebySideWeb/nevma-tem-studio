@@ -1,0 +1,18 @@
+{
+  "name": "tems-site",
+  "private": true,
+  "packageManager": "pnpm@10.34.9",
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "preview": "pnpm --filter web preview",
+    "check": "pnpm --filter web check",
+    "studio": "pnpm --filter studio dev",
+    "test:fidelity": "pnpm --filter web test:fidelity",
+    "test:unit": "pnpm --filter web test:unit",
+    "test:e2e": "pnpm --filter web test:e2e",
+    "placeholders": "node scripts/check-placeholders.mjs",
+    "check:seo": "node apps/web/scripts/check-seo.mjs"
+  },
+  "engines": { "node": ">=22" }
+}

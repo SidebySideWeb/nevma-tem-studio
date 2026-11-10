@@ -1,0 +1,38 @@
+{
+  "name": "web",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check && tsc --noEmit && node ../../scripts/check-placeholders.mjs",
+    "check:seo": "node scripts/check-seo.mjs",
+    "test:fidelity": "playwright test -c tests/fidelity/playwright.config.ts",
+    "test:unit": "tsx --test tests/unit/*.test.ts",
+    "test:e2e": "playwright test -c tests/e2e/playwright.config.ts",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/sitemap": "^3.7.4",
+    "@astrojs/vercel": "^11.0.20",
+    "@portabletext/to-html": "^6.0.0",
+    "@sanity/client": "^8.15.1",
+    "@sanity/image-url": "^2.1.1",
+    "@vercel/analytics": "^2.0.1",
+    "astro": "^7.4.8",
+    "resend": "^6.37.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "pixelmatch": "^8.0.0",
+    "pngjs": "^7.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}

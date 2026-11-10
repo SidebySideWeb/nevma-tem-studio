@@ -1,0 +1,25 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-10-23T14:50:00Z"},
+  "title": "TEMS — Website Design",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 4700, "title": "01 Home", "expand": "fill"},
+    "Studio.dc.html": {"x": 1520, "y": 0, "w": 1440, "h": 4700, "title": "02 The Studio (room page)", "expand": "fill"},
+    "About.dc.html": {"x": 3040, "y": 0, "w": 1440, "h": 3600, "title": "03 About + Team", "expand": "fill"},
+    "Clients.dc.html": {"x": 4560, "y": 0, "w": 1440, "h": 3100, "title": "04 Clients A–Z", "expand": "fill"},
+    "Sessions.dc.html": {"x": 6080, "y": 0, "w": 1440, "h": 3300, "title": "05 Sessions & Services", "expand": "fill"},
+    "Enquire.dc.html": {"x": 7600, "y": 0, "w": 1440, "h": 2900, "title": "06 Enquire (interest form)", "expand": "fill", "is_interactive": true},
+    "Contact.dc.html": {"x": 9120, "y": 0, "w": 1440, "h": 2000, "title": "07 Contact", "expand": "fill"},
+    "Header.dc.html": {"x": 0, "y": 4900, "w": 1440, "h": 96, "title": "Component · Header"},
+    "Footer.dc.html": {"x": 1520, "y": 4900, "w": 1440, "h": 640, "title": "Component · Footer"}
+  },
+  "order": ["Main.dc.html", "Studio.dc.html", "About.dc.html", "Clients.dc.html", "Sessions.dc.html", "Enquire.dc.html", "Contact.dc.html", "Header.dc.html", "Footer.dc.html"],
+  "notes": {
+    "title": {"x": 0, "y": -320, "text": "TEMS — the Ellinikon music studio · site design v1", "kind": "title1", "maxW": 10560},
+    "concept": {"x": -640, "y": 0, "w": 520, "text": "Concept: 'Two takes'. The logo ships in a black and a white version, so the site alternates hard black and paper-white bands. Heavy condensed type echoes the TEMS mark, mono labels read like tape-box and track-sheet notes, one signal-orange accent is the REC light. Structure follows blackbirdstudio.com. No booking: every CTA leads to the interest form.", "fill": "gray", "size": "s"},
+    "images": {"x": -640, "y": 860, "w": 520, "text": "Images: studio photos are the client's (control room, live room, instrument room, mic locker, lounge, building). Still stand-ins from the Nevma Music design: release covers (Home records grid, Clients wall). Still missing: team portraits, floor plan. The building photo shows a 'THE SOUND LAB' sign; needs a TEMS version. NEVMA links point to #nevma-music-site until the domain is confirmed.", "fill": "orange", "size": "s"}
+  },
+  "designSystems": []
+}

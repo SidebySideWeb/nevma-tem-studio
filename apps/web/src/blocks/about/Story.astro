@@ -1,0 +1,23 @@
+---
+import type { AboutPage } from '../../lib/types';
+
+interface Props {
+  about: AboutPage;
+}
+
+const { about } = Astro.props;
+---
+<section class="t-4134c4" data-block="03-story">
+<div class="wrap stack t-f1f86d">
+<div class="t-a444cc">
+<span class="m t-de6536">{about.estLabel}</span><span class="d t-1286cd">{about.year}</span>
+<span class="m t-a54a91">{about.locationLabel}</span><span class="t-fcd9fd">{about.location}</span>
+</div>
+<div class="t-38e81c">
+<p class="t-d0a0c8">{about.lead}</p>
+{(about.paragraphs ?? []).map((para) => (
+<p class="t-7ab6aa">{para}</p>
+))}
+</div>
+</div>
+</section>

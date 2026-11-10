@@ -1,0 +1,64 @@
+---
+import Analytics from '@vercel/analytics/astro';
+import Header from '../blocks/shared/Header.astro';
+import Footer from '../blocks/shared/Footer.astro';
+import { getRooms, getSettings } from '../lib/sanity';
+import type { PageSeo } from '../lib/seo';
+import '../styles/tems.css';
+import '../styles/additions.css';
+
+interface Props {
+  page: string;
+  /** Built by `buildPageSeo` — title, description, canonical, OG image, noindex. */
+  seo: PageSeo;
+  active?: 'studio' | 'about' | 'clients' | 'sessions' | 'contact';
+  /** Design last-block id — Home is 08-footer; studio is 09-footer. */
+  footerBlock?: string;
+  /** Optional JSON-LD object(s) — LocalBusiness on Home and Contact. */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { page, seo, active, footerBlock, jsonLd } = Astro.props;
+const [settings, rooms] = await Promise.all([getSettings(), getRooms()]);
+const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+/** Web Analytics only on Vercel production (not preview / local). */
+const analytics =
+  (import.meta.env.VERCEL_ENV || process.env.VERCEL_ENV) === 'production';
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{seo.title}</title>
+<meta name="description" content={seo.description}>
+<link rel="canonical" href={seo.canonical}>
+{seo.noindex ? <meta name="robots" content="noindex, nofollow" /> : <meta name="robots" content="index, follow" />}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content={settings.studioName}>
+<meta property="og:title" content={seo.title}>
+<meta property="og:description" content={seo.description}>
+<meta property="og:url" content={seo.canonical}>
+{seo.image ? <meta property="og:image" content={seo.image} /> : null}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={seo.title}>
+<meta name="twitter:description" content={seo.description}>
+{seo.image ? <meta name="twitter:image" content={seo.image} /> : null}
+{ld.map((block) => (
+<script type="application/ld+json" set:html={JSON.stringify(block)} />
+))}
+{analytics ? <Analytics mode="production" /> : null}
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="preload" href="/assets/fonts/archivo-variable.woff2" as="font" type="font/woff2" crossorigin>
+<script is:inline>document.documentElement.classList.add('js')</script>
+</head>
+<body class={`pg-${page}`}>
+<div class="t-e70b4e">
+<Header active={active} settings={settings} rooms={rooms} />
+<main class="page-main">
+<slot />
+</main>
+<Footer settings={settings} rooms={rooms} block={footerBlock} />
+</div>
+</body>
+</html>

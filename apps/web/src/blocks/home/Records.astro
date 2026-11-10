@@ -1,0 +1,46 @@
+---
+import { img } from '../../lib/image';
+import { href, type RoomRef } from '../../lib/links';
+import { lines } from '../../lib/text';
+import type { HomePage, Settings } from '../../lib/types';
+
+interface Props {
+  home: HomePage;
+  settings: Settings;
+  rooms: RoomRef[];
+}
+
+const { home, settings, rooms } = Astro.props;
+const titleLines = lines(home.records?.title);
+const partnerHref = settings.partnerUrl || '#nevma-music-site';
+---
+<section class="t-5decf6" data-block="04-records">
+<div class="wrap stack t-222ad8">
+<div class="t-c087e9">
+<span class="m t-717e45">{home.records?.chapter}</span>
+<h2 class="d hx t-1bc7a0">{titleLines.map((line, i) => <>{i > 0 && <br />}{line}</>)}</h2>
+<p class="t-41b82c">{home.records?.intro}</p>
+<a href={href(home.recordsCta, rooms)} class="m t-723ed2">{home.recordsCta?.label}</a>
+</div>
+<div class="cov t-1d05f4">
+{(home.recordCovers ?? []).map((cover) => (
+<img src={img(cover, 600)} alt={cover.alt ?? ''} class="t-2e7902" loading="lazy" decoding="async">
+))}
+</div>
+</div>
+<div class="wrap t-7223e8">
+<div class="stack t-0065ef">
+<div class="t-209e40">
+<span class="m t-717e45">{home.partnerLabel}</span>
+<img src={img(settings.partnerLogo)} alt="NEVMA" class="t-ffccf3" loading="lazy" decoding="async">
+<p class="t-afa570">{home.partnerText}</p>
+<a href={partnerHref} class="m t-fdcac4">{settings.partnerLinkLabel}</a>
+</div>
+<ul class="cov t-271504">
+{(home.partnerReleases ?? []).map((release) => (
+<li><a href={release.url || partnerHref} class="t-0f7d5f"><img src={img(release.cover, 600)} alt={release.cover?.alt ?? ''} class="t-2e7902" loading="lazy" decoding="async"><span class="t-0cbe29">{release.title}</span><span class="m t-717e45">{release.label}</span></a></li>
+))}
+</ul>
+</div>
+</div>
+</section>

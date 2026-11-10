@@ -1,0 +1,28 @@
+---
+import { img } from '../../lib/image';
+import type { RoomCard, RoomsPage } from '../../lib/types';
+import { ui } from '../../lib/ui';
+
+interface Props {
+  shared: RoomsPage;
+  others: RoomCard[];
+}
+
+const { shared, others } = Astro.props;
+---
+<section class="t-5decf6" data-block="08-other-rooms">
+<div class="wrap t-ddf735">
+<h2 class="d hy t-d14ab8">{shared.otherRoomsTitle}</h2>
+<div class="g2 t-a9bef3">
+{others.map((other) => {
+  const photo = other.wideImage?.asset ? other.wideImage : other.cardImage;
+  return (
+<a href={`/studio/${other.slug}`} class="t-86c7d6">
+<img src={img(photo, 1200)} alt={photo?.alt ?? ''} class="t-e4e7a0" loading="lazy" decoding="async">
+<div class="t-bcda9e"><span class="d t-ac1941">{other.name}</span><span class="m t-717e45">{ui.room} {String(other.order).padStart(2, '0')}{ui.arrow}</span></div>
+</a>
+  );
+})}
+</div>
+</div>
+</section>

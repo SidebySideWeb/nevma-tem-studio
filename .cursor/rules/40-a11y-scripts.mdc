@@ -1,0 +1,13 @@
+---
+description: Accessibility and client-side scripts
+globs: apps/web/src/**/*.astro, apps/web/src/scripts/**
+alwaysApply: false
+---
+# Accessibility and scripts
+
+- Keep the design's semantic elements (`header`, `nav`, `section`, `figure`, `blockquote`, `dl`, `form`, `fieldset`, `legend`, `label`). One `<h1>` per page (the design's).
+- Interactive things are `<button type="button">` or `<a href>`. FAQ: `aria-expanded` + `aria-controls`; choice chips: `aria-pressed`; gallery counter: `aria-live="polite"`; form status: `role="status"`.
+- Focus: visible `:focus-visible` outline (orange `#FF4F00`, 2px, offset 2px — the design's Enquire rule) on every interactive element, defined in `additions.css`.
+- `prefers-reduced-motion`: no transitions.
+- Scripts are progressive: everything readable and the form submittable without JS (the form posts and the API redirects to `/enquire/thanks`).
+- Budget ≤ 10 KB gzipped JS per page. No analytics scripts except Vercel Web Analytics (cookieless).

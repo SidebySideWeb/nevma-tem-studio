@@ -1,0 +1,34 @@
+---
+import { img } from '../../lib/image';
+import { href, type RoomRef } from '../../lib/links';
+import { lines } from '../../lib/text';
+import type { HomePage } from '../../lib/types';
+import { ui } from '../../lib/ui';
+
+interface Props {
+  home: HomePage;
+  rooms: RoomRef[];
+}
+
+const { home, rooms } = Astro.props;
+const titleLines = lines(home.rooms?.title);
+---
+<section class="t-4134c4" data-block="03-rooms">
+<div class="wrap t-c3b995">
+<div class="stack t-6a226e">
+<div class="t-8ef476">
+<span class="m t-de6536">{home.rooms?.chapter}</span>
+<h2 class="d hx t-1bc7a0">{titleLines.map((line, i) => <>{i > 0 && <br />}{line}</>)}</h2>
+</div>
+<p class="t-3d5766">{home.rooms?.intro}</p>
+</div>
+<div class="g3 t-2e74e6">
+{(home.roomCards ?? []).map((room) => (
+<a href={href({ room: { slug: room.slug } }, rooms)} class="t-fcc103">
+<img src={img(room.cardImage, 900)} alt={room.cardImage?.alt ?? ''} class="t-56d206" loading="lazy" decoding="async">
+<div class="t-bcda9e"><span class="d t-4d83ef">{room.name}</span><span class="m t-de6536">{room.cardLabel}{ui.arrow}</span></div>
+</a>
+))}
+</div>
+</div>
+</section>

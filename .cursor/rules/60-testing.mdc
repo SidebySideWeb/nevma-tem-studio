@@ -1,0 +1,12 @@
+---
+description: Tests and checks
+globs: apps/web/tests/**, apps/web/package.json
+alwaysApply: false
+---
+# Tests
+
+- `pnpm test:fidelity` (apps/web/tests/fidelity): the design gate. Needs the site running with the seed (`SITE_URL`, default `http://localhost:4321`). Never loosen its thresholds; never edit `design/build/`.
+- `pnpm test:unit` (`node --test` run through tsx; no Vitest):`links.ts`, `text.ts`, clients A–Z grouping, enquiry validation.
+- `pnpm test:e2e`: enquiry flow with Sanity and Resend mocked at the network edge (route interception), Turnstile in test mode (site key `1x00000000000000000000AA`, secret `1x0000000000000000000000000000000AA`).
+- `pnpm check`: `astro check`, `tsc --noEmit`, `node scripts/check-placeholders.mjs` (warn in dev, fail with `--strict` before launch).
+- Lighthouse (mobile) on Home and a room page before launch: Performance ≥ 90, Accessibility ≥ 95, SEO 100.

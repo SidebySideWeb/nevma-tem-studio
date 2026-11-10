@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>TEMS — design reference for the build</title>
+<link rel="stylesheet" href="build/assets/fonts.css"><style>
+body{margin:0;background:#0A0A0A;color:#F2F0EB;font-family:'Archivo',sans-serif}
+.w{max-width:1280px;margin:0 auto;padding:56px 40px 80px}
+.m{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#9A9A9A}
+h1{font-stretch:72%;font-weight:900;text-transform:uppercase;font-size:clamp(48px,8vw,112px);line-height:.86;margin:24px 0 16px}
+p{max-width:680px;line-height:1.55;color:#D9D6CE} code{font-family:'JetBrains Mono',monospace;font-size:.9em;color:#F2F0EB}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;margin-top:48px}
+.card{display:flex;flex-direction:column;gap:10px;border:1px solid rgba(242,240,235,.2);padding:12px} .card:hover{border-color:#FF4F00}
+.card img{width:100%;aspect-ratio:1440/1100;object-fit:cover;display:block}
+.n{font-family:'JetBrains Mono',monospace;font-size:12px;color:#FF4F00} .t{color:#F2F0EB;text-decoration:none;font-stretch:72%;font-weight:900;text-transform:uppercase;font-size:26px;line-height:1}
+.s{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#9A9A9A} .s a{color:#D9D6CE}
+@media(max-width:600px){.w{padding:32px 16px 56px}}
+</style></head><body><div class="w">
+<img src="build/img/tems-logo-white.png" alt="TEMS — the Ellinikon music studio" style="width:240px;height:auto">
+<h1>Design reference</h1>
+<p>The eight designed screens as exact static pages (<code>build/</code>) — pixel-identical to the approved canvas at 1440 and 390 px. The website must match these; <code>apps/web/tests/fidelity</code> checks it block by block. Text in [square brackets] is placeholder copy the studio replaces in Sanity.</p>
+<span class="m">TEMS build kit v1.0 · 9 Nov 2026</span>
+<div class="g">
+<div class="card"><a href="build/home.html"><img src="thumbs/home.jpg" alt=""></a><span class="n">01</span><a class="t" href="build/home.html">Home</a><span class="s"><a href="build/home.html">Open →</a><span><a href="screenshots/desktop/home.png">Desktop</a> · <a href="screenshots/phone/home.png">Phone</a></span></span></div>
+<div class="card"><a href="build/studio.html"><img src="thumbs/studio.jpg" alt=""></a><span class="n">02</span><a class="t" href="build/studio.html">The Studio — room page</a><span class="s"><a href="build/studio.html">Open →</a><span><a href="screenshots/desktop/studio.png">Desktop</a> · <a href="screenshots/phone/studio.png">Phone</a></span></span></div>
+<div class="card"><a href="build/about.html"><img src="thumbs/about.jpg" alt=""></a><span class="n">03</span><a class="t" href="build/about.html">About</a><span class="s"><a href="build/about.html">Open →</a><span><a href="screenshots/desktop/about.png">Desktop</a> · <a href="screenshots/phone/about.png">Phone</a></span></span></div>
+<div class="card"><a href="build/clients.html"><img src="thumbs/clients.jpg" alt=""></a><span class="n">04</span><a class="t" href="build/clients.html">Clients A–Z</a><span class="s"><a href="build/clients.html">Open →</a><span><a href="screenshots/desktop/clients.png">Desktop</a> · <a href="screenshots/phone/clients.png">Phone</a></span></span></div>
+<div class="card"><a href="build/sessions.html"><img src="thumbs/sessions.jpg" alt=""></a><span class="n">05</span><a class="t" href="build/sessions.html">Sessions</a><span class="s"><a href="build/sessions.html">Open →</a><span><a href="screenshots/desktop/sessions.png">Desktop</a> · <a href="screenshots/phone/sessions.png">Phone</a></span></span></div>
+<div class="card"><a href="build/enquire.html"><img src="thumbs/enquire.jpg" alt=""></a><span class="n">06</span><a class="t" href="build/enquire.html">Register interest</a><span class="s"><a href="build/enquire.html">Open →</a><span><a href="screenshots/desktop/enquire.png">Desktop</a> · <a href="screenshots/phone/enquire.png">Phone</a></span></span></div>
+<div class="card"><a href="build/enquire-sent.html"><img src="thumbs/enquire-sent.jpg" alt=""></a><span class="n">07</span><a class="t" href="build/enquire-sent.html">Register interest — sent</a><span class="s"><a href="build/enquire-sent.html">Open →</a><span><a href="screenshots/desktop/enquire-sent.png">Desktop</a> · <a href="screenshots/phone/enquire-sent.png">Phone</a></span></span></div>
+<div class="card"><a href="build/contact.html"><img src="thumbs/contact.jpg" alt=""></a><span class="n">08</span><a class="t" href="build/contact.html">Contact</a><span class="s"><a href="build/contact.html">Open →</a><span><a href="screenshots/desktop/contact.png">Desktop</a> · <a href="screenshots/phone/contact.png">Phone</a></span></span></div>
+</div></div></body></html>

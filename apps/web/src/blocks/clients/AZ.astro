@@ -1,0 +1,44 @@
+---
+import { groupClients } from '../../lib/clients';
+import type { Client, ClientsPage } from '../../lib/types';
+
+interface Props {
+  page: ClientsPage;
+  clients: Client[];
+  partnerUrl?: string | null;
+}
+
+const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+const { page, clients, partnerUrl } = Astro.props;
+const groups = groupClients(clients);
+const withClients = new Set(groups.map((g) => g.letter));
+const fallbackPartner = partnerUrl || '#nevma-music-site';
+---
+<section class="t-f18a6d" data-block="03-a-z">
+<div class="wrap t-c3b995">
+<div class="stack t-05bd5a">
+<span class="d t-8ef7f9">{page.azLabel}</span>
+<p class="t-a5925c">{page.intro}</p>
+</div>
+<nav aria-label="Jump to letter" class="t-833951">{LETTERS.map((letter) => withClients.has(letter) ? (
+<a href={`#letter-${letter.toLowerCase()}`} class="m t-555871">{letter}</a>
+) : (
+<span class="m t-555871">{letter}</span>
+))}</nav>
+<div id="az" class="az">
+{groups.map((group) => (
+<div class="t-c8772c" id={group.letter === '#' ? 'letter-other' : `letter-${group.letter.toLowerCase()}`}>
+<span class="d t-f8f3c5">{group.letter}</span>
+{group.clients.map((client) =>
+  client.partner ? (
+<a href={client.url || fallbackPartner} class="t-ba703b">{client.name}{' '}<span class="m t-320171">Partner</span></a>
+  ) : (
+<span class="t-67e0c6">{client.name}</span>
+  )
+)}
+</div>
+))}
+</div>
+</div>
+</section>

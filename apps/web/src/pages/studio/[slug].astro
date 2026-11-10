@@ -1,0 +1,64 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../blocks/studio/Hero.astro';
+import Facts from '../../blocks/studio/Facts.astro';
+import Room from '../../blocks/studio/Room.astro';
+import Gallery from '../../blocks/studio/Gallery.astro';
+import Equipment from '../../blocks/studio/Equipment.astro';
+import OtherRooms from '../../blocks/studio/OtherRooms.astro';
+import CtaBand from '../../blocks/shared/CtaBand.astro';
+import { roomQuery, roomsQuery } from '../../lib/queries';
+import { client, getRooms, getSettings } from '../../lib/sanity';
+import { buildPageSeo } from '../../lib/seo';
+import type { Room as RoomDoc, RoomCard } from '../../lib/types';
+
+export async function getStaticPaths() {
+  const rooms = await client.fetch<RoomCard[]>(roomsQuery);
+  return rooms.map((room) => ({ params: { slug: room.slug } }));
+}
+
+const { slug } = Astro.params;
+if (!slug) throw new Error('Missing room slug');
+
+const [room, settings, rooms] = await Promise.all([
+  client.fetch<RoomDoc>(roomQuery, { slug }),
+  getSettings(),
+  getRooms(),
+]);
+
+if (!room) throw new Error(`Room not found: ${slug}`);
+
+const shared = room.shared ?? {};
+const others = rooms.filter((r) => r.slug !== room.slug);
+const band = room.cta?.title ? room.cta : shared.cta;
+const bandTitle = (band?.title ?? '').replaceAll('{room}', room.name);
+
+const seo = buildPageSeo({
+  path: `/studio/${slug}`,
+  pageTitle: room.name,
+  seo: room.seo,
+  settings,
+  heroImage: room.heroImage,
+});
+---
+<Base
+  page="studio"
+  seo={seo}
+  active="studio"
+  footerBlock="09-footer"
+>
+<Hero room={room} shared={shared} total={rooms.length} />
+<Facts room={room} />
+<Room room={room} />
+<Gallery room={room} shared={shared} />
+<Equipment room={room} shared={shared} />
+<CtaBand
+  tone="shared"
+  title={bandTitle}
+  text={band?.text ?? undefined}
+  primary={band?.primary}
+  secondary={band?.secondary}
+  rooms={rooms}
+/>
+<OtherRooms shared={shared} others={others} />
+</Base>

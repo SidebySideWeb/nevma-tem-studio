@@ -1,0 +1,15 @@
+---
+description: How to port a design block and prove it matches
+globs: apps/web/src/blocks/**, apps/web/src/pages/**
+alwaysApply: false
+---
+# Porting a block
+
+1. Open `design/build/blocks/<page>/NN-name.html`. Paste it into the component.
+2. Replace text nodes with data (`{data.title}`), `src` with `img(...)`, `href` with `href(...)`. Keep `alt` from Sanity.
+3. Loops: keep one item's markup, wrap in `.map()`. Same classes on every item.
+4. Do not touch structure or classes. Do not reformat attributes into a different order if it changes nothing — but it is fine to.
+5. Run `pnpm test:fidelity -- -g "<page>"` with the seed loaded. Fix until it passes: heights ±2%, same text, same text styles and colours, ≤ 0.1% pixels (photos blanked).
+6. If a block cannot match for a real reason (e.g. a behaviour the static design can't show), mark it `data-fidelity-skip="reason"` **only after asking**, and log it in `docs/OPEN-QUESTIONS.md`.
+
+Common causes of failure: a lost wrapper `<div>`; whitespace between inline elements (keep the build's whitespace where text sits next to an element); `<br>` missing in a display heading; arrows " →" / " ↗" missing; an `<img>` with width/height attributes; a heading level changed; an extra class.

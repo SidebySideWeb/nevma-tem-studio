@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../blocks/about/Hero.astro';
+import Story from '../blocks/about/Story.astro';
+import Team from '../blocks/about/Team.astro';
+import Faq from '../blocks/about/Faq.astro';
+import Partner from '../blocks/about/Partner.astro';
+import Panorama from '../blocks/about/Panorama.astro';
+import { aboutQuery } from '../lib/queries';
+import { client, getSettings } from '../lib/sanity';
+import { buildPageSeo } from '../lib/seo';
+import type { AboutPage } from '../lib/types';
+
+const [about, settings] = await Promise.all([
+  client.fetch<AboutPage>(aboutQuery),
+  getSettings(),
+]);
+
+const seo = buildPageSeo({
+  path: '/about',
+  pageTitle: about.title || 'About',
+  seo: about.seo,
+  settings,
+  heroImage: about.heroImage,
+});
+---
+<Base page="about" seo={seo} active="about">
+<Hero about={about} />
+<Story about={about} />
+<Team about={about} />
+<Faq about={about} />
+<Partner about={about} settings={settings} />
+<Panorama about={about} />
+</Base>

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.vercel/
+.env
+.env.*
+!.env.example
+apps/studio/dist/
+apps/web/test-results/
+apps/web/playwright-report/
+backups/
+.DS_Store

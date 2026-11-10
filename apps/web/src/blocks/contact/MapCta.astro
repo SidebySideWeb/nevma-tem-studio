@@ -1,0 +1,42 @@
+---
+import { img } from '../../lib/image';
+import { href, type RoomRef } from '../../lib/links';
+import { lines } from '../../lib/text';
+import type { ContactPage, Settings } from '../../lib/types';
+import { ui } from '../../lib/ui';
+
+interface Props {
+  page: ContactPage;
+  settings: Settings;
+  rooms?: RoomRef[];
+}
+
+const { page, settings, rooms = [] } = Astro.props;
+const titleLines = lines(page.ctaTitle);
+const mapUrl = settings.mapUrl || '';
+const hasMap = Boolean(page.mapImage?.asset);
+---
+<section class="stack t-6fb989" data-block="04-map-cta">
+{hasMap ? (
+  mapUrl ? (
+<a href={mapUrl} class="t-0feb6e">
+<img src={img(page.mapImage, 1600)} alt={page.mapImage?.alt ?? ''} loading="lazy" decoding="async">
+</a>
+  ) : (
+<div class="t-0feb6e">
+<img src={img(page.mapImage, 1600)} alt={page.mapImage?.alt ?? ''} loading="lazy" decoding="async">
+</div>
+  )
+) : (
+<div class="ph t-0feb6e"><span class="m t-0888c0">{ui.contact.mapPlaceholder}</span></div>
+)}
+<div class="t-1dfbc0">
+<h2 class="d t-4a9edc">{titleLines.map((line, i) => <>{i > 0 && <br />}{line}</>)}</h2>
+<div class="t-d738b8">
+<p class="t-0a2cfe">{page.ctaText}</p>
+{page.ctaButton?.label ? (
+<a href={href(page.ctaButton, rooms)} class="m t-5caef7">{page.ctaButton.label}</a>
+) : null}
+</div>
+</div>
+</section>

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TEMS — The Studio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0A0A0A}
+.bw{filter:grayscale(1) contrast(1.08)}
+a{color:inherit}a:hover{color:#FF4F00}
+.d{font-family:'Archivo',sans-serif;font-stretch:72%;font-weight:900;text-transform:uppercase;line-height:.86}
+.m{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.ph{background:repeating-linear-gradient(135deg,#1b1b1b 0 10px,#141414 10px 20px)}
+.phl{background:repeating-linear-gradient(135deg,#e2dfd8 0 10px,#d9d6ce 10px 20px)}
+@media (max-width:760px){.wrap{padding-left:16px !important;padding-right:16px !important}.stack{flex-direction:column !important;align-items:stretch !important}.g2,.g3,.g4{grid-template-columns:minmax(0,1fr) !important}.hx{font-size:64px !important}.hy{font-size:44px !important}}
+</style>
+</helmet>
+<div style="font-family: 'Archivo', sans-serif; color: #F2F0EB; background: #0A0A0A; width: 100%;">
+<dc-import name="Header" active="studio" hint-size="100%,88px"></dc-import>
+
+<section style="position: relative; min-height: 640px; display: flex; align-items: flex-end; overflow: hidden;">
+<img src="img/control-room.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,0) 25%, rgba(10,10,10,.9) 100%);"></div>
+<div class="wrap" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 0 40px 64px; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px;">
+<span class="m" style="color: #D9D6CE;">Room 01 / 03</span>
+<h1 class="d hx" style="margin: 0; font-size: 200px;">Studio A</h1>
+<div class="stack" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px;">
+<p style="margin: 0; max-width: 480px; font-size: 20px; line-height: 1.45; color: #D9D6CE;">[One line on the room: the console, the character, what it is built for.]</p>
+<div style="display: flex; gap: 12px; flex-wrap: wrap;">
+<a href="Enquire.dc.html" class="m" style="background: #FF4F00; color: #0A0A0A; text-decoration: none; padding: 18px 26px; font-weight: 500;">Ask about this room</a>
+<a href="Contact.dc.html" class="m" style="border: 1px solid #F2F0EB; color: #F2F0EB; text-decoration: none; padding: 17px 26px;">Contact</a>
+</div>
+</div>
+</div>
+</section>
+
+<div style="background: #FF4F00; color: #0A0A0A;">
+<div class="wrap g4" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));">
+<div style="padding: 22px 0; display: flex; flex-direction: column; gap: 4px;"><span class="m">Console</span><span class="d" style="font-size: 30px;">[Model]</span></div>
+<div style="padding: 22px 0; display: flex; flex-direction: column; gap: 4px;"><span class="m">Live room</span><span class="d" style="font-size: 30px;">[00] m²</span></div>
+<div style="padding: 22px 0; display: flex; flex-direction: column; gap: 4px;"><span class="m">Booths</span><span class="d" style="font-size: 30px;">[00]</span></div>
+<div style="padding: 22px 0; display: flex; flex-direction: column; gap: 4px;"><span class="m">Best for</span><span class="d" style="font-size: 30px;">Tracking · Mix</span></div>
+</div>
+</div>
+
+<section style="background: #F2F0EB; color: #0A0A0A; padding: 120px 0;">
+<div class="wrap stack" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; gap: 72px; align-items: flex-start;">
+<div style="flex: 1.3 1 0; min-width: 0; display: flex; flex-direction: column; gap: 24px;">
+<span class="m" style="color: #5E5E5E;">CH 01 — The room</span>
+<h2 class="d hy" style="margin: 0; font-size: 88px;">[Headline about the room.]</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.65;">[Story of the room: when it was built, who designed the acoustics, the console's history, what makes it sound the way it does. Two short paragraphs from the client.]</p>
+<p style="margin: 0; font-size: 17px; line-height: 1.65;">[Second paragraph: spaces, isolation booths, sightlines, natural light, the lounge.]</p>
+<dl class="g3" style="margin: 16px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 2px solid #0A0A0A;">
+<div style="padding: 18px 16px 0 0; display: flex; flex-direction: column; gap: 8px;"><dt class="m" style="color: #5E5E5E;">Notable</dt><dd style="margin: 0; font-size: 15px; line-height: 1.5;">[Console, signature gear]</dd></div>
+<div style="padding: 18px 16px 0 0; display: flex; flex-direction: column; gap: 8px;"><dt class="m" style="color: #5E5E5E;">Tasks</dt><dd style="margin: 0; font-size: 15px; line-height: 1.5;">Tracking, overdubs, mixing</dd></div>
+<div style="padding: 18px 16px 0 0; display: flex; flex-direction: column; gap: 8px;"><dt class="m" style="color: #5E5E5E;">Clients</dt><dd style="margin: 0; font-size: 15px; line-height: 1.5;">NEVMA Music, [three more names]</dd></div>
+</dl>
+</div>
+<figure style="flex: 1 1 0; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+<div style="aspect-ratio: 4 / 5; border: 2px solid #0A0A0A; display: flex; align-items: center; justify-content: center; background: #F2F0EB;"><span class="m" style="color: #5E5E5E;">[Floor plan drawing]</span></div>
+<figcaption class="m" style="color: #5E5E5E;">Fig. 1 — Studio A floor plan</figcaption>
+</figure>
+</div>
+</section>
+
+<section style="background: #0A0A0A; padding: 120px 0;">
+<div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; flex-direction: column; gap: 40px;">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap;">
+<div style="display: flex; flex-direction: column; gap: 16px;"><span class="m" style="color: #9A9A9A;">CH 02</span><h2 class="d hx" style="margin: 0; font-size: 120px;">Gallery</h2></div>
+<div style="display: flex; gap: 8px; align-items: center;">
+<span class="m" style="color: #9A9A9A; margin-right: 12px;">01 / 12</span>
+<button type="button" aria-label="Previous image" style="width: 52px; height: 52px; background: transparent; border: 1px solid #F2F0EB; color: #F2F0EB; font-size: 20px; cursor: pointer;">←</button>
+<button type="button" aria-label="Next image" style="width: 52px; height: 52px; background: #F2F0EB; border: 1px solid #F2F0EB; color: #0A0A0A; font-size: 20px; cursor: pointer;">→</button>
+</div>
+</div>
+<div class="stack" style="display: flex; gap: 8px; height: 620px;">
+<img src="img/live-room.jpg" alt="Live room set up for a session" style="flex: 2 1 0; min-width: 0; min-height: 320px; width: 100%; height: 100%; object-fit: cover; display: block;">
+<div style="flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
+<img src="img/instrument-room.jpg" alt="Guitars, organ and synths" style="flex: 1 1 0; min-height: 200px; width: 100%; object-fit: cover; display: block;">
+<img src="img/mic-locker.jpg" alt="Microphone locker" style="flex: 1 1 0; min-height: 200px; width: 100%; object-fit: cover; display: block;">
+</div>
+</div>
+</div>
+</section>
+
+<section style="background: #F2F0EB; color: #0A0A0A; padding: 120px 0;">
+<div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; flex-direction: column; gap: 56px;">
+<div class="stack" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; border-bottom: 2px solid #0A0A0A; padding-bottom: 28px;">
+<div style="display: flex; flex-direction: column; gap: 16px;"><span class="m" style="color: #5E5E5E;">CH 03</span><h2 class="d hx" style="margin: 0; font-size: 120px;">Equipment</h2></div>
+<p style="margin: 0; max-width: 400px; font-size: 16px; line-height: 1.55;">What is in the room today. Need something else? Ask — we source it.</p>
+</div>
+<div class="g3" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 48px; row-gap: 56px;">
+<sc-for list="{{gear}}" as="g" hint-placeholder-count="9">
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #0A0A0A; padding-bottom: 10px;"><h3 class="d" style="margin: 0; font-size: 30px;">{{g.title}}</h3><span class="m" style="color: #5E5E5E;">{{g.ch}}</span></div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.4;">
+<sc-for list="{{g.items}}" as="it" hint-placeholder-count="4"><li>{{it}}</li></sc-for>
+</ul>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section style="background: #FF4F00; color: #0A0A0A; padding: 96px 0;">
+<div class="wrap stack" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px;">
+<div style="display: flex; flex-direction: column; gap: 18px;">
+<h2 class="d hx" style="margin: 0; font-size: 120px;">Record in<br>Studio A.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.5; max-width: 480px;">Send us your dates and project details. We reply with availability.</p>
+</div>
+<div style="display: flex; gap: 12px; flex-wrap: wrap;">
+<a href="Enquire.dc.html" class="m" style="background: #0A0A0A; color: #F2F0EB; text-decoration: none; padding: 18px 26px; font-weight: 500;">Register interest</a>
+<a href="Contact.dc.html" class="m" style="border: 1px solid #0A0A0A; color: #0A0A0A; text-decoration: none; padding: 17px 26px;">Contact us</a>
+</div>
+</div>
+</section>
+
+<section style="background: #0A0A0A; padding: 120px 0;">
+<div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; flex-direction: column; gap: 40px;">
+<h2 class="d hy" style="margin: 0; font-size: 88px;">Other rooms</h2>
+<div class="g2" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;">
+<a href="Studio.dc.html" style="text-decoration: none; display: flex; flex-direction: column; gap: 14px;">
+<img src="img/live-room.jpg" alt="Live room" style="width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block;">
+<div style="display: flex; justify-content: space-between; align-items: baseline;"><span class="d" style="font-size: 48px;">Live Room</span><span class="m" style="color: #9A9A9A;">Room 02 →</span></div>
+</a>
+<a href="Studio.dc.html" style="text-decoration: none; display: flex; flex-direction: column; gap: 14px;">
+<img src="img/lounge-team.jpg" alt="Studio lounge" style="width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block;">
+<div style="display: flex; justify-content: space-between; align-items: baseline;"><span class="d" style="font-size: 48px;">Lounge</span><span class="m" style="color: #9A9A9A;">Room 03 →</span></div>
+</a>
+</div>
+</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,620px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4700}}'>
+class Component extends DCLogic {
+renderVals() {
+const p = n => Array.from({ length: n }, () => '[Qty]× [Make / model]');
+return { gear: [
+{ ch: '01', title: 'Console', items: p(2) },
+{ ch: '02', title: 'Microphones', items: p(6) },
+{ ch: '03', title: 'Mic preamps', items: p(5) },
+{ ch: '04', title: 'Dynamics', items: p(6) },
+{ ch: '05', title: 'Equalisers', items: p(4) },
+{ ch: '06', title: 'Effects', items: p(4) },
+{ ch: '07', title: 'Monitors', items: p(3) },
+{ ch: '08', title: 'Instruments & amps', items: p(5) },
+{ ch: '09', title: 'Recording system', items: p(3) }
+] };
+}
+}
+</script>
+</body>
+</html>

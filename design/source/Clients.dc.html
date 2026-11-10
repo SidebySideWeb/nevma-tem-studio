@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TEMS — Clients</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0A0A0A}
+a{color:inherit}a:hover{color:#FF4F00}
+.d{font-family:'Archivo',sans-serif;font-stretch:72%;font-weight:900;text-transform:uppercase;line-height:.86}
+.m{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.ph{background:repeating-linear-gradient(135deg,#1b1b1b 0 10px,#141414 10px 20px)}
+.az{columns:5;column-gap:40px}
+@media (max-width:1000px){.az{columns:3}}
+@media (max-width:760px){.wrap{padding-left:16px !important;padding-right:16px !important}.stack{flex-direction:column !important;align-items:stretch !important}.g2,.g3,.g4{grid-template-columns:minmax(0,1fr) !important}.hx{font-size:64px !important}.hy{font-size:44px !important}.az{columns:2}.mos{grid-template-columns:repeat(4,minmax(0,1fr)) !important}}
+</style>
+</helmet>
+<div style="font-family: 'Archivo', sans-serif; color: #F2F0EB; background: #0A0A0A; width: 100%;">
+<dc-import name="Header" active="clients" hint-size="100%,88px"></dc-import>
+
+<section style="position: relative; overflow: hidden;">
+<div class="mos" style="display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 4px; opacity: .55;">
+<sc-for list="{{covers}}" as="c" hint-placeholder-count="30"><img src="{{c}}" alt="" style="width: 100%; aspect-ratio: 1; object-fit: cover; display: block;"></sc-for>
+</div>
+<div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,10,.2) 0%, rgba(10,10,10,.95) 100%);"></div>
+<div class="wrap" style="position: absolute; left: 0; right: 0; bottom: 0; max-width: 1280px; margin: 0 auto; padding: 0 40px 56px; box-sizing: border-box; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap;">
+<h1 class="d hx" style="margin: 0; font-size: 200px;">Clients</h1>
+<span class="m" style="color: #D9D6CE;">[Client release covers]</span>
+</div>
+</section>
+
+<section style="background: #F2F0EB; color: #0A0A0A; padding: 112px 0 120px;">
+<div class="wrap" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; flex-direction: column; gap: 56px;">
+<div class="stack" style="display: flex; gap: 48px; align-items: center;">
+<span class="d" style="font-size: 180px; color: #0A0A0A; flex: 0 0 auto;">A–Z</span>
+<p style="margin: 0; font-size: 26px; line-height: 1.3; font-weight: 700; max-width: 640px;">Every artist, producer, engineer and label who has made a record at TEMS. [Adjust the line to the client's voice.]</p>
+</div>
+<nav aria-label="Jump to letter" style="display: flex; flex-wrap: wrap; gap: 4px; border-top: 2px solid #0A0A0A; border-bottom: 1px solid #BDB9B0; padding: 14px 0;">
+<sc-for list="{{letters}}" as="l" hint-placeholder-count="26"><a href="#az" class="m" style="text-decoration: none; min-width: 34px; min-height: 34px; display: inline-flex; align-items: center; justify-content: center; font-weight: 500;">{{l.k}}</a></sc-for>
+</nav>
+<div id="az" class="az">
+<sc-for list="{{letters}}" as="l" hint-placeholder-count="26">
+<div style="break-inside: avoid; margin-bottom: 36px; display: flex; flex-direction: column; gap: 6px;">
+<span class="d" style="font-size: 56px; margin-bottom: 8px;">{{l.k}}</span>
+<sc-if value="{{l.nevma}}" hint-placeholder-val="{{false}}"><a href="#nevma-music-site" style="font-size: 14px; line-height: 1.4; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">NEVMA Music <span class="m" style="font-size: 10px; background: #0A0A0A; color: #F2F0EB; padding: 3px 6px;">Partner</span></a></sc-if>
+<sc-for list="{{l.names}}" as="n" hint-placeholder-count="4"><span style="font-size: 14px; line-height: 1.4;">{{n}}</span></sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section style="background: #FF4F00; color: #0A0A0A; padding: 96px 0;">
+<div class="wrap stack" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px;">
+<div style="display: flex; flex-direction: column; gap: 18px;">
+<h2 class="d hx" style="margin: 0; font-size: 120px;">Your name<br>goes here next.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.5; max-width: 480px;">Tell us about your record. We reply with availability and the right room.</p>
+</div>
+<div style="display: flex; gap: 12px; flex-wrap: wrap;">
+<a href="Enquire.dc.html" class="m" style="background: #0A0A0A; color: #F2F0EB; text-decoration: none; padding: 18px 26px; font-weight: 500;">Register interest</a>
+<a href="Contact.dc.html" class="m" style="border: 1px solid #0A0A0A; color: #0A0A0A; text-decoration: none; padding: 17px 26px;">Contact us</a>
+</div>
+</div>
+</section>
+
+<dc-import name="Footer" hint-size="100%,620px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3100}}'>
+class Component extends DCLogic {
+renderVals() {
+const counts = [6,4,7,3,2,3,4,3,1,5,3,4,6,2,1,4,1,3,7,5,1,2,3,1,1,1];
+const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map((k, i) => ({ k, nevma: k === 'N', names: Array.from({ length: counts[i] }, () => '[Artist / client]') }));
+const ids = ['standin-cover-low-tide-hearts.jpg','standin-cover-cassettes.jpg','standin-cover-paper-moons.jpg','standin-cover-collage.jpg','standin-cover-lasers.jpg','standin-cover-illusions-1.jpg','standin-cover-neon-room.jpg','standin-cover-stage-lights.jpg','standin-cover-festival.jpg','standin-cover-dj.jpg'];
+return { letters, covers: Array.from({ length: 30 }, (_, i) => 'img/' + ids[(i * 7) % ids.length]) };
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+---
+import { img } from '../../lib/image';
+import { href, type RoomRef } from '../../lib/links';
+import type { Settings } from '../../lib/types';
+import { ui } from '../../lib/ui';
+
+interface Props {
+  settings: Settings;
+  rooms: RoomRef[];
+  /** Design block id — last block number differs per page. */
+  block?: string;
+}
+
+const { settings, rooms, block = '08-footer' } = Astro.props;
+const year = new Date().getFullYear();
+const studioHref = href({ page: 'studio' }, rooms);
+const partnerHref = settings.partnerUrl || '#nevma-music-site';
+const logoSrc = img(settings.logoWhite);
+const partnerLogoSrc = img(settings.partnerLogo);
+---
+<footer class="t-92e408" data-block={block}>
+<div class="t-7b23d5">
+<div class="t-ab405a">
+<div class="t-1ccf7f">
+<img src={logoSrc} alt={settings.studioName} class="t-2cf89d">
+<p class="t-1e6492">{settings.footerText}</p>
+<a href={partnerHref} class="t-5703cd">{settings.partnerFooterLabel}<img src={partnerLogoSrc} alt={settings.partnerName ?? ''} class="t-f03d8b"><span aria-hidden="true">↗</span></a>
+</div>
+<div class="t-62e6d2">
+<nav aria-label="Explore" class="t-5b9ea7">
+<span class="t-ac7767">{ui.footer.explore}</span>
+<a href={studioHref} class="t-863827">{ui.nav.studio}</a>
+<a href={href({ page: 'about' })} class="t-863827">{ui.nav.about}</a>
+<a href={href({ page: 'clients' })} class="t-863827">{ui.nav.clients}</a>
+<a href={href({ page: 'sessions' })} class="t-863827">{ui.nav.sessions}</a>
+</nav>
+<nav aria-label="Work with us" class="t-5b9ea7">
+<span class="t-ac7767">{ui.footer.work}</span>
+<a href={href({ page: 'enquire' })} class="t-863827">{settings.headerCta}</a>
+<a href={href({ page: 'contact' })} class="t-863827">{ui.nav.contact}</a>
+{(settings.socials ?? []).map((s) => (
+<a href={s.url ?? '#'} class="t-863827">{s.label}{ui.external}</a>
+))}
+<a href={partnerHref} class="t-863827">{settings.partnerName}{ui.external}</a>
+</nav>
+<div class="t-d64b36">
+<span class="t-ac7767">{ui.footer.studio}</span>
+<span>{settings.street}</span>
+<span>{settings.area}, {settings.city}, {settings.country}</span>
+<a href={`mailto:${settings.email}`} class="t-52ad68">{settings.emailDisplay}</a>
+<span>{settings.phoneDisplay}</span>
+</div>
+</div>
+</div>
+<div class="t-1637ef">
+<span>© {year} {settings.studioName}</span>
+<span class="t-e2bf05"><a href="/legal/privacy" class="t-717e45">{ui.footer.privacy}</a><a href="/legal/cookies" class="t-717e45">{ui.footer.cookies}</a></span>
+</div>
+</div>
+</footer>

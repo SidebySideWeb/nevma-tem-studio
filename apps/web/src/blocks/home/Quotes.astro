@@ -1,0 +1,27 @@
+---
+import { lines } from '../../lib/text';
+import type { HomePage } from '../../lib/types';
+
+interface Props {
+  home: HomePage;
+}
+
+const { home } = Astro.props;
+const titleLines = lines(home.quotes?.title);
+---
+<section class="t-5decf6" data-block="06-quotes">
+<div class="wrap t-861208">
+<div class="t-8ef476">
+<span class="m t-717e45">{home.quotes?.chapter}</span>
+<h2 class="d hx t-1bc7a0">{titleLines.map((line, i) => <>{i > 0 && <br />}{line}</>)}</h2>
+</div>
+<div class="g3 t-0ba838">
+{(home.quoteItems ?? []).map((item) => (
+<figure class="t-bbad2b">
+<blockquote class="t-a8877b">“{item.quote}”</blockquote>
+<figcaption class="m t-717e45">{item.name} — {item.role}</figcaption>
+</figure>
+))}
+</div>
+</div>
+</section>

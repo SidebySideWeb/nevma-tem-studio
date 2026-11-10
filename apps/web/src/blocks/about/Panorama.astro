@@ -1,0 +1,11 @@
+---
+import { img } from '../../lib/image';
+import type { AboutPage } from '../../lib/types';
+
+interface Props {
+  about: AboutPage;
+}
+
+const { about } = Astro.props;
+---
+<img src={img(about.panorama, 2400)} alt={about.panorama?.alt ?? ''} class="t-11a151" data-block="07-panorama" loading="lazy" decoding="async">

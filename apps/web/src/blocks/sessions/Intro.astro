@@ -1,0 +1,26 @@
+---
+import { img } from '../../lib/image';
+import type { SessionsPage } from '../../lib/types';
+
+interface Props {
+  page: SessionsPage;
+}
+
+const { page } = Astro.props;
+---
+<section class="stack t-66c0ce" data-block="03-intro">
+<div class="t-d6aa04">
+{(page.introItems ?? []).map((item, i) => (
+<div class="t-6a014f">
+<span class="m t-377073">{String(i + 1).padStart(2, '0')}</span>
+<h2 class="d hy t-d71f65">{item.title}</h2>
+<p class="t-601380">{item.text}</p>
+</div>
+))}
+</div>
+<div class="g2 t-b8fb11">
+{(page.introImages ?? []).map((photo) => (
+<img src={img(photo, 900)} alt={photo.alt ?? ''} class="t-797afd" loading="lazy" decoding="async">
+))}
+</div>
+</section>

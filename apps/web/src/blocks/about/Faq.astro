@@ -1,0 +1,19 @@
+---
+import FaqList from '../shared/FaqList.astro';
+import type { AboutPage } from '../../lib/types';
+
+interface Props {
+  about: AboutPage;
+}
+
+const { about } = Astro.props;
+---
+<section class="t-4134c4" data-block="05-faq">
+<div class="wrap stack t-f1f86d">
+<div class="t-835ab7">
+<h2 class="d hy t-117a6d">{about.faqTitle}</h2>
+<p class="t-59c245">{about.faqIntro}</p>
+</div>
+<FaqList items={about.faqItems ?? []} tone="paper" />
+</div>
+</section>

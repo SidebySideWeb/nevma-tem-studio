@@ -1,0 +1,16 @@
+---
+import type { Room } from '../../lib/types';
+
+interface Props {
+  room: Room;
+}
+
+const { room } = Astro.props;
+---
+<div class="t-46d500" data-block="03-facts">
+<div class="wrap g4 t-04300f">
+{(room.facts ?? []).map((fact) => (
+<div class="t-29ca84"><span class="m">{fact.label}</span><span class="d t-630fae">{fact.value}</span></div>
+))}
+</div>
+</div>
