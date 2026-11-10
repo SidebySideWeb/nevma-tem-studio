@@ -45,6 +45,7 @@ Site deploys themselves are **Vercel Git integration** (push → preview/product
 ## Vercel project notes
 - Root directory: `apps/web`. `vercel.json` sets immutable cache headers for `/assets/*`. `/studio` → lowest-order room is an Astro `redirects` entry (not duplicated in `vercel.json`).
 - Enable **Web Analytics** in the project dashboard; `@vercel/analytics` loads only when `VERCEL_ENV === 'production'`.
+- **Password gate (same as Nevma Music / VIP Transfers):** set `SITE_PASSWORD` on Preview and/or Production. `apps/web/middleware.ts` is Vercel Routing Middleware (HTTP Basic Auth). Unset = open. This is not Vercel’s paid Password Protection add-on.
 
 ## Costs (client pays running costs — decided)
 Sanity Free · Vercel under the NEVMA Pro team · Resend (shared Pro) · Turnstile free · domain. Nothing new beyond the domain.

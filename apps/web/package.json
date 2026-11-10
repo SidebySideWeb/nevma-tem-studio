@@ -25,6 +25,7 @@
     "@sanity/client": "^8.15.1",
     "@sanity/image-url": "^2.1.1",
     "@vercel/analytics": "^2.0.1",
+    "@vercel/functions": "^3.10.6",
     "astro": "^7.4.8",
     "resend": "^6.37.0"
   },
