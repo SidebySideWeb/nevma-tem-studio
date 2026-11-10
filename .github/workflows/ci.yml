@@ -41,17 +41,15 @@ jobs:
       - name: Write root .env for Astro/Vite
         # Astro config + import.meta.env read the repo-root .env (same as local).
         run: |
-          cat > .env <<EOF
-          PUBLIC_SITE_URL=$PUBLIC_SITE_URL
-          PUBLIC_SANITY_PROJECT_ID=$PUBLIC_SANITY_PROJECT_ID
-          PUBLIC_SANITY_DATASET=$PUBLIC_SANITY_DATASET
-          SANITY_API_VERSION=$SANITY_API_VERSION
-          SANITY_VIEWER_TOKEN=$SANITY_VIEWER_TOKEN
-          SANITY_STUDIO_PROJECT_ID=$SANITY_STUDIO_PROJECT_ID
-          SANITY_STUDIO_DATASET=$SANITY_STUDIO_DATASET
-          EOF
-          # Strip accidental leading whitespace from YAML-indented heredoc lines.
-          sed -i 's/^[[:space:]]*//' .env
+          {
+            echo "PUBLIC_SITE_URL=$PUBLIC_SITE_URL"
+            echo "PUBLIC_SANITY_PROJECT_ID=$PUBLIC_SANITY_PROJECT_ID"
+            echo "PUBLIC_SANITY_DATASET=$PUBLIC_SANITY_DATASET"
+            echo "SANITY_API_VERSION=$SANITY_API_VERSION"
+            echo "SANITY_VIEWER_TOKEN=$SANITY_VIEWER_TOKEN"
+            echo "SANITY_STUDIO_PROJECT_ID=$SANITY_STUDIO_PROJECT_ID"
+            echo "SANITY_STUDIO_DATASET=$SANITY_STUDIO_DATASET"
+          } > .env
 
       - run: pnpm install --frozen-lockfile
 
