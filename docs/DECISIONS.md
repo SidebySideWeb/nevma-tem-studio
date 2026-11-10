@@ -113,6 +113,9 @@
 ## Proposed while adding site password (10 Nov 2026)
 - Same gate as Nevma Music / Elite Protection: Vercel Routing Middleware at `apps/web/middleware.ts` + env `SITE_PASSWORD` (HTTP Basic Auth; username ignored). Needs `@vercel/functions` for `next()`. Not Vercel’s paid Password Protection.
 
+## Proposed while adding interaction motion (10 Nov 2026)
+- Hover / active feedback lives only in `additions.css` (nav underline, CTA brightness + press scale, card image opacity, FAQ/gallery/chip press). Resting styles untouched for fidelity. Gated with `(hover: hover) and (pointer: fine)`; reduced-motion still kills transitions. DESIGN-SYSTEM said designed buttons have no hover — overridden for client request; canvas resting state unchanged.
+
 ## Proposed while QA / launch checks (10 Nov 2026)
 - `Base` wraps the page slot in `<main class="page-main">` with `display: contents` in `additions.css` so Lighthouse gets a main landmark without layout/fidelity change; Legal/404 no longer nest their own `<main>`.
 - Home and room heroes use `srcset` (800/1600/2400) + `sizes="100vw"` + a matching `<link rel="preload" as="image">` so mobile Lighthouse LCP stays under 2.5 s; fidelity blanks images so CDN widths do not affect pixel diffs.

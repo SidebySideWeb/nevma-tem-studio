@@ -26,6 +26,98 @@ textarea:focus-visible,
   outline-offset: 2px;
 }
 
+/*
+ * Interaction feedback — design shows resting state only (DESIGN-SYSTEM:
+ * designed buttons have no hover). Resting styles unchanged for fidelity;
+ * transform/opacity/filter only; gated to fine pointers.
+ */
+@media (hover: hover) and (pointer: fine) {
+  /* Header nav: inactive links grow the REC underline toward the active look. */
+  header nav a.t-baae53 {
+    transition:
+      border-bottom-color 150ms ease,
+      color 150ms ease;
+  }
+  header nav a.t-baae53:hover {
+    border-bottom-color: #ff4f00;
+  }
+
+  /* Filled + outline CTAs (header, bands, rooms, enquire submit). */
+  a.t-4d79dd,
+  a.t-982321,
+  a.t-5caef7,
+  a.t-570572,
+  a.t-723ed2,
+  a.t-0a1dcd,
+  a.t-225c4e,
+  a.t-fdcac4,
+  button.t-c0252b {
+    transition:
+      transform 120ms ease,
+      filter 150ms ease;
+  }
+  a.t-4d79dd:hover,
+  a.t-982321:hover,
+  a.t-5caef7:hover,
+  a.t-570572:hover,
+  a.t-723ed2:hover,
+  button.t-c0252b:hover {
+    filter: brightness(1.08);
+  }
+  a.t-0a1dcd:hover,
+  a.t-225c4e:hover,
+  a.t-fdcac4:hover {
+    filter: brightness(1.15);
+  }
+  a.t-4d79dd:active,
+  a.t-982321:active,
+  a.t-5caef7:active,
+  a.t-570572:active,
+  a.t-723ed2:active,
+  a.t-0a1dcd:active,
+  a.t-225c4e:active,
+  a.t-fdcac4:active,
+  button.t-c0252b:active {
+    transform: scale(0.98);
+    filter: brightness(0.96);
+  }
+
+  /* Room cards + cover tiles: dim the photo slightly on hover. */
+  a.t-fcc103 img,
+  a.t-0f7d5f img {
+    transition: opacity 180ms ease;
+  }
+  a.t-fcc103:hover img,
+  a.t-0f7d5f:hover img {
+    opacity: 0.88;
+  }
+
+  /* FAQ row + gallery controls: press feedback. */
+  [data-faq] .t-f48ee9,
+  [data-gallery] button {
+    transition: opacity 120ms ease, transform 120ms ease;
+  }
+  [data-faq] .t-f48ee9:hover,
+  [data-gallery] button:hover {
+    opacity: 0.75;
+  }
+  [data-faq] .t-f48ee9:active,
+  [data-gallery] button:active {
+    transform: scale(0.98);
+  }
+
+  /* Project-type chips on enquire. */
+  [data-project-types] button {
+    transition: opacity 120ms ease, transform 120ms ease;
+  }
+  [data-project-types] button:hover {
+    opacity: 0.85;
+  }
+  [data-project-types] button:active {
+    transform: scale(0.97);
+  }
+}
+
 /* Honour reduced motion: design has no motion preference rules. */
 @media (prefers-reduced-motion: reduce) {
   * {

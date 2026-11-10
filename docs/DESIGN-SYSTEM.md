@@ -35,4 +35,5 @@ echoes the TEMS mark; mono labels read like tape-box notes; one signal-orange ac
 - Header links: inactive `t-baae53`, active `t-8b9489` (only the underline colour differs).
 - Page-scoped rules: `.pg-<page>` prefixes the rules that differ between pages (e.g. `.hy` is 40px on Sessions phones, 44px elsewhere). The body class must match the design page (room pages `pg-studio`, `/enquire/thanks` `pg-enquire`).
 - Buttons: orange (`#FF4F00` bg, ink text), ink (ink bg, paper text), paper (paper bg, ink text), outline (1px border, 17px vertical padding so heights match the 18px filled buttons).
-- Hover: only plain links turn orange (`a:hover`); designed buttons don't change. Focus: 2px orange outline, offset 2px.
+- Hover (design/canvas): only plain links turn orange (`a:hover`); designed buttons don't change. Focus: 2px orange outline, offset 2px.
+- Hover (site `additions.css`, optional): nav underline, CTA brightness/press, card fade — resting paint unchanged for fidelity.
