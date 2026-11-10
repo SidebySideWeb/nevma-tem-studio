@@ -27,15 +27,20 @@ Workflows live in `.github/workflows/`. Repo secrets to add once:
 
 | Secret | Used by | Notes |
 | --- | --- | --- |
+| `PUBLIC_SANITY_PROJECT_ID` | `ci.yml`, `retention.yml` | Same as site env |
+| `PUBLIC_SANITY_DATASET` | `ci.yml` | Usually `production` |
+| `SANITY_VIEWER_TOKEN` | `ci.yml` | Viewer token so `pnpm build` can read the private dataset |
 | `VERCEL_DEPLOY_HOOK` | `rebuild.yml` (+ Sanity webhook URL) | Vercel → Settings → Git → Deploy Hooks |
 | `SANITY_BACKUP_TOKEN` | `backup.yml` | Viewer token `tems-backup` |
 | `RCLONE_CONFIG` | `backup.yml` | Full `rclone.conf` text; remote **must** be named `drive` → folder `TEMS/backups` |
-| `PUBLIC_SANITY_PROJECT_ID` | `retention.yml` | Same as site env |
 | `SANITY_WRITE_TOKEN` | `retention.yml` | Editor token `tems-web-forms` |
 
+- `ci.yml`: on PR + push to `main` — install, `astro check`/`tsc`, unit tests, production build (needs Sanity secrets).
 - `rebuild.yml`: daily 03:10 UTC (+ manual) `POST` deploy hook.
 - `backup.yml`: weekly Monday 02:00 UTC (+ manual): `npx sanity@6.22.0 dataset export production` → artifact 90 days → `rclone copy` to `drive:TEMS/backups` as `tems-production-YYYY-MM-DD.tar.gz`.
 - `retention.yml`: weekly Monday 02:30 UTC (+ manual): `node apps/web/scripts/retention.mjs`.
+
+Site deploys themselves are **Vercel Git integration** (push → preview/production), same pattern as Nevma Music — not a custom deploy Action.
 
 ## Vercel project notes
 - Root directory: `apps/web`. `vercel.json` sets immutable cache headers for `/assets/*`. `/studio` → lowest-order room is an Astro `redirects` entry (not duplicated in `vercel.json`).

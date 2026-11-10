@@ -1,0 +1,42 @@
+# PR / main checks — same shape as Nevma Music (install → check → unit → build).
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.34.9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm --filter web exec astro check && pnpm --filter web exec tsc --noEmit
+
+      - name: Unit tests
+        run: pnpm test:unit
+
+      - name: Build
+        env:
+          ASTRO_TELEMETRY_DISABLED: '1'
+          PUBLIC_SITE_URL: https://example.com
+          PUBLIC_SANITY_PROJECT_ID: ${{ secrets.PUBLIC_SANITY_PROJECT_ID }}
+          PUBLIC_SANITY_DATASET: ${{ secrets.PUBLIC_SANITY_DATASET || 'production' }}
+          SANITY_API_VERSION: ${{ secrets.SANITY_API_VERSION || '2025-10-01' }}
+          SANITY_VIEWER_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
+          SANITY_STUDIO_PROJECT_ID: ${{ secrets.PUBLIC_SANITY_PROJECT_ID }}
+          SANITY_STUDIO_DATASET: ${{ secrets.PUBLIC_SANITY_DATASET || 'production' }}
+        run: pnpm build
