@@ -6,7 +6,10 @@ dist/
 .env.*
 !.env.example
 apps/studio/dist/
+apps/studio/.sanity/
 apps/web/test-results/
 apps/web/playwright-report/
 backups/
+*.tsbuildinfo
 .DS_Store
+Thumbs.db

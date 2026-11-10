@@ -41,7 +41,7 @@
 - Port 3333 was already serving Studio (HTTP 200). A second `pnpm --filter studio dev` failed with "port in use"; the existing process was left running. The Studio UI shows the login screen until Dimitris signs in (Google / GitHub / email). Content was confirmed with GROQ instead of a logged-in UI walkthrough.
 
 ## Proposed while building the foundation (10 Nov 2026)
-- Logos for Header/Footer temporarily live in `apps/web/public/img/` (byte copies of `design/build/img/`). Prompt 04 swaps them for Sanity CDN URLs; leave the files until then so `/` matches the design without CMS image wiring.
+- Logos for Header/Footer temporarily lived in `apps/web/public/img/` until Prompt 04; removed after Sanity CDN wiring (local copies were unused).
 - Seed `siteSettings` has no `partnerUrl`. Footer partner links use the design placeholder `#nevma-music-site` until the client fills the field (OPEN-QUESTIONS Q7).
 - `Base.astro` does not put `class="js"` in the HTML source; a one-line head script adds it (so `[data-js-only]` stays hidden without JS, matching the gallery note in PAGES.md).
 - Footer `data-block` defaults to `08-footer` (Home). Other pages pass their own last-block id when those pages are built. Same for CtaBand (`07-cta` default).
