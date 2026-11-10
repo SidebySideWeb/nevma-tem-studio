@@ -1,4 +1,5 @@
 // @ts-check
+import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import vercel from '@astrojs/vercel';
@@ -6,9 +7,11 @@ import sitemap from '@astrojs/sitemap';
 import { createClient } from '@sanity/client';
 
 // The kit's .env is at the repo root. Astro evaluates this file before it
-// loads .env, and by default only looks in apps/web.
+// loads .env, and by default only looks in apps/web. Skip when missing (CI
+// injects secrets as process.env instead).
 const repoRoot = fileURLToPath(new URL('../..', import.meta.url));
-process.loadEnvFile(new URL('../../.env', import.meta.url));
+const rootEnv = new URL('../../.env', import.meta.url);
+if (existsSync(rootEnv)) process.loadEnvFile(rootEnv);
 
 /** Lowest-order room → `/studio` 301. Config redirects become real HTTP redirects with the Vercel adapter (page-level Astro.redirect is only a meta refresh in static). */
 /** @returns {Promise<Record<string, string | { status: 301 | 302 | 303 | 307 | 308; destination: string }>>} */
