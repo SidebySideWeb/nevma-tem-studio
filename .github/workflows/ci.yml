@@ -11,12 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ASTRO_TELEMETRY_DISABLED: '1'
+      # Project ID / dataset are public; secrets optional override.
       PUBLIC_SITE_URL: https://example.com
-      PUBLIC_SANITY_PROJECT_ID: ${{ secrets.PUBLIC_SANITY_PROJECT_ID }}
+      PUBLIC_SANITY_PROJECT_ID: ${{ secrets.PUBLIC_SANITY_PROJECT_ID || 'btd6vnus' }}
       PUBLIC_SANITY_DATASET: ${{ secrets.PUBLIC_SANITY_DATASET || 'production' }}
       SANITY_API_VERSION: ${{ secrets.SANITY_API_VERSION || '2025-10-01' }}
       SANITY_VIEWER_TOKEN: ${{ secrets.SANITY_VIEWER_TOKEN }}
-      SANITY_STUDIO_PROJECT_ID: ${{ secrets.PUBLIC_SANITY_PROJECT_ID }}
+      SANITY_STUDIO_PROJECT_ID: ${{ secrets.PUBLIC_SANITY_PROJECT_ID || 'btd6vnus' }}
       SANITY_STUDIO_DATASET: ${{ secrets.PUBLIC_SANITY_DATASET || 'production' }}
     steps:
       - uses: actions/checkout@v4
@@ -29,6 +30,26 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: pnpm
+
+      - name: Require Sanity viewer token
+        run: |
+          if [ -z "$SANITY_VIEWER_TOKEN" ]; then
+            echo "::error::Add repo secret SANITY_VIEWER_TOKEN (Viewer token for project btd6vnus). PUBLIC_SANITY_* are optional — defaults are baked in."
+            exit 1
+          fi
+
+      - name: Write root .env for Astro/Vite
+        # Astro config + import.meta.env read the repo-root .env (same as local).
+        run: |
+          cat > .env <<EOF
+          PUBLIC_SITE_URL=${PUBLIC_SITE_URL}
+          PUBLIC_SANITY_PROJECT_ID=${PUBLIC_SANITY_PROJECT_ID}
+          PUBLIC_SANITY_DATASET=${PUBLIC_SANITY_DATASET}
+          SANITY_API_VERSION=${SANITY_API_VERSION}
+          SANITY_VIEWER_TOKEN=${SANITY_VIEWER_TOKEN}
+          SANITY_STUDIO_PROJECT_ID=${SANITY_STUDIO_PROJECT_ID}
+          SANITY_STUDIO_DATASET=${SANITY_STUDIO_DATASET}
+          EOF
 
       - run: pnpm install --frozen-lockfile
 
