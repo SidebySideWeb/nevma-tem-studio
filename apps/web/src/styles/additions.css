@@ -27,22 +27,31 @@ textarea:focus-visible,
 }
 
 /*
- * Interaction feedback — design shows resting state only (DESIGN-SYSTEM:
- * designed buttons have no hover). Resting styles unchanged for fidelity;
- * transform/opacity/filter only; gated to fine pointers.
+ * Interaction feedback — design shows resting state only. Resting paint
+ * unchanged for fidelity (tests also force animation/transition: none).
+ * transform / opacity / filter only; fine-pointer hover gate.
  */
 @media (hover: hover) and (pointer: fine) {
-  /* Header nav: inactive links grow the REC underline toward the active look. */
-  header nav a.t-baae53 {
+  /* Main nav: REC underline + lift + orange (inactive + active). */
+  header nav a.t-baae53,
+  header nav a.t-8b9489 {
     transition:
-      border-bottom-color 150ms ease,
-      color 150ms ease;
+      border-bottom-color 180ms ease,
+      color 180ms ease,
+      transform 180ms cubic-bezier(0.23, 1, 0.32, 1);
   }
-  header nav a.t-baae53:hover {
+  header nav a.t-baae53:hover,
+  header nav a.t-8b9489:hover {
     border-bottom-color: #ff4f00;
+    color: #ff4f00;
+    transform: translateY(-2px);
+  }
+  header nav a.t-baae53:active,
+  header nav a.t-8b9489:active {
+    transform: translateY(0);
   }
 
-  /* Filled + outline CTAs (header, bands, rooms, enquire submit). */
+  /* Header enquire CTA + page CTAs: lift on hover, press on click. */
   a.t-4d79dd,
   a.t-982321,
   a.t-5caef7,
@@ -53,8 +62,8 @@ textarea:focus-visible,
   a.t-fdcac4,
   button.t-c0252b {
     transition:
-      transform 120ms ease,
-      filter 150ms ease;
+      transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
+      filter 160ms ease;
   }
   a.t-4d79dd:hover,
   a.t-982321:hover,
@@ -62,12 +71,14 @@ textarea:focus-visible,
   a.t-570572:hover,
   a.t-723ed2:hover,
   button.t-c0252b:hover {
-    filter: brightness(1.08);
+    transform: translateY(-3px);
+    filter: brightness(1.1);
   }
   a.t-0a1dcd:hover,
   a.t-225c4e:hover,
   a.t-fdcac4:hover {
-    filter: brightness(1.15);
+    transform: translateY(-3px);
+    filter: brightness(1.2);
   }
   a.t-4d79dd:active,
   a.t-982321:active,
@@ -78,8 +89,8 @@ textarea:focus-visible,
   a.t-225c4e:active,
   a.t-fdcac4:active,
   button.t-c0252b:active {
-    transform: scale(0.98);
-    filter: brightness(0.96);
+    transform: translateY(0) scale(0.97);
+    filter: brightness(0.95);
   }
 
   /* Room cards + cover tiles: dim the photo slightly on hover. */
@@ -115,6 +126,31 @@ textarea:focus-visible,
   }
   [data-project-types] button:active {
     transform: scale(0.97);
+  }
+}
+
+/*
+ * Scroll reveals — CSS scroll-driven (no JS). Header/footer stay static.
+ * Fidelity injects animation:none so screenshots stay pixel-exact.
+ */
+@keyframes tems-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-block]:not([data-block='01-header']):not([data-block$='-footer']) {
+      animation: tems-reveal 0.55s cubic-bezier(0.23, 1, 0.32, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 28%;
+    }
   }
 }
 

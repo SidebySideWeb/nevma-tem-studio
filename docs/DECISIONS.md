@@ -114,7 +114,7 @@
 - Same gate as Nevma Music / Elite Protection: Vercel Routing Middleware at `apps/web/middleware.ts` + env `SITE_PASSWORD` (HTTP Basic Auth; username ignored). Needs `@vercel/functions` for `next()`. Not Vercel’s paid Password Protection.
 
 ## Proposed while adding interaction motion (10 Nov 2026)
-- Hover / active feedback lives only in `additions.css` (nav underline, CTA brightness + press scale, card image opacity, FAQ/gallery/chip press). Resting styles untouched for fidelity. Gated with `(hover: hover) and (pointer: fine)`; reduced-motion still kills transitions. DESIGN-SYSTEM said designed buttons have no hover — overridden for client request; canvas resting state unchanged.
+- Hover / active feedback lives only in `additions.css` (nav underline + lift + orange, CTA lift/brightness/press, card image scale, FAQ/gallery/chip press). Scroll reveals via CSS `animation-timeline: view()` on content `data-block`s (not header/footer); no extra JS. Fidelity already forces `animation/transition: none`, so screenshots stay exact. `(hover: hover) and (pointer: fine)` + reduced-motion gates. DESIGN-SYSTEM said designed buttons have no hover — overridden for client request.
 
 ## Proposed while QA / launch checks (10 Nov 2026)
 - `Base` wraps the page slot in `<main class="page-main">` with `display: contents` in `additions.css` so Lighthouse gets a main landmark without layout/fidelity change; Legal/404 no longer nest their own `<main>`.
