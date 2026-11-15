@@ -113,6 +113,9 @@
 ## Proposed while adding site password (10 Nov 2026)
 - Same gate as Nevma Music / Elite Protection: Vercel Routing Middleware at `apps/web/middleware.ts` + env `SITE_PASSWORD` (HTTP Basic Auth; username ignored). Needs `@vercel/functions` for `next()`. Not Vercel’s paid Password Protection.
 
+## Proposed while cleaning the repo (15 Nov 2026)
+- Dropped `design/source/` (canvas originals) and `design/screenshots/` (~29 MB) — not needed at runtime or for fidelity (`design/build/` remains). Kept `design/thumbs/` for `design/index.html`. Removed empty `.code-workspace`.
+
 ## Proposed while adding interaction motion (10 Nov 2026)
 - Hover / active feedback lives only in `additions.css` (nav underline + lift + orange, CTA lift/brightness/press, card image scale, FAQ/gallery/chip press). Scroll reveals via CSS `animation-timeline: view()` on content `data-block`s (not header/footer); no extra JS. Fidelity already forces `animation/transition: none`, so screenshots stay exact. `(hover: hover) and (pointer: fine)` + reduced-motion gates. DESIGN-SYSTEM said designed buttons have no hover — overridden for client request.
 
