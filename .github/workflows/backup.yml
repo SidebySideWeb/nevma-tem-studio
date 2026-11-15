@@ -143,16 +143,20 @@ jobs:
           fi
 
           echo "Retention: keep 8 weekly, 12 monthly (deletes may fail under object lock)…"
-          aws s3 ls "s3://${BACKUP_S3_BUCKET}/${BACKUP_PREFIX}/weekly/" \
-            --endpoint-url "$BACKUP_S3_ENDPOINT" --region auto \
+          # Listing a missing prefix (e.g. first run, no monthly/ yet) exits 1 on R2 —
+          # tolerate that; only upload/verify steps must stay strict.
+          WEEKLY_LIST=$(aws s3 ls "s3://${BACKUP_S3_BUCKET}/${BACKUP_PREFIX}/weekly/" \
+            --endpoint-url "$BACKUP_S3_ENDPOINT" --region auto 2>/dev/null || true)
+          printf '%s\n' "$WEEKLY_LIST" \
             | awk '/PRE / {print $2}' | sed 's|/$||' | sort -r | tail -n +9 \
             | while read -r d; do
                 [ -z "$d" ] && continue
                 aws s3 rm "s3://${BACKUP_S3_BUCKET}/${BACKUP_PREFIX}/weekly/${d}/" \
                   --recursive --endpoint-url "$BACKUP_S3_ENDPOINT" --region auto || true
               done
-          aws s3 ls "s3://${BACKUP_S3_BUCKET}/${BACKUP_PREFIX}/monthly/" \
-            --endpoint-url "$BACKUP_S3_ENDPOINT" --region auto \
+          MONTHLY_LIST=$(aws s3 ls "s3://${BACKUP_S3_BUCKET}/${BACKUP_PREFIX}/monthly/" \
+            --endpoint-url "$BACKUP_S3_ENDPOINT" --region auto 2>/dev/null || true)
+          printf '%s\n' "$MONTHLY_LIST" \
             | awk '/PRE / {print $2}' | sed 's|/$||' | sort -r | tail -n +13 \
             | while read -r d; do
                 [ -z "$d" ] && continue
