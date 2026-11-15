@@ -15,8 +15,10 @@ jobs:
           VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
         run: |
           if [ -z "$VERCEL_DEPLOY_HOOK" ]; then
-            echo "Missing secret VERCEL_DEPLOY_HOOK" >&2
-            exit 1
+            echo "::warning::Secret VERCEL_DEPLOY_HOOK is not set — skipping daily rebuild."
+            echo "Add it in GitHub → Settings → Secrets → Actions:"
+            echo "  Vercel project → Settings → Git → Deploy Hooks → create hook on main → paste URL as VERCEL_DEPLOY_HOOK"
+            exit 0
           fi
           curl -fsS -X POST "$VERCEL_DEPLOY_HOOK"
           echo
