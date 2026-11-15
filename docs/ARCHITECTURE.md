@@ -19,7 +19,7 @@ Visitor ──► Vercel CDN ──► static pages (Astro build)          Sanit
 | Hosting | Vercel project `tems-web` under the NEVMA team (Pro, decided). Domain: to confirm. |
 | Rebuilds | Sanity webhook → Vercel deploy hook on publish; also a daily rebuild (cron 03:10 UTC) so the footer year and anything time-based stays right. |
 | Analytics | Vercel Web Analytics (cookieless) → no cookie banner needed (PROPOSED). |
-| Backups | Weekly `sanity dataset export` by GitHub Action → workflow artifact (90 days) and the shared Google Drive folder (decided for all NEVMA-engagement sites). |
+| Backups | Weekly encrypted `sanity dataset export` (`age`) by GitHub Action → Cloudflare R2 (`tems/weekly/…`, 8 weekly + 12 monthly). See [BACKUPS.md](./BACKUPS.md). No unencrypted GitHub artifacts (repo may be public). |
 
 ## apps/web layout
 ```

@@ -2,7 +2,7 @@
 
 ## Sanity (you, once)
 1. In the NEVMA organisation create project **TEMS**, dataset `production`, visibility **private**. Plan: Free.
-2. API → Tokens: `tems-web-viewer` (Viewer) → `SANITY_VIEWER_TOKEN`; `tems-web-forms` (Editor) → `SANITY_WRITE_TOKEN`; `tems-backup` (Viewer) for the backup job.
+2. API → Tokens: `tems-web-viewer` (Viewer) → `SANITY_VIEWER_TOKEN` / CI; `tems-web-forms` (Editor) → `SANITY_WRITE_TOKEN`; Viewer token also as `SANITY_AUTH_TOKEN` for encrypted R2 backups (see [BACKUPS.md](./BACKUPS.md)).
 3. CORS: add `http://localhost:3333` and the Studio host (credentials on). The site never calls Sanity from the browser, so no site origin is needed.
 4. `pnpm --filter studio seed` (imports `seed/tems-seed.tar.gz`), then `pnpm --filter studio deploy` → `tems.sanity.studio`.
 5. Members: the studio's editor (Editor role) when they are ready.
@@ -31,14 +31,23 @@ Workflows live in `.github/workflows/`. Repo secrets to add once:
 | `PUBLIC_SANITY_PROJECT_ID` | `ci.yml`, `retention.yml` | Optional in CI (defaults to `btd6vnus`); required for retention |
 | `PUBLIC_SANITY_DATASET` | `ci.yml` | Optional in CI (defaults to `production`) |
 | `VERCEL_DEPLOY_HOOK` | `rebuild.yml` (+ Sanity webhook URL) | Vercel → Settings → Git → Deploy Hooks |
-| `SANITY_BACKUP_TOKEN` | `backup.yml` | Viewer token `tems-backup` |
-| `RCLONE_CONFIG` | `backup.yml` | Full `rclone.conf` text; remote **must** be named `drive` → folder `TEMS/backups` |
+| `SANITY_AUTH_TOKEN` | `backup.yml` | Viewer token for Sanity dataset export (replaces old `SANITY_BACKUP_TOKEN`) |
+| `SANITY_PROJECT_ID` | `backup.yml` | Sanity project id |
+| `SANITY_DATASET` | `backup.yml` | Usually `production` |
+| `AGE_RECIPIENT` | `backup.yml` | `age` public key for encrypting backups |
+| `BACKUP_S3_BUCKET` | `backup.yml` | Cloudflare R2 bucket name |
+| `BACKUP_S3_ENDPOINT` | `backup.yml` | R2 S3 API endpoint |
+| `BACKUP_AWS_ACCESS_KEY_ID` | `backup.yml` | R2 API access key id |
+| `BACKUP_AWS_SECRET_ACCESS_KEY` | `backup.yml` | R2 API secret access key |
+| `HEALTHCHECK_URL` | `backup.yml` | Ping on success / `$URL/fail` on failure |
 | `SANITY_WRITE_TOKEN` | `retention.yml` | Editor token `tems-web-forms` |
+
+Repository **variable:** `BACKUP_PREFIX` = `tems`.
 
 - `ci.yml`: on PR + push to `main` — install, `astro check`/`tsc`, unit tests, production build (needs Sanity secrets).
 - `rebuild.yml`: daily 03:10 UTC (+ manual) `POST` deploy hook.
-- `backup.yml`: weekly Monday 02:00 UTC (+ manual): `npx sanity@6.22.0 dataset export production` → artifact 90 days → `rclone copy` to `drive:TEMS/backups` as `tems-production-YYYY-MM-DD.tar.gz`.
-- `retention.yml`: weekly Monday 02:30 UTC (+ manual): `node apps/web/scripts/retention.mjs`.
+- `backup.yml`: weekly Monday 02:00 UTC (+ manual): encrypted Sanity export → Cloudflare R2 (see [BACKUPS.md](./BACKUPS.md)). No GitHub artifacts (repo may be public).
+- `retention.yml`: weekly Monday 02:30 UTC (+ manual): `node apps/web/scripts/retention.mjs` (after backup).
 
 Site deploys themselves are **Vercel Git integration** (push → preview/production), same pattern as Nevma Music — not a custom deploy Action.
 

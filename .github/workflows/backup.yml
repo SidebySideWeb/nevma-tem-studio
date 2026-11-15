@@ -1,61 +1,204 @@
-# Weekly Sanity dataset export → GitHub artifact (90d) + Google Drive via rclone.
-name: Sanity backup
+# Weekly encrypted Sanity backup → Cloudflare R2.
+# Cron Monday 02:00 UTC — before retention.yml (02:30). Sanity only (no database).
+#
+# Repository secrets (never commit values):
+#   SANITY_AUTH_TOKEN, SANITY_PROJECT_ID, SANITY_DATASET,
+#   AGE_RECIPIENT,
+#   BACKUP_S3_BUCKET, BACKUP_S3_ENDPOINT,
+#   BACKUP_AWS_ACCESS_KEY_ID, BACKUP_AWS_SECRET_ACCESS_KEY,
+#   HEALTHCHECK_URL
+# Repository variable:
+#   BACKUP_PREFIX  — "tems"
+name: Backups
 
 on:
   schedule:
-    - cron: '0 2 * * 1' # Monday 02:00 UTC
+    - cron: '0 2 * * 1' # Monday 02:00 UTC (before retention.yml)
   workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: backups
+  cancel-in-progress: false
 
 jobs:
   backup:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: apps/studio
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version-file: .nvmrc
 
-      - name: Export production dataset
-        env:
-          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_BACKUP_TOKEN }}
+      - name: Install tools
         run: |
-          if [ -z "$SANITY_AUTH_TOKEN" ]; then
-            echo "Missing secret SANITY_BACKUP_TOKEN (Viewer token for export)" >&2
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y age
+          age --version
+          aws --version
+
+      - name: Export and encrypt
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+          SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+          SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
+          AGE_RECIPIENT: ${{ secrets.AGE_RECIPIENT }}
+        run: |
+          set -euo pipefail
+          : "${SANITY_AUTH_TOKEN:?}"
+          : "${SANITY_PROJECT_ID:?}"
+          : "${SANITY_DATASET:?}"
+          : "${AGE_RECIPIENT:?}"
+
+          STAMP=$(date -u +%Y%m%d)
+          mkdir -p backup-out
+
+          echo "Exporting Sanity dataset (assets + drafts; token not logged)…"
+          # Pin to apps/studio package.json "sanity" version.
+          npx --yes sanity@6.22.0 dataset export "$SANITY_DATASET" \
+            "backup-out/sanity-${STAMP}.tar.gz" \
+            --project "$SANITY_PROJECT_ID"
+          ENTRIES=$(tar -tzf "backup-out/sanity-${STAMP}.tar.gz" | wc -l)
+          if [ "$ENTRIES" -lt 1 ]; then
+            echo "Sanity archive is empty" >&2
             exit 1
           fi
-          DATE=$(date -u +%Y-%m-%d)
-          echo "DATE=$DATE" >> "$GITHUB_ENV"
-          FILE="tems-production-${DATE}.tar.gz"
-          echo "FILE=$FILE" >> "$GITHUB_ENV"
-          npx --yes sanity@6.22.0 dataset export production "../../${FILE}"
+          echo "Sanity archive entries: ${ENTRIES}"
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+          echo "Encrypting with age…"
+          age -r "$AGE_RECIPIENT" -o "backup-out/sanity-${STAMP}.tar.gz.age" \
+            "backup-out/sanity-${STAMP}.tar.gz"
+          rm -f "backup-out/sanity-${STAMP}.tar.gz"
+
+          echo "Encrypted files (names and sizes only):"
+          ls -la backup-out
+
+      - name: Upload to Cloudflare R2
+        env:
+          BACKUP_S3_BUCKET: ${{ secrets.BACKUP_S3_BUCKET }}
+          BACKUP_S3_ENDPOINT: ${{ secrets.BACKUP_S3_ENDPOINT }}
+          BACKUP_PREFIX: ${{ vars.BACKUP_PREFIX }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.BACKUP_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.BACKUP_AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+          AWS_REQUEST_CHECKSUM_CALCULATION: when_required
+          AWS_RESPONSE_CHECKSUM_VALIDATION: when_required
+        run: |
+          set -euo pipefail
+          : "${BACKUP_S3_BUCKET:?}"
+          : "${BACKUP_S3_ENDPOINT:?}"
+          : "${BACKUP_PREFIX:?}"
+
+          STAMP=$(date -u +%Y%m%d)
+          YEAR_WEEK=$(date -u +%G-W%V)
+          YEAR_MONTH=$(date -u +%Y-%m)
+          DOM=$(date -u +%-d)
+
+          WEEKLY="s3://${BACKUP_S3_BUCKET}/${BACKUP_PREFIX}/weekly/${YEAR_WEEK}"
+          echo "Uploading to ${WEEKLY}/ …"
+          aws s3 cp backup-out/ "${WEEKLY}/" --recursive \
+            --endpoint-url "$BACKUP_S3_ENDPOINT" --region auto
+
+          EXPECTED=(
+            "sanity-${STAMP}.tar.gz.age"
+          )
+          for f in "${EXPECTED[@]}"; do
+            SIZE=$(aws s3api head-object \
+              --bucket "$BACKUP_S3_BUCKET" \
+              --key "${BACKUP_PREFIX}/weekly/${YEAR_WEEK}/${f}" \
+              --endpoint-url "$BACKUP_S3_ENDPOINT" \
+              --region auto \
+              --query ContentLength --output text)
+            if [ -z "$SIZE" ] || [ "$SIZE" = "None" ] || [ "$SIZE" -le 0 ]; then
+              echo "Missing or empty object: ${WEEKLY}/${f}" >&2
+              exit 1
+            fi
+            echo "OK ${f} (${SIZE} bytes)"
+          done
+
+          if [ "$DOM" -le 7 ]; then
+            MONTHLY="s3://${BACKUP_S3_BUCKET}/${BACKUP_PREFIX}/monthly/${YEAR_MONTH}"
+            echo "First-week-of-month run: copying to ${MONTHLY}/ …"
+            aws s3 cp backup-out/ "${MONTHLY}/" --recursive \
+              --endpoint-url "$BACKUP_S3_ENDPOINT" --region auto
+            for f in "${EXPECTED[@]}"; do
+              SIZE=$(aws s3api head-object \
+                --bucket "$BACKUP_S3_BUCKET" \
+                --key "${BACKUP_PREFIX}/monthly/${YEAR_MONTH}/${f}" \
+                --endpoint-url "$BACKUP_S3_ENDPOINT" \
+                --region auto \
+                --query ContentLength --output text)
+              if [ -z "$SIZE" ] || [ "$SIZE" = "None" ] || [ "$SIZE" -le 0 ]; then
+                echo "Missing or empty object: ${MONTHLY}/${f}" >&2
+                exit 1
+              fi
+              echo "OK monthly ${f} (${SIZE} bytes)"
+            done
+          fi
+
+          echo "Retention: keep 8 weekly, 12 monthly (deletes may fail under object lock)…"
+          aws s3 ls "s3://${BACKUP_S3_BUCKET}/${BACKUP_PREFIX}/weekly/" \
+            --endpoint-url "$BACKUP_S3_ENDPOINT" --region auto \
+            | awk '/PRE / {print $2}' | sed 's|/$||' | sort -r | tail -n +9 \
+            | while read -r d; do
+                [ -z "$d" ] && continue
+                aws s3 rm "s3://${BACKUP_S3_BUCKET}/${BACKUP_PREFIX}/weekly/${d}/" \
+                  --recursive --endpoint-url "$BACKUP_S3_ENDPOINT" --region auto || true
+              done
+          aws s3 ls "s3://${BACKUP_S3_BUCKET}/${BACKUP_PREFIX}/monthly/" \
+            --endpoint-url "$BACKUP_S3_ENDPOINT" --region auto \
+            | awk '/PRE / {print $2}' | sed 's|/$||' | sort -r | tail -n +13 \
+            | while read -r d; do
+                [ -z "$d" ] && continue
+                aws s3 rm "s3://${BACKUP_S3_BUCKET}/${BACKUP_PREFIX}/monthly/${d}/" \
+                  --recursive --endpoint-url "$BACKUP_S3_ENDPOINT" --region auto || true
+              done
+
+      - name: Healthcheck success
+        env:
+          HEALTHCHECK_URL: ${{ secrets.HEALTHCHECK_URL }}
+        run: |
+          set -euo pipefail
+          curl -fsS --retry 3 "$HEALTHCHECK_URL"
+
+      - name: Healthcheck fail
+        if: failure()
+        env:
+          HEALTHCHECK_URL: ${{ secrets.HEALTHCHECK_URL }}
+        run: |
+          set -euo pipefail
+          curl -fsS --retry 3 "${HEALTHCHECK_URL}/fail" || true
+
+      - name: Open GitHub issue on failure
+        if: failure()
+        uses: actions/github-script@v7
         with:
-          name: tems-production-${{ env.DATE }}
-          path: tems-production-${{ env.DATE }}.tar.gz
-          retention-days: 90
-
-      - name: Install rclone
-        run: |
-          curl -fsSL https://rclone.org/install.sh | sudo bash
-        working-directory: .
-
-      - name: Copy to Google Drive (rclone)
-        working-directory: .
-        env:
-          RCLONE_CONFIG_CONTENTS: ${{ secrets.RCLONE_CONFIG }}
-        run: |
-          if [ -z "$RCLONE_CONFIG_CONTENTS" ]; then
-            echo "Missing secret RCLONE_CONFIG" >&2
-            exit 1
-          fi
-          mkdir -p "$HOME/.config/rclone"
-          printf '%s\n' "$RCLONE_CONFIG_CONTENTS" > "$HOME/.config/rclone/rclone.conf"
-          # Remote must be named `drive` (see docs/DECISIONS.md).
-          rclone copy "${FILE}" "drive:TEMS/backups" --checksum
-          echo "Uploaded ${FILE} to drive:TEMS/backups"
+          script: |
+            const title = `Backup failed (${new Date().toISOString().slice(0, 10)})`;
+            const body = [
+              'The weekly Sanity backup workflow failed.',
+              '',
+              `Run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              '',
+              'Do not paste secrets into this issue. Check Actions logs and R2 credentials.',
+            ].join('\n');
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'backup-failure',
+            });
+            if (issues.data.some((i) => i.title === title)) return;
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body,
+              labels: ['backup-failure'],
+            });

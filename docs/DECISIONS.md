@@ -6,7 +6,7 @@
 - TEMS is a separate company with its own design style; never described as a NEVMA member; NEVMA Music shown only as a partner (21 Oct, 23 Oct).
 - Expression-of-interest form only: no booking, no payments (7 Oct). English only (10 Oct).
 - Stack: Astro front end, Sanity CMS, Vercel hosting (19 Oct); one Sanity project per site inside the NEVMA organisation; TEMS on the Free plan (19 Oct).
-- Front ends on Vercel under the NEVMA team (Pro) (19 Oct). Weekly backups of every database to the shared Google Drive folder (19 Oct).
+- Front ends on Vercel under the NEVMA team (Pro) (19 Oct). Weekly backups: originally Google Drive; TEMS now uses encrypted Cloudflare R2 (15 Nov 2026 — see BACKUPS.md).
 - The client pays running costs; Resend Pro charged to the client (19 Oct).
 - Build exactly like the approved design, pixel-perfect (9 Nov — this kit).
 
@@ -65,7 +65,7 @@
 
 ## Proposed while building Deploy / Actions (10 Nov 2026)
 - `vercel.json` only carries `/assets/*` Cache-Control; `/studio` 301 stays in `astro.config.mjs` redirects (already works with the Vercel adapter).
-- Backup rclone remote is fixed as `drive` (full conf in `RCLONE_CONFIG`); destination `drive:TEMS/backups`.
+- Backups: encrypted Sanity export to Cloudflare R2 (`BACKUP_PREFIX=tems`), not Google Drive/rclone. No GitHub artifact upload (public repo).
 - `@vercel/analytics/astro` is rendered only when `VERCEL_ENV === 'production'` (previews and local builds stay clean).
 - Retention defaults to 24 months when `form.retentionMonths` is missing; deletes via a single Sanity transaction.
 
@@ -123,6 +123,6 @@
 - `Base` wraps the page slot in `<main class="page-main">` with `display: contents` in `additions.css` so Lighthouse gets a main landmark without layout/fidelity change; Legal/404 no longer nest their own `<main>`.
 - Home and room heroes use `srcset` (800/1600/2400) + `sizes="100vw"` + a matching `<link rel="preload" as="image">` so mobile Lighthouse LCP stays under 2.5 s; fidelity blanks images so CDN widths do not affect pixel diffs.
 - AC-13 Lighthouse was run against `dist/client` built with `VERCEL_ENV=production` (so `robots` allow crawl → SEO 100). Local Best-practices console noise from Analytics 404 is acceptable (BP 96 ≥ 95).
-- AC-15 scratch restore: no Drive backup artifact yet (D9). Verified by exporting `production` → `sanity dataset import … scratch --replace` → GROQ check → `dataset delete scratch --force`.
+- AC-15 scratch restore: verified once by exporting `production` → import `scratch` → delete. Ongoing drills use R2 `.age` files (BACKUPS.md).
 - `apps/web/scripts/check-js-budget.mjs` reports gzip size of local `<script src>` assets per HTML page (AC-14). Turnstile and Vercel Analytics remain the only allowed third parties.
 - `scripts/check-placeholders.mjs` resolves `apps/web/dist/client` from the repo root (and `dist/client` when cwd is `apps/web`) so `--strict` and `pnpm --filter web check` both see built page text.
