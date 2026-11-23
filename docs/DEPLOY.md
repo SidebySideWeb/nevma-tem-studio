@@ -28,7 +28,7 @@ Workflows live in `.github/workflows/`. Repo secrets to add once:
 | Secret | Used by | Notes |
 | --- | --- | --- |
 | `SANITY_VIEWER_TOKEN` | `ci.yml` | **Required for CI.** Viewer token so `pnpm build` can read the private dataset |
-| `PUBLIC_SANITY_PROJECT_ID` | `ci.yml`, `retention.yml` | Optional (defaults to `btd6vnus`) |
+| `PUBLIC_SANITY_PROJECT_ID` | `ci.yml` | Optional in CI (defaults to `btd6vnus`); retention hardcodes `btd6vnus` |
 | `PUBLIC_SANITY_DATASET` | `ci.yml` | Optional in CI (defaults to `production`) |
 | `VERCEL_DEPLOY_HOOK` | `rebuild.yml` (+ Sanity webhook URL) | Vercel → Settings → Git → Deploy Hooks |
 | `SANITY_AUTH_TOKEN` | `backup.yml` | Viewer token for Sanity dataset export (replaces old `SANITY_BACKUP_TOKEN`) |

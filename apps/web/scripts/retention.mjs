@@ -8,9 +8,10 @@
  */
 import { createClient } from '@sanity/client';
 
-const projectId = process.env.PUBLIC_SANITY_PROJECT_ID || 'btd6vnus';
-const dataset = process.env.PUBLIC_SANITY_DATASET || 'production';
-const token = process.env.SANITY_WRITE_TOKEN;
+const projectId = (process.env.PUBLIC_SANITY_PROJECT_ID || '').trim() || 'btd6vnus';
+const dataset = (process.env.PUBLIC_SANITY_DATASET || '').trim() || 'production';
+const token = (process.env.SANITY_WRITE_TOKEN || '').trim();
+
 
 if (!token) {
   console.error('Missing SANITY_WRITE_TOKEN');
