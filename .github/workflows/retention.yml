@@ -25,7 +25,8 @@ jobs:
 
       - name: Delete expired submissions
         env:
-          PUBLIC_SANITY_PROJECT_ID: ${{ secrets.PUBLIC_SANITY_PROJECT_ID }}
-          PUBLIC_SANITY_DATASET: production
+          # Project ID is public; secret optional (same default as ci.yml).
+          PUBLIC_SANITY_PROJECT_ID: ${{ secrets.PUBLIC_SANITY_PROJECT_ID || 'btd6vnus' }}
+          PUBLIC_SANITY_DATASET: ${{ secrets.PUBLIC_SANITY_DATASET || 'production' }}
           SANITY_WRITE_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
         run: node apps/web/scripts/retention.mjs
